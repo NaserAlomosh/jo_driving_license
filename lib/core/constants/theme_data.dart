@@ -14,7 +14,7 @@ ThemeData lightMode = ThemeData(
   brightness: Brightness.light,
   colorScheme: const ColorScheme.light(
     // colorPrimary
-    primary: Color.fromARGB(255, 0, 141, 165),
+    primary: Color.fromARGB(255, 22, 67, 82),
     // colorOnPrimary
     onPrimary: Color(0xFFFFFFFF),
     // colorButtons and Icons

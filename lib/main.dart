@@ -16,7 +16,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  await addQuestion("mfL8FkT1SSwvHm8dR0qj");
+  // await addQuestion("mfL8FkT1SSwvHm8dR0qj");
   prefs = await SharedPreferences.getInstance();
   runApp(const DrivingLicenseApp());
 }

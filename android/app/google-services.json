@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "649731342605",
+    "project_id": "jo-driving-license",
+    "storage_bucket": "jo-driving-license.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:649731342605:android:12686051907ca693a77044",
+        "android_client_info": {
+          "package_name": "com.example.jo_driving_license"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDu19iBnualSeByd7G8fmupY_bJ6zCl_Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

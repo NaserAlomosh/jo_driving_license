@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:jo_driving_license/core/models/answer_model.dart';
@@ -12,14 +13,24 @@ late SharedPreferences prefs;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
+  await EasyLocalization.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
   // await addQuestion("mfL8FkT1SSwvHm8dR0qj");
   prefs = await SharedPreferences.getInstance();
-  runApp(const DrivingLicenseApp());
+
+  runApp(
+    EasyLocalization(
+      path: 'assets/languages',
+      supportedLocales: const [
+        Locale('en'),
+      ],
+      fallbackLocale: const Locale('en'),
+      child: const DrivingLicenseApp(),
+    ),
+  );
 }
 
 addQuestion(String catigoryId) async {

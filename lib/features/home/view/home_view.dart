@@ -116,6 +116,7 @@ class HomeView extends StatelessWidget {
                         child: CustomText(
                           textAlign: TextAlign.center,
                           text: cubit.quizzes[index]?.name ?? '',
+                          color: Theme.of(context).colorScheme.onPrimary,
                         ),
                       ),
                     ),

@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'core/constants/theme_data.dart';
 import 'core/helper/design_size_responsive.dart';
-import 'features/on_boarding/view/intro_screen.dart';
+import 'features/on_boarding/intro_view.dart';
 
 class DrivingLicenseApp extends StatelessWidget {
   const DrivingLicenseApp({super.key});

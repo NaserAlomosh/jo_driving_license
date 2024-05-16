@@ -2,12 +2,12 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jo_driving_license/core/constants/dimentions.dart';
-import 'package:jo_driving_license/features/on_boarding/view/on_boarding_screen2.dart';
-import 'package:jo_driving_license/features/on_boarding/view/on_boarding_screen3.dart';
+import 'package:jo_driving_license/features/on_boarding/widgets/on_boarding_screen2.dart';
+import 'package:jo_driving_license/features/on_boarding/widgets/on_boarding_screen3.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import '../../../core/widgets/general/custom_text.dart';
-import '../../botton_nav_bar/botton_nav_bar.dart';
-import 'on_boarding_screen1.dart';
+import '../../core/widgets/general/custom_text.dart';
+import '../botton_nav_bar/botton_nav_bar.dart';
+import 'widgets/on_boarding_screen1.dart';
 
 class IntroScreen extends StatefulWidget {
   const IntroScreen({super.key});

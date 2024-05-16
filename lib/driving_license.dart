@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:jo_driving_license/features/on_boarding/view/intro_screen.dart';
 import 'core/constants/theme_data.dart';
 import 'core/helper/design_size_responsive.dart';
 import 'features/botton_nav_bar/botton_nav_bar.dart';
@@ -18,13 +20,17 @@ class DrivingLicenseApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (_, child) {
         return MaterialApp(
+          locale: context.locale,
           theme: lightMode,
           darkTheme: darkMode,
           debugShowCheckedModeBanner: false,
-          home: const Directionality(
-            textDirection: TextDirection.rtl,
-            child: BottomNavBarApp(),
-          ),
+          home:
+         //  Directionality(
+            // textDirection: TextDirection.ltr,
+            // child: BottomNavBarApp(),
+           // child: 
+            IntroScreen(),
+        //  ),
         );
       },
     );

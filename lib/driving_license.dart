@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jo_driving_license/features/on_boarding/view/intro_screen.dart';
+
 import 'core/constants/theme_data.dart';
 import 'core/helper/design_size_responsive.dart';
-import 'features/botton_nav_bar/botton_nav_bar.dart';
 
 class DrivingLicenseApp extends StatelessWidget {
   const DrivingLicenseApp({super.key});
@@ -25,12 +25,12 @@ class DrivingLicenseApp extends StatelessWidget {
           darkTheme: darkMode,
           debugShowCheckedModeBanner: false,
           home:
-         //  Directionality(
-            // textDirection: TextDirection.ltr,
-            // child: BottomNavBarApp(),
-           // child: 
-            IntroScreen(),
-        //  ),
+              //  Directionality(
+              // textDirection: TextDirection.ltr,
+              // child: BottomNavBarApp(),
+              // child:
+              IntroScreen(),
+          //  ),
         );
       },
     );

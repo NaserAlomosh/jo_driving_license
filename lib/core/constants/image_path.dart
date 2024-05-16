@@ -1,6 +1,7 @@
 class AppImage {
-  static const String countryImage = 'assets/png/country_image.png';
-  static const String card = 'assets/png/card.png';
+  static const String countryImage = 'assets/images/png/country_image.png';
+  static const String card = 'assets/images/png/card.png';
+  //
   static const String splashLogo = 'assets/images/svg/splsh_logo.svg';
   static const String passwordLogo = 'assets/images/svg/pass_logo.svg';
   static const String emailLogo = 'assets/images/svg/email_logo.svg';

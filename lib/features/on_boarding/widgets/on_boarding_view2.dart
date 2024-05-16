@@ -5,8 +5,8 @@ import 'package:lottie/lottie.dart';
 import '../../../core/constants/image_path.dart';
 import '../../../core/widgets/general/custom_text.dart';
 
-class OnBoardingScreenTwo extends StatelessWidget {
-  const OnBoardingScreenTwo({super.key});
+class OnBoardingViewTwo extends StatelessWidget {
+  const OnBoardingViewTwo({super.key});
 
   @override
   Widget build(BuildContext context) {

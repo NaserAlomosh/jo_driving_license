@@ -16,18 +16,27 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
   // await addQuestion("mfL8FkT1SSwvHm8dR0qj");
   prefs = await SharedPreferences.getInstance();
   runApp(const DrivingLicenseApp());
 }
 
-//
 addQuestion(String catigoryId) async {
   String questionId;
   List<Map> quizzes = [
-    AnswerModel(answer: "ممنوع الانعطاف إلى اليمين").toJson(),
-    AnswerModel(answer: "ممنوع الانعطاف إلى اليسار.").toJson(),
-    AnswerModel(answer: "مسموح الانعطاف الى اليمين.").toJson(),
+    AnswerModel(
+      answer: "ممنوع الانعطاف إلى اليمين",
+      correct: true,
+    ).toJson(),
+    AnswerModel(
+      answer: "ممنوع الانعطاف إلى اليسار.",
+      correct: false,
+    ).toJson(),
+    AnswerModel(
+      answer: "مسموح الانعطاف الى اليمين.",
+      correct: false,
+    ).toJson(),
   ];
   // get the id
   await quizzesFirestore

@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
+import '../../../core/constants/image_path.dart';
 import '../../../core/widgets/general/custom_text.dart';
 
 class OnBoardingScreenOne extends StatelessWidget {
@@ -52,7 +53,7 @@ class OnBoardingScreenOne extends StatelessWidget {
                         ),
                       ),
                       Lottie.asset(
-                        'assets/images/json/bus.json',
+                        AppImage.onBoardingBus,
                         height: 250.w,
                         width: 240.w,
                       ),

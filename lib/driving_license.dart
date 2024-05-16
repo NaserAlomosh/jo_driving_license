@@ -36,6 +36,7 @@ class DrivingLicenseApp extends StatelessWidget {
     );
   }
 
+//
   void setSystemUIOverlayStyle() {
     SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(

@@ -29,7 +29,7 @@ class DrivingLicenseApp extends StatelessWidget {
               // textDirection: TextDirection.ltr,
               // child: BottomNavBarApp(),
               // child:
-              IntroScreen(),
+              const IntroScreen(),
           //  ),
         );
       },

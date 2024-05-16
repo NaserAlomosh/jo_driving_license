@@ -10,4 +10,7 @@ class AppImage {
   static const String tryAgain = 'assets/images/png/tryagain.png';
   static const String scan = 'assets/images/png/scan.png';
   static const String imageNotFound = 'assets/images/png/image_not_found.png';
+  //onboadring screen
+  static const String onBoardingBus = 'assets/images/json/bus.json';
+  static const String onBoardingTaxi = 'assets/images/json/taxi.json';
 }

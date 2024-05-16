@@ -13,9 +13,10 @@ class CustomText extends StatelessWidget {
   final TextAlign textAlign;
   final int maxLines;
   final TextOverflow? textOverflow;
-  final TextDirection textDirection;
+  // final TextDirection textDirection;
   final List<Shadow>? shadows;
   final double? height;
+
   const CustomText({
     super.key,
     required this.text,
@@ -27,7 +28,7 @@ class CustomText extends StatelessWidget {
     this.textDecoration = TextDecoration.none,
     this.maxLines = 5,
     this.textOverflow,
-    this.textDirection = TextDirection.rtl,
+    // this.textDirection = TextDirection.rtl,
     this.shadows,
     this.height,
   });
@@ -35,13 +36,13 @@ class CustomText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bool isTaplet = checkDeviceIsTaplet(context);
-    Color defaultColor = color ?? Theme.of(context).colorScheme.onPrimary;
+    Color defaultColor = color ?? Theme.of(context).colorScheme.secondary;
     return Text(
       text,
       textAlign: textAlign,
       maxLines: maxLines,
       overflow: textOverflow,
-      textDirection: textDirection,
+      // textDirection: textDirection,
       style: TextStyle(
         height: height,
         fontFamily: fontFamily,

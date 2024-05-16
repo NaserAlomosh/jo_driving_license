@@ -33,7 +33,6 @@ void main() async {
   );
 }
 
-//
 addQuestion(String catigoryId) async {
   String questionId;
   List<Map> quizzes = [

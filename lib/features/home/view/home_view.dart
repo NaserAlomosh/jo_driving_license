@@ -113,7 +113,10 @@ class HomeView extends StatelessWidget {
                     child: GestureDetector(
                       onTap: () {
                         context.push(
-                          QuistionsView(quizId: cubit.quizzes[index]?.id ?? ''),
+                          QuistionsView(
+                            quizId: cubit.quizzes[index]?.id ?? '',
+                            levelName: cubit.quizzes[index]?.name ?? '',
+                          ),
                         );
                       },
                       child: CircleAvatar(

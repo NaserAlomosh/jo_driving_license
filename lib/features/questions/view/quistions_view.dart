@@ -1,7 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -14,15 +12,19 @@ import 'package:jo_driving_license/core/widgets/general/custom_loading.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_network_image.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_show_dilog.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
-
 import '../../../core/constants/dimentions.dart';
 import '../../../core/constants/image_path.dart';
 import '../view_model/cubit.dart';
 
 class QuistionsView extends StatefulWidget {
   final String quizId;
+  final String levelName;
 
-  const QuistionsView({super.key, required this.quizId});
+  const QuistionsView({
+    super.key,
+    required this.quizId,
+    required this.levelName,
+  });
 
   @override
   QuistionsViewState createState() => QuistionsViewState();
@@ -37,7 +39,13 @@ class QuistionsViewState extends State<QuistionsView> {
     return BlocProvider(
       create: (context) => QuistionsCubit()..getQuistionsCubit(widget.quizId),
       child: Scaffold(
-        appBar: AppBar(),
+        appBar: AppBar(
+          title: CustomText(
+            text: widget.levelName,
+            fontSize: 24.sp,
+            fontWeight: FontWeight.w700,
+          ),
+        ),
         body: Padding(
           padding: EdgeInsets.all(GeneralConst.horizontalPadding),
           child: SafeArea(
@@ -56,14 +64,22 @@ class QuistionsViewState extends State<QuistionsView> {
                       return Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          _questionCounter(),
-                          // heightSpace(8),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              linearIndicator(quistionIndex),
+                              heightSpace(15),
+                              _questionCounter(quistionIndex),
+                              heightSpace(15),
+                            ],
+                          ),
                           _getQuestion(question),
                           heightSpace(8),
-                          // CustomNetworkImage(imageUrl: question?.image ?? ''),
+                          CustomNetworkImage(imageUrl: question?.image ?? ''),
                           heightSpace(8),
                           _getListAnswers(quistionIndex, question),
-                          _getButton(cubit, quistionIndex),
+                          _getNextButton(cubit, quistionIndex),
                         ],
                       );
                     },
@@ -78,44 +94,32 @@ class QuistionsViewState extends State<QuistionsView> {
     );
   }
 
-  Row _questionCounter() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        CustomText(
-          text: '${tr('question')} 1/50',
-        ),
-      ],
+  _questionCounter(int quistionIndex) {
+    return CustomText(
+      text: '${tr('question')} 1/50',
+    );
+  }
+
+  LinearProgressIndicator linearIndicator(int quistionIndex) {
+    return LinearProgressIndicator(
+      value: (quistionIndex + 1) / 20,
+      minHeight: 12,
+      backgroundColor: Colors.grey[300],
+      borderRadius: BorderRadius.circular(10),
+      valueColor: AlwaysStoppedAnimation<Color>(
+        Theme.of(context).colorScheme.primary,
+      ),
     );
   }
 
   Widget _getQuestion(QuestionModel? question) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         CustomText(
           text: question?.question ?? '',
           fontSize: 20,
           color: Colors.black,
-        ),
-        CustomNetworkImage(
-          imageUrl: question?.image ?? '',
-          height: 75.w,
-          width: 75.w,
-        ),
-        ClipRRect(
-          child: Align(
-            alignment: Alignment.topLeft, // Adjust alignment as needed
-            widthFactor: 1, // Fraction of the original width
-            heightFactor: 0.7, // Fraction of the original height
-            child: Container(
-              height: 190.w,
-              width: 120.w,
-              child: SvgPicture.asset(
-                AppImage.policeManWait,
-              ),
-            ),
-          ),
         ),
       ],
     );
@@ -134,7 +138,6 @@ class QuistionsViewState extends State<QuistionsView> {
             _onClickAnswer(quistionIndex, answerIndex, question);
           },
           child: Container(
-            // margin: EdgeInsets.symmetric(vertical: 8.h),
             padding: EdgeInsets.symmetric(vertical: 15.h),
             decoration: BoxDecoration(
               color: answerColors[quistionIndex]?[answerIndex] ??
@@ -155,22 +158,42 @@ class QuistionsViewState extends State<QuistionsView> {
     );
   }
 
-  Widget _getButton(QuistionsCubit cubit, int quistionIndex) {
-    return Padding(
-      padding: EdgeInsets.all(10.sp),
-      child: CustomButton(
-        title: tr('next'),
-        fontSize: 20,
-        onPressed: () {
-          if (quistionIndex == cubit.questions.length - 1) {
-            showDialogSuccessBack(context, 'msg');
-          } else {
-            _pageController.nextPage(
-              duration: const Duration(milliseconds: 300),
-              curve: Curves.ease,
-            );
-          }
-        },
+  Widget _getNextButton(QuistionsCubit cubit, int quistionIndex) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: [
+        policeImage(),
+        CustomButton(
+          title: tr('next'),
+          fontSize: 20,
+          onPressed: () {
+            if (quistionIndex == cubit.questions.length - 1) {
+              showDialogSuccessBack(context, 'msg');
+            } else {
+              _pageController.nextPage(
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.ease,
+              );
+            }
+          },
+        ),
+      ],
+    );
+  }
+
+  ClipRRect policeImage() {
+    return ClipRRect(
+      child: Align(
+        alignment: Alignment.topLeft, // Adjust alignment as needed
+        widthFactor: 1, // Fraction of the original width
+        heightFactor: 0.7, // Fraction of the original height
+        child: Container(
+          height: 250.w,
+          width: 150.w,
+          child: SvgPicture.asset(
+            AppImage.policeManWait,
+          ),
+        ),
       ),
     );
   }

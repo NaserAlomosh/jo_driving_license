@@ -14,4 +14,10 @@ class AppImage {
   //onboadring screen
   static const String onBoardingBus = 'assets/images/json/bus.json';
   static const String onBoardingTaxi = 'assets/images/json/taxi.json';
+
+  //question screen
+  static const String policeManRun = 'assets/images/svg/police_man_run.svg';
+  static const String policeManWait = 'assets/images/svg/police_man_wait.svg';
+  static const String noTurnRight = 'aassets/images/png/no_turn_right.webp';
+  static const String greenRibbon = 'assets/images/png/green_ribbon.svg';
 }

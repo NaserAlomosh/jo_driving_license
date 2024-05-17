@@ -1,3 +1,5 @@
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-double screenPadding = 20.w;
+class GeneralConst {
+  static double horizontalPadding = 30.w;
+}

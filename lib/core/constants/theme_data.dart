@@ -4,23 +4,23 @@ import 'package:flutter/material.dart';
 //!  most used   =   primary
 //!  font   =    secondery
 //!  border   =   outLine
+//!  star & more   =   tertiary
 
 // theme light mode
 ThemeData lightMode = ThemeData(
   brightness: Brightness.light,
   colorScheme: const ColorScheme.light(
-    background: Color.fromARGB(255, 255, 255, 255),
-    onBackground: Color.fromARGB(255, 230, 229, 245),
-    primary: Color(0xff7C73E6),
-    secondary: Color.fromARGB(255, 77, 74, 110),
-    onPrimary: Color(0xFFFFFFFF),
-    onSecondary: Color.fromARGB(91, 255, 255, 255),
-    primaryContainer: Color(0xff01DC82),
-    outline: Color(0xffEBECF1),
-    secondaryContainer: Color(0xfff43f5e),
-    tertiaryContainer: Color(0xFFDDDDDD),
-    tertiary: Colors.black,
-  ),
+      background: Color.fromARGB(255, 255, 255, 255),
+      onBackground: Color.fromARGB(255, 230, 229, 245),
+      primary: Color(0xff7C73E6),
+      secondary: Color.fromARGB(255, 77, 74, 110),
+      onPrimary: Color(0xFFFFFFFF),
+      onSecondary: Color.fromARGB(91, 255, 255, 255),
+      primaryContainer: Color(0xff01DC82),
+      outline: Color(0xffEBECF1),
+      secondaryContainer: Color(0xfff43f5e),
+      tertiaryContainer: Color(0xFFDDDDDD),
+      tertiary: Color(0xFFFFE15D)),
 );
 
 // theme dark mode

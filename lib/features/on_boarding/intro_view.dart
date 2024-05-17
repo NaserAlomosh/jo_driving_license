@@ -27,7 +27,8 @@ class _IntroScreenState extends State<IntroScreen> {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: screenPadding),
+        padding:
+            EdgeInsets.symmetric(horizontal: GeneralConst.horizontalPadding),
         child: Stack(
           children: [
             PageView(

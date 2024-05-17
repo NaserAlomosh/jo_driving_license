@@ -25,9 +25,12 @@ void main() async {
     EasyLocalization(
       path: 'assets/languages',
       supportedLocales: const [
+        // Locale('en'),
         Locale('ar'),
       ],
+      // fallbackLocale: const Locale('ar'),
       fallbackLocale: const Locale('ar'),
+
       child: const DrivingLicenseApp(),
     ),
   );

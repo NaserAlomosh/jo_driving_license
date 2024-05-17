@@ -5,6 +5,7 @@ import 'package:jo_driving_license/core/helper/extensions.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
 import 'package:jo_driving_license/features/home/view_model/cubit.dart';
 import 'package:jo_driving_license/features/questions/view/quistions_view.dart';
+import 'package:jo_driving_license/features/score/score_view.dart';
 
 import '../../../core/constants/image_path.dart';
 import '../../../core/helper/spacing.dart';
@@ -22,6 +23,11 @@ class HomeView extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 40.w),
         child: Column(
           children: [
+            IconButton(
+                onPressed: () {
+                  context.push(ScoreView());
+                },
+                icon: Icon(Icons.star)),
             _getCard(context),
             heightSpace(20),
             _getListQuizzes(),

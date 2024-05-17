@@ -77,7 +77,7 @@ class ScoreView extends StatelessWidget {
                   alignment: Alignment.bottomLeft,
                   child: Icon(
                     Icons.star,
-                    size: 80,
+                    size: 75,
                     color: Theme.of(context).colorScheme.tertiary,
                   ),
                 ),
@@ -85,7 +85,7 @@ class ScoreView extends StatelessWidget {
                   alignment: Alignment.topCenter,
                   child: Icon(
                     Icons.star,
-                    size: 150,
+                    size: 135,
                     color: Theme.of(context).colorScheme.tertiary,
                   ),
                 ),
@@ -93,7 +93,7 @@ class ScoreView extends StatelessWidget {
                   alignment: Alignment.bottomLeft,
                   child: Icon(
                     Icons.star,
-                    size: 80,
+                    size: 75,
                     color: Theme.of(context).colorScheme.tertiary,
                   ),
                 ),

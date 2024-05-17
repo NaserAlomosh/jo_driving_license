@@ -59,6 +59,7 @@ class QuistionsViewState extends State<QuistionsView> {
                 } else {
                   return PageView.builder(
                     controller: _pageController,
+                    itemCount: cubit.questions.length,
                     itemBuilder: (context, quistionIndex) {
                       final question = cubit.questions[quistionIndex];
                       return Column(
@@ -68,9 +69,15 @@ class QuistionsViewState extends State<QuistionsView> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              linearIndicator(quistionIndex),
+                              linearIndicator(
+                                quistionIndex,
+                                cubit.questions.length,
+                              ),
                               heightSpace(15),
-                              _questionCounter(quistionIndex),
+                              _questionCounter(
+                                quistionIndex,
+                                cubit.questions.length,
+                              ),
                               heightSpace(15),
                             ],
                           ),
@@ -83,7 +90,6 @@ class QuistionsViewState extends State<QuistionsView> {
                         ],
                       );
                     },
-                    itemCount: cubit.questions.length,
                   );
                 }
               },
@@ -94,15 +100,18 @@ class QuistionsViewState extends State<QuistionsView> {
     );
   }
 
-  _questionCounter(int quistionIndex) {
+  _questionCounter(int quistionIndex, int totalQuestions) {
     return CustomText(
-      text: '${tr('question')} 1/50',
+      text: '${tr('question')} 1/$totalQuestions',
     );
   }
 
-  LinearProgressIndicator linearIndicator(int quistionIndex) {
+  LinearProgressIndicator linearIndicator(
+    int quistionIndex,
+    int totalQuestions,
+  ) {
     return LinearProgressIndicator(
-      value: (quistionIndex + 1) / 20,
+      value: (quistionIndex + 1) / totalQuestions,
       minHeight: 12,
       backgroundColor: Colors.grey[300],
       borderRadius: BorderRadius.circular(10),

@@ -19,23 +19,22 @@ class DrivingLicenseApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (_, child) {
         return MaterialApp(
+          localizationsDelegates: context.localizationDelegates,
+          supportedLocales: context.supportedLocales,
           locale: context.locale,
           theme: lightMode,
           darkTheme: darkMode,
           debugShowCheckedModeBanner: false,
           home:
-              //  Directionality(
-              // textDirection: TextDirection.ltr,
-              // child: BottomNavBarApp(),
-              // child:
+              // Directionality(
+              //     textDirection: TextDecoration.ltr,
               const IntroScreen(),
-          //  ),
+          // ),
         );
       },
     );
   }
 
-//
   void setSystemUIOverlayStyle() {
     SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(
@@ -45,4 +44,3 @@ class DrivingLicenseApp extends StatelessWidget {
     );
   }
 }
-//

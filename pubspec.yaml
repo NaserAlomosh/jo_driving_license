@@ -65,11 +65,13 @@ dependencies:
   # A package which simplifies the task of updating your Flutter app's launcher icon.
   flutter_launcher_icons: ^0.13.1
   # An SVG rendering and widget library for Flutter, which allows painting and displaying Scalable Vector Graphics 1.1 files.
-  flutter_svg: ^2.0.9
+  flutter_svg: ^2.0.10+1
   awesome_bottom_bar: ^1.2.4
 
   smooth_page_indicator: ^1.1.0
   easy_localization: ^3.0.2
+
+  
 
 
 
@@ -105,6 +107,8 @@ flutter:
   assets:
     - assets/images/png/
     - assets/images/json/
+    - assets/images/svg/
+    - assets/languages/
     
   #   - images/a_dot_ham.jpeg
 

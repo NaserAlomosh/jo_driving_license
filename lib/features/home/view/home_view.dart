@@ -114,7 +114,7 @@ class HomeView extends StatelessWidget {
                         : Alignment.centerLeft,
                     child: GestureDetector(
                       onTap: () {
-                        context.push(
+                        context.pushBottomToTop(
                           QuistionsView(
                             quizId: cubit.categories[index]?.id ?? '',
                             levelName: cubit.categories[index]?.name ?? '',

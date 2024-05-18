@@ -2,7 +2,9 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jo_driving_license/core/constants/dimentions.dart';
+import 'package:jo_driving_license/core/helper/extensions.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+
 import '../../core/widgets/general/custom_text.dart';
 import '../botton_nav_bar/botton_nav_bar.dart';
 import 'widgets/on_boarding_view1.dart';
@@ -133,16 +135,8 @@ class _IntroScreenState extends State<IntroScreen> {
                                                 child:
                                                     CircularProgressIndicator());
                                           });
-                                      Navigator.of(context).pop();
-
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) {
-                                            return const BottomNavBarApp();
-                                          },
-                                        ),
-                                      );
+                                      context.pop();
+                                      context.push(const BottomNavBarApp());
                                     },
                                     child: Padding(
                                       padding: EdgeInsets.symmetric(

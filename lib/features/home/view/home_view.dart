@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:jo_driving_license/core/constants/dimentions.dart';
 import 'package:jo_driving_license/core/helper/extensions.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
 import 'package:jo_driving_license/features/home/view_model/cubit.dart';
 import 'package:jo_driving_license/features/questions/view/quistions_view.dart';
 import 'package:jo_driving_license/features/score/score_view.dart';
-
 import '../../../core/constants/image_path.dart';
 import '../../../core/helper/spacing.dart';
 import '../../../core/widgets/error_widget/error_widget.dart';
@@ -20,12 +20,13 @@ class HomeView extends StatelessWidget {
     return BlocProvider(
       create: (context) => HomeCubit()..getQuizzezNameCubit(),
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 40.w),
+        padding:
+            EdgeInsets.symmetric(horizontal: GeneralConst.horizontalPadding),
         child: Column(
           children: [
             IconButton(
                 onPressed: () {
-                  context.push(ScoreView());
+                  context.push(const ScoreView());
                 },
                 icon: Icon(Icons.star)),
             _getCard(context),
@@ -59,20 +60,20 @@ class HomeView extends StatelessWidget {
                     text: 'الاختبار النظري لرخصة القيادة',
                     fontWeight: FontWeight.bold,
                     fontSize: 18,
-                    color: Theme.of(context).colorScheme.onPrimary,
+                    // color: Theme.of(context).colorScheme.onSecondary,
                   ),
                   Row(
                     children: [
-                      Image.asset(
-                        AppImage.countryImage,
-                        height: 30.sp,
-                      ),
-                      widthSpace(16),
-                      Image.asset(
-                        AppImage.card,
-                        height: 30.sp,
-                        color: Theme.of(context).colorScheme.onPrimary,
-                      ),
+                      // Image.asset(
+                      //   AppImage.countryImage,
+                      //   height: 30.sp,
+                      // ),
+                      // widthSpace(16),
+                      // Image.asset(
+                      //   AppImage.card,
+                      //   height: 30.sp,
+                      //   color: Theme.of(context).colorScheme.onPrimary,
+                      // ),
                     ],
                   )
                 ],
@@ -82,7 +83,7 @@ class HomeView extends StatelessWidget {
                 fontSize: 16,
                 height: 2.h,
                 fontWeight: FontWeight.w100,
-                color: Theme.of(context).colorScheme.onPrimary,
+                // color: Theme.of(context).colorScheme.onPrimary,
               ),
             ],
           ),
@@ -119,13 +120,22 @@ class HomeView extends StatelessWidget {
                           ),
                         );
                       },
-                      child: CircleAvatar(
-                        radius: 70.sp,
-                        backgroundColor: Theme.of(context).colorScheme.primary,
-                        child: CustomText(
-                          textAlign: TextAlign.center,
-                          text: cubit.quizzes[index]?.name ?? '',
-                          color: Theme.of(context).colorScheme.onPrimary,
+                      child:
+                          //CircleAvatar(
+                          Container(
+                        height: 100,
+                        width: 100,
+                        decoration: BoxDecoration(
+                            color: Theme.of(context).colorScheme.primary,
+                            borderRadius: BorderRadius.circular(70.sp)),
+                        // radius: 70.sp,
+                        // backgroundColor: Theme.of(context).colorScheme.primary,
+                        child: Center(
+                          child: CustomText(
+                            textAlign: TextAlign.center,
+                            text: cubit.quizzes[index]?.name ?? '',
+                            // color: Theme.of(context).colorScheme.onPrimary,
+                          ),
                         ),
                       ),
                     ),

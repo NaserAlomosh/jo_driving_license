@@ -40,10 +40,12 @@ class QuistionsViewState extends State<QuistionsView> {
       create: (context) => QuistionsCubit()..getQuistionsCubit(widget.quizId),
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.transparent,
           title: CustomText(
             text: widget.levelName,
             fontSize: 24.sp,
             fontWeight: FontWeight.w700,
+            color: Theme.of(context).colorScheme.onSecondary,
           ),
         ),
         body: Padding(

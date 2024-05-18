@@ -1,5 +1,6 @@
 import 'package:awesome_bottom_bar/awesome_bottom_bar.dart';
 import 'package:awesome_bottom_bar/widgets/inspired/inspired.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
@@ -74,20 +75,40 @@ class BottomNavBarAppState extends State<BottomNavBarApp> {
         ),
         title: Row(
           children: [
-            CustomText(
-              text: 'الاردن',
-              color: Theme.of(context).colorScheme.primary,
-              fontWeight: FontWeight.bold,
-              fontSize: 20.sp,
-            ),
-            const Spacer(),
-            CircleAvatar(
-              radius: 20.sp,
-              backgroundColor: Theme.of(context).colorScheme.primary,
-              child: Icon(
-                Icons.person,
-                size: 28.sp,
+            // CustomText(
+            //   text: 'الاردن',
+            //   color: Theme.of(context).colorScheme.primary,
+            //   fontWeight: FontWeight.bold,
+            //   fontSize: 20.sp,
+            // ),
+            // const Spacer(),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 5),
+              child: CircleAvatar(
+                radius: 20.sp,
+                backgroundColor: Theme.of(context).colorScheme.primary,
+                child: Icon(
+                  Icons.person,
+                  size: 28.sp,
+                ),
               ),
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                CustomText(
+                  text: '${tr('hello')}',
+                  color: Theme.of(context).colorScheme.primary,
+                  fontWeight: FontWeight.w400,
+                  fontSize: 16.sp,
+                ),
+                CustomText(
+                  text: 'Tasneem',
+                  color: Theme.of(context).colorScheme.primary,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20.sp,
+                ),
+              ],
             ),
           ],
         ),

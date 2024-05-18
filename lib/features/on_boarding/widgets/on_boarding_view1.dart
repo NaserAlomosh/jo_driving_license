@@ -26,6 +26,7 @@ class OnBoardingViewOne extends StatelessWidget {
                     fontSize: 20,
                     fontWeight: FontWeight.w700,
                     textAlign: TextAlign.center,
+                    color: Theme.of(context).colorScheme.onBackground,
                   ),
                   const SizedBox(height: 10),
                   CustomText(
@@ -33,6 +34,7 @@ class OnBoardingViewOne extends StatelessWidget {
                         'Learn essential driving tips and rules to navigate the roads safely and confidently.'),
                     fontSize: 14,
                     textAlign: TextAlign.center,
+                    color: Theme.of(context).colorScheme.onBackground,
                   ),
                   SizedBox(height: 50.w),
                   Stack(
@@ -46,7 +48,7 @@ class OnBoardingViewOne extends StatelessWidget {
                             ? 180.w
                             : 240.w,
                         decoration: BoxDecoration(
-                          color: Theme.of(context).colorScheme.onBackground,
+                          color: Theme.of(context).colorScheme.surface,
                           borderRadius: MediaQuery.of(context).size.width > 800
                               ? BorderRadius.circular(200.h)
                               : BorderRadius.circular(150.h),

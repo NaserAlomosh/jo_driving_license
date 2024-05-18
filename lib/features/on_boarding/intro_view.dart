@@ -62,7 +62,8 @@ class _IntroScreenState extends State<IntroScreen> {
                         dotWidth: 8.w,
                         dotColor:
                             Theme.of(context).colorScheme.onSurfaceVariant,
-                        activeDotColor: Theme.of(context).colorScheme.onPrimary,
+                        activeDotColor:
+                            Theme.of(context).colorScheme.onSecondary,
                       ),
                     ),
                     const SizedBox(height: 30),
@@ -90,21 +91,24 @@ class _IntroScreenState extends State<IntroScreen> {
                                         0.18,
                                     padding: const EdgeInsets.all(5),
                                     decoration: BoxDecoration(
-                                        color: Theme.of(context)
-                                            .colorScheme
-                                            .surfaceVariant,
-                                        border: Border.all(
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .onPrimary,
+                                        // color: Theme.of(context)
+                                        //     .colorScheme
+                                        //     .surfaceVariant,
+                                        // border: Border.all(
+                                        //   color: Theme.of(context)
+                                        //       .colorScheme
+                                        //       .onSecondary,
                                         ),
-                                        borderRadius:
-                                            BorderRadius.circular(50)),
+                                    // borderRadius:
+                                    //     BorderRadius.circular(50)),
                                     child: CustomText(
                                       text: tr('skip'),
                                       textAlign: TextAlign.center,
                                       fontSize: 15,
                                       fontWeight: FontWeight.w400,
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .onBackground,
                                     ),
                                   ),
                                 ),
@@ -150,17 +154,20 @@ class _IntroScreenState extends State<IntroScreen> {
                                                 0.18,
                                         padding: const EdgeInsets.all(5),
                                         decoration: BoxDecoration(
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .onPrimary,
-                                          borderRadius:
-                                              BorderRadius.circular(50),
-                                        ),
+                                            // color: Theme.of(context)
+                                            //     .colorScheme
+                                            //     .onSecondary,
+                                            // borderRadius:
+                                            //     BorderRadius.circular(50),
+                                            ),
                                         child: CustomText(
                                           text: tr('getStarted'),
                                           textAlign: TextAlign.center,
                                           fontSize: 14,
                                           fontWeight: FontWeight.w400,
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .onBackground,
                                         ),
                                       ),
                                     ),
@@ -181,16 +188,19 @@ class _IntroScreenState extends State<IntroScreen> {
                                         0.18,
                                     padding: const EdgeInsets.all(5),
                                     decoration: BoxDecoration(
-                                      color: Theme.of(context)
-                                          .colorScheme
-                                          .onPrimary,
-                                      borderRadius: BorderRadius.circular(50),
-                                    ),
+                                        // color: Theme.of(context)
+                                        //     .colorScheme
+                                        //     .onSecondary,
+                                        // borderRadius: BorderRadius.circular(50),
+                                        ),
                                     child: CustomText(
                                       text: tr('next'),
                                       textAlign: TextAlign.center,
                                       fontSize: 15,
                                       fontWeight: FontWeight.w400,
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .onBackground,
                                     ),
                                   ),
                                 ),

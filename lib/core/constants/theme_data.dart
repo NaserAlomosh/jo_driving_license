@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
 //!  background   =    background
-//!  most used   =   primary
-//!  font   =    secondery
+//!  color of buttons  =   primary
+//!  text colored buttons   =    onPrimary
+
+//!  font2   =    onSecondary
 //!  border   =   outLine
 //!  star & more   =   tertiary
 
@@ -11,11 +13,12 @@ ThemeData lightMode = ThemeData(
   brightness: Brightness.light,
   colorScheme: const ColorScheme.light(
       background: Color.fromARGB(255, 255, 255, 255),
-      onBackground: Color.fromARGB(255, 230, 229, 245),
-      primary: Color(0xff7C73E6),
-      secondary: Color.fromARGB(255, 77, 74, 110),
+      onBackground: Color.fromARGB(255, 98, 94, 102),
+      primary: Color(0xff7469B6),
       onPrimary: Color(0xFFFFFFFF),
-      onSecondary: Color.fromARGB(91, 255, 255, 255),
+      secondary: Color.fromARGB(255, 255, 255, 255),
+      onSecondary: Color.fromARGB(255, 104, 101, 101),
+      surface: Color.fromARGB(255, 238, 229, 245),
       primaryContainer: Color(0xff01DC82),
       outline: Color(0xffEBECF1),
       secondaryContainer: Color(0xfff43f5e),

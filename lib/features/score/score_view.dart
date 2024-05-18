@@ -13,7 +13,9 @@ class ScoreView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+      ),
       body: Padding(
         padding: EdgeInsets.symmetric(
             horizontal: GeneralConst.horizontalPadding, vertical: 30.h),
@@ -24,12 +26,13 @@ class ScoreView extends StatelessWidget {
             children: [
               ribbon(),
               stars(context),
-              score(),
+              score(context),
               CustomText(
                 text: tr(
                     'Congratulations on your incredible win! Your hard work and perseverance have truly paid off!'),
                 fontSize: 12,
                 textAlign: TextAlign.center,
+                color: Theme.of(context).colorScheme.onBackground,
               ),
               CustomButton(
                 title: tr('continue').toUpperCase(),
@@ -44,16 +47,18 @@ class ScoreView extends StatelessWidget {
     );
   }
 
-  Column score() {
+  Column score(BuildContext context) {
     return Column(
       children: [
         CustomText(
           text: tr('yourScore'),
+          color: Theme.of(context).colorScheme.onBackground,
         ),
         CustomText(
           text: tr('98%'),
           fontSize: 60.sp,
           fontWeight: FontWeight.w900,
+          color: Theme.of(context).colorScheme.onBackground,
         ),
       ],
     );
@@ -67,6 +72,7 @@ class ScoreView extends StatelessWidget {
           CustomText(
             text: tr('Naser you complete level 1'),
             fontSize: 18,
+            color: Theme.of(context).colorScheme.onBackground,
           ),
           SizedBox(
             height: 160.h,

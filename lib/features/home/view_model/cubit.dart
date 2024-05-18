@@ -10,11 +10,11 @@ part 'states.dart';
 
 class HomeCubit extends Cubit<HomeState> {
   HomeCubit() : super(HomeInitial());
-  List<QuizModel?> quizzes = [];
-  Future<void> getQuizzezNameCubit() async {
+  List<CategoryModel?> categories = [];
+  Future<void> getCategoriesCubit() async {
     try {
       emit(HomeLoading());
-      quizzes = await getQuizzezName();
+      categories = await getCategories();
       emit(HomeSuccess());
     } on FirebaseException catch (e) {
       emit(HomeError(error: firebaseErrorHandler(e.code)));

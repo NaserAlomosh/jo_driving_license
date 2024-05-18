@@ -4,15 +4,15 @@ import 'dart:developer';
 import '../../../core/firebase_constants/firebase_constants.dart';
 import '../../../core/models/quiz_model.dart';
 
-Future<List<QuizModel?>> getQuizzezName() async {
-  List<QuizModel?> quizzes = [];
-  await quizzesFirestore.get().then((quiz) {
+Future<List<CategoryModel?>> getCategories() async {
+  List<CategoryModel?> categories = [];
+  await categoryFirestore.get().then((quiz) {
     for (var element in quiz.docs) {
-      quizzes.add(QuizModel.fromJson(element.data()));
+      categories.add(CategoryModel.fromJson(element.data()));
     }
   });
-  for (var element in quizzes) {
+  for (var element in categories) {
     log(jsonEncode(element?.toJson()));
   }
-  return quizzes;
+  return categories;
 }

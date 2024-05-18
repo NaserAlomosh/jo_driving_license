@@ -6,7 +6,7 @@ import 'package:jo_driving_license/core/models/question_model.dart';
 
 Future<List<QuestionModel?>> getQuistions(String quizId) async {
   List<QuestionModel?> questionModel = [];
-  await quizzesFirestore
+  await categoryFirestore
       .doc(quizId)
       .collection('questions')
       .get()

@@ -12,6 +12,7 @@ import 'package:jo_driving_license/core/widgets/general/custom_loading.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_network_image.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_show_dilog.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
+
 import '../../../core/constants/dimentions.dart';
 import '../../../core/constants/image_path.dart';
 import '../view_model/cubit.dart';
@@ -48,23 +49,23 @@ class QuistionsViewState extends State<QuistionsView> {
             color: Theme.of(context).colorScheme.onSecondary,
           ),
         ),
-        body: Padding(
-          padding: EdgeInsets.all(GeneralConst.horizontalPadding),
-          child: SafeArea(
-            child: BlocBuilder<QuistionsCubit, QuistionsState>(
-              builder: (context, state) {
-                final cubit = context.read<QuistionsCubit>();
-                if (state is QuistionsLoading) {
-                  return myLoadingIndicator(context);
-                } else if (state is QuistionsError) {
-                  return Center(child: CustomErrorWidget(msg: state.error));
-                } else {
-                  return PageView.builder(
-                    controller: _pageController,
-                    itemCount: cubit.questions.length,
-                    itemBuilder: (context, quistionIndex) {
-                      final question = cubit.questions[quistionIndex];
-                      return Column(
+        body: SafeArea(
+          child: BlocBuilder<QuistionsCubit, QuistionsState>(
+            builder: (context, state) {
+              final cubit = context.read<QuistionsCubit>();
+              if (state is QuistionsLoading) {
+                return myLoadingIndicator(context);
+              } else if (state is QuistionsError) {
+                return Center(child: CustomErrorWidget(msg: state.error));
+              } else {
+                return PageView.builder(
+                  controller: _pageController,
+                  itemCount: cubit.questions.length,
+                  itemBuilder: (context, quistionIndex) {
+                    final question = cubit.questions[quistionIndex];
+                    return Padding(
+                      padding: EdgeInsets.all(GeneralConst.horizontalPadding),
+                      child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Column(
@@ -90,12 +91,12 @@ class QuistionsViewState extends State<QuistionsView> {
                           _getListAnswers(quistionIndex, question),
                           _getNextButton(cubit, quistionIndex),
                         ],
-                      );
-                    },
-                  );
-                }
-              },
-            ),
+                      ),
+                    );
+                  },
+                );
+              }
+            },
           ),
         ),
       ),
@@ -104,7 +105,8 @@ class QuistionsViewState extends State<QuistionsView> {
 
   _questionCounter(int quistionIndex, int totalQuestions) {
     return CustomText(
-      text: '${tr('question')} 1/$totalQuestions',
+      text: '${tr('question')} $quistionIndex/$totalQuestions',
+      color: Theme.of(context).colorScheme.primary,
     );
   }
 

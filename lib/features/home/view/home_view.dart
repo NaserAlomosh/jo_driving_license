@@ -7,6 +7,7 @@ import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
 import 'package:jo_driving_license/features/home/view_model/cubit.dart';
 import 'package:jo_driving_license/features/questions/view/quistions_view.dart';
 import 'package:jo_driving_license/features/score/score_view.dart';
+
 import '../../../core/constants/image_path.dart';
 import '../../../core/helper/spacing.dart';
 import '../../../core/widgets/error_widget/error_widget.dart';
@@ -18,7 +19,7 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => HomeCubit()..getQuizzezNameCubit(),
+      create: (context) => HomeCubit()..getCategoriesCubit(),
       child: Padding(
         padding:
             EdgeInsets.symmetric(horizontal: GeneralConst.horizontalPadding),
@@ -28,10 +29,10 @@ class HomeView extends StatelessWidget {
                 onPressed: () {
                   context.push(const ScoreView());
                 },
-                icon: Icon(Icons.star)),
+                icon: const Icon(Icons.star)),
             _getCard(context),
             heightSpace(20),
-            _getListQuizzes(),
+            _getListCategory(),
           ],
         ),
       ),
@@ -64,16 +65,16 @@ class HomeView extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      // Image.asset(
-                      //   AppImage.countryImage,
-                      //   height: 30.sp,
-                      // ),
-                      // widthSpace(16),
-                      // Image.asset(
-                      //   AppImage.card,
-                      //   height: 30.sp,
-                      //   color: Theme.of(context).colorScheme.onPrimary,
-                      // ),
+                      Image.asset(
+                        AppImage.countryImage,
+                        height: 30.w,
+                      ),
+                      widthSpace(16),
+                      Image.asset(
+                        AppImage.card,
+                        height: 30.w,
+                        color: Theme.of(context).colorScheme.onPrimary,
+                      ),
                     ],
                   )
                 ],
@@ -92,7 +93,7 @@ class HomeView extends StatelessWidget {
     );
   }
 
-  Widget _getListQuizzes() {
+  Widget _getListCategory() {
     return Expanded(
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 40.w),
@@ -115,8 +116,8 @@ class HomeView extends StatelessWidget {
                       onTap: () {
                         context.push(
                           QuistionsView(
-                            quizId: cubit.quizzes[index]?.id ?? '',
-                            levelName: cubit.quizzes[index]?.name ?? '',
+                            quizId: cubit.categories[index]?.id ?? '',
+                            levelName: cubit.categories[index]?.name ?? '',
                           ),
                         );
                       },
@@ -133,7 +134,7 @@ class HomeView extends StatelessWidget {
                         child: Center(
                           child: CustomText(
                             textAlign: TextAlign.center,
-                            text: cubit.quizzes[index]?.name ?? '',
+                            text: cubit.categories[index]?.name ?? '',
                             // color: Theme.of(context).colorScheme.onPrimary,
                           ),
                         ),
@@ -141,7 +142,7 @@ class HomeView extends StatelessWidget {
                     ),
                   );
                 },
-                itemCount: cubit.quizzes.length,
+                itemCount: cubit.categories.length,
               );
             }
           },

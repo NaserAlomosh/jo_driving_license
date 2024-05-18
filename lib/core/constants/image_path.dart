@@ -20,4 +20,6 @@ class AppImage {
   static const String policeManWait = 'assets/images/svg/police_man_wait.svg';
   static const String noTurnRight = 'aassets/images/png/no_turn_right.webp';
   static const String greenRibbon = 'assets/images/png/green_ribbon.svg';
+  static const String policeManHappy = 'assets/images/svg/police_man_happy.svg';
+  static const String fireworks = 'assets/images/svg/fireworks.svg';
 }

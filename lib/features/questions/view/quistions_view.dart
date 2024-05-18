@@ -105,6 +105,7 @@ class QuistionsViewState extends State<QuistionsView> {
   _questionCounter(int quistionIndex, int totalQuestions) {
     return CustomText(
       text: '${tr('question')} 1/$totalQuestions',
+      color: Theme.of(context).colorScheme.onBackground,
     );
   }
 
@@ -130,7 +131,7 @@ class QuistionsViewState extends State<QuistionsView> {
         CustomText(
           text: question?.question ?? '',
           fontSize: 20,
-          color: Colors.black,
+          color: Theme.of(context).colorScheme.onSecondary,
         ),
       ],
     );
@@ -159,9 +160,13 @@ class QuistionsViewState extends State<QuistionsView> {
               textAlign: TextAlign.center,
               text: question?.answers[answerIndex].answer ?? '',
               fontSize: 20,
-              color: answerColors[quistionIndex]?[answerIndex] == Colors.green
-                  ? Colors.white
-                  : Colors.black,
+              fontWeight: FontWeight.w500,
+              color: answerColors[quistionIndex]?[answerIndex] ==
+                      Theme.of(context).colorScheme.onError
+                  ? Theme.of(context).colorScheme.onPrimary
+                  : Theme.of(context).colorScheme.onBackground,
+              // ? Theme.of(context).colorScheme.onBackground
+              // : Theme.of(context).colorScheme.onBackground,
             ),
           ),
         ),
@@ -212,12 +217,15 @@ class QuistionsViewState extends State<QuistionsView> {
   _onClickAnswer(int quistionIndex, int answersIndex, QuestionModel? question) {
     answerColors[quistionIndex] ??= {};
     final correct = question?.answers[answersIndex].correct ?? false;
-    answerColors[quistionIndex]![answersIndex] =
-        correct ? Colors.green : Colors.red;
+    answerColors[quistionIndex]![answersIndex] = correct
+        ? Theme.of(context).colorScheme.onError
+        : Theme.of(context).colorScheme.error;
 
     for (int i = 0; i < question!.answers.length; i++) {
       final correct = question.answers[i].correct ?? false;
-      answerColors[quistionIndex]![i] = correct ? Colors.green : Colors.red;
+      answerColors[quistionIndex]![i] = correct
+          ? Theme.of(context).colorScheme.onError
+          : Theme.of(context).colorScheme.error;
     }
   }
 

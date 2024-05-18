@@ -6,6 +6,7 @@ import 'package:jo_driving_license/core/helper/extensions.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
 import 'package:jo_driving_license/features/home/view_model/cubit.dart';
 import 'package:jo_driving_license/features/questions/view/quistions_view.dart';
+import 'package:jo_driving_license/features/score/level_score_view.dart';
 import 'package:jo_driving_license/features/score/score_view.dart';
 
 import '../../../core/constants/image_path.dart';
@@ -25,11 +26,28 @@ class HomeView extends StatelessWidget {
             EdgeInsets.symmetric(horizontal: GeneralConst.horizontalPadding),
         child: Column(
           children: [
+<<<<<<< HEAD
             IconButton(
                 onPressed: () {
                   context.push(const ScoreView());
                 },
                 icon: const Icon(Icons.star)),
+=======
+            Row(
+              children: [
+                IconButton(
+                    onPressed: () {
+                      context.push(const ScoreView());
+                    },
+                    icon: const Icon(Icons.star)),
+                IconButton(
+                    onPressed: () {
+                      context.push(const LevelScoreView());
+                    },
+                    icon: const Icon(Icons.star)),
+              ],
+            ),
+>>>>>>> 4abcb0a (add LevelScoreView)
             _getCard(context),
             heightSpace(20),
             _getListCategory(),

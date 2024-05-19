@@ -15,7 +15,7 @@ import '../../../core/widgets/general/custom_loading.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
-//
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(

@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 
 //!  background   =    background
+//!  font familiar with bg   =    onBackground
+//!  containers familiar with background   =    surface
+
 //!  color of buttons  =   primary
 //!  text colored buttons   =    onPrimary
-
-//!  font2   =    onSecondary
-//!  border   =   outLine
-//!  star & more   =   tertiary
+//!  stars & more   =   tertiary
+//!  error   =   wrong answers
+//!  onError   =   correct answers
 
 // theme light mode
 ThemeData lightMode = ThemeData(
@@ -17,14 +19,14 @@ ThemeData lightMode = ThemeData(
       primary: Color(0xff6C5070),
       onPrimary: Color(0xFFFFFFFF),
       secondary: Color.fromARGB(255, 255, 255, 255),
-      onSecondary: Color.fromARGB(255, 104, 101, 101),
+      // onSecondary: Color.fromARGB(255, 104, 101, 101),
       surface: Color.fromARGB(255, 238, 229, 245),
       error: Color.fromARGB(255, 214, 130, 130),
       onError: Color.fromARGB(255, 122, 176, 134),
-      primaryContainer: Color(0xff01DC82),
-      outline: Color(0xffEBECF1),
-      secondaryContainer: Color(0xfff43f5e),
-      tertiaryContainer: Color(0xFFDDDDDD),
+      // primaryContainer: Color(0xff01DC82),
+      // outline: Color(0xffEBECF1),
+      // secondaryContainer: Color(0xfff43f5e),
+      // tertiaryContainer: Color(0xFFDDDDDD),
       tertiary: Color(0xFFFFE15D)),
 );
 

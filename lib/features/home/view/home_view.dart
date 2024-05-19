@@ -6,8 +6,8 @@ import 'package:jo_driving_license/core/helper/extensions.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
 import 'package:jo_driving_license/features/home/view_model/cubit.dart';
 import 'package:jo_driving_license/features/questions/view/quistions_view.dart';
-import 'package:jo_driving_license/features/score/exam_score_view.dart';
 import 'package:jo_driving_license/features/score/level_score_view.dart';
+
 import '../../../core/constants/image_path.dart';
 import '../../../core/helper/spacing.dart';
 import '../../../core/widgets/error_widget/error_widget.dart';
@@ -25,21 +25,6 @@ class HomeView extends StatelessWidget {
             EdgeInsets.symmetric(horizontal: GeneralConst.horizontalPadding),
         child: Column(
           children: [
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 44ae3d1 (Fix Code)
-            IconButton(
-                onPressed: () {
-                  // context.push(const ScoreView());
-                },
-<<<<<<< HEAD
-<<<<<<< HEAD
-                icon: const Icon(Icons.star)),
-=======
-=======
->>>>>>> 42e7299 (Fix Code)
             Row(
               children: [
                 IconButton(
@@ -54,18 +39,6 @@ class HomeView extends StatelessWidget {
                     icon: const Icon(Icons.star)),
               ],
             ),
-<<<<<<< HEAD
->>>>>>> 4abcb0a (add LevelScoreView)
-=======
-                icon: Icon(Icons.star)),
->>>>>>> 44ae3d1 (Fix Code)
-=======
-                icon: const Icon(
-                  Icons.star,
-                )),
->>>>>>> 3f53868 (Fix)
-=======
->>>>>>> 42e7299 (Fix Code)
             _getCard(context),
             heightSpace(20),
             _getListCategory(),

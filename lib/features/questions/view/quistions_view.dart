@@ -105,12 +105,8 @@ class QuistionsViewState extends State<QuistionsView> {
 
   _questionCounter(int quistionIndex, int totalQuestions) {
     return CustomText(
-<<<<<<< HEAD
       text: '${tr('question')} $quistionIndex/$totalQuestions',
       color: Theme.of(context).colorScheme.primary,
-=======
-      text: '${tr('question')} 1/$totalQuestions',
->>>>>>> 44ae3d1 (Fix Code)
     );
   }
 

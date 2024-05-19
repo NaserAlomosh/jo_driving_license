@@ -6,7 +6,7 @@ import 'package:jo_driving_license/core/constants/dimentions.dart';
 import 'package:jo_driving_license/core/helper/extensions.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
 import 'package:jo_driving_license/features/home/view_model/cubit.dart';
-import 'package:jo_driving_license/features/questions/view/quistions_view.dart';
+import 'package:jo_driving_license/features/questions/view/questions_view.dart';
 import 'package:jo_driving_license/features/score/exam_score_view.dart';
 import 'package:jo_driving_license/features/score/level_score_view.dart';
 

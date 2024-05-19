@@ -13,6 +13,7 @@ class ExamScoreView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isSuccess = true;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -26,7 +27,7 @@ class ExamScoreView extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               // ribbon(context),
-              policeMan(context),
+              policeMan(context, isSuccess),
               score(context),
               CustomButton(
                 title: tr('continue').toUpperCase(),
@@ -57,7 +58,7 @@ class ExamScoreView extends StatelessWidget {
           child: Column(
             children: [
               CustomText(
-                text: tr('correct'),
+                text: tr('corrects'),
                 color: Theme.of(context).colorScheme.onBackground,
               ),
               CustomText(
@@ -81,7 +82,7 @@ class ExamScoreView extends StatelessWidget {
           child: Column(
             children: [
               CustomText(
-                text: tr('wrong'),
+                text: tr('wrongs'),
                 color: Theme.of(context).colorScheme.onBackground,
               ),
               CustomText(
@@ -121,7 +122,7 @@ class ExamScoreView extends StatelessWidget {
     );
   }
 
-  Padding policeMan(BuildContext context) {
+  Padding policeMan(BuildContext context, bool isSuccess) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 0.w),
       child: Column(
@@ -141,14 +142,16 @@ class ExamScoreView extends StatelessWidget {
           ),
 
           CustomText(
-            text: tr('Congratulations!'),
+            text: tr('congratulations'),
             fontSize: 25,
             fontWeight: FontWeight.w700,
             color: Theme.of(context).colorScheme.onBackground,
           ),
 
           CustomText(
-            text: tr('Naser, go for your licence.'),
+            text: isSuccess
+                ? 'Naser, ${tr('goForYourLicence.')}'
+                : 'Naser, ${tr('goForYourLicence.')}',
             fontSize: 14,
             textAlign: TextAlign.center,
             color: Theme.of(context).colorScheme.onBackground,

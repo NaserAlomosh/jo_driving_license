@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:jo_driving_license/core/constants/dimentions.dart';
 import 'package:jo_driving_license/core/constants/image_path.dart';
+import 'package:jo_driving_license/core/helper/spacing.dart';
 import 'package:jo_driving_license/core/widgets/buttons/custom_button.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
 
@@ -12,6 +13,8 @@ class LevelScoreView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isSuccess = false;
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -24,26 +27,33 @@ class LevelScoreView extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              ribbon(),
-              stars(context),
+              ribbon(isSuccess),
+              stars(context, isSuccess),
               score(context),
-              CustomText(
-                text: tr(
-                    'Congratulations on your incredible win! Your hard work and perseverance have truly paid off!'),
-                fontSize: 12,
-                textAlign: TextAlign.center,
-                color: Theme.of(context).colorScheme.onBackground,
-              ),
-              CustomButton(
-                title: tr('continue').toUpperCase(),
-                fontSize: 20,
-                fontWeight: FontWeight.w700,
-                onPressed: () {},
-              )
+              supportQoute(isSuccess, context),
+              continueButton()
             ],
           ),
         ),
       ),
+    );
+  }
+
+  CustomButton continueButton() {
+    return CustomButton(
+      title: tr('continue').toUpperCase(),
+      fontSize: 20,
+      fontWeight: FontWeight.w700,
+      onPressed: () {},
+    );
+  }
+
+  CustomText supportQoute(bool isSuccess, BuildContext context) {
+    return CustomText(
+      text: isSuccess ? tr('supportQouteSuccess1') : tr('supportQouteFail1'),
+      fontSize: 16,
+      textAlign: TextAlign.center,
+      color: Theme.of(context).colorScheme.onBackground,
     );
   }
 
@@ -53,6 +63,7 @@ class LevelScoreView extends StatelessWidget {
         CustomText(
           text: tr('yourScore'),
           color: Theme.of(context).colorScheme.onBackground,
+          fontSize: 16,
         ),
         CustomText(
           text: tr('98%'),
@@ -64,54 +75,64 @@ class LevelScoreView extends StatelessWidget {
     );
   }
 
-  Padding stars(BuildContext context) {
+  Padding stars(BuildContext context, bool isSuccess) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 30.w),
       child: Column(
         children: [
           CustomText(
-            text: tr('Naser you complete level 1'),
+            text: isSuccess
+                ? 'Naser, ${tr('you complete')} level 1'
+                : 'Naser, ${tr('neverGiveUp')}',
             fontSize: 18,
             color: Theme.of(context).colorScheme.onBackground,
           ),
+          heightSpace(10),
           SizedBox(
-            height: 160.h,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Align(
-                  alignment: Alignment.bottomLeft,
-                  child: Icon(
-                    Icons.star,
-                    size: 75,
-                    color: Theme.of(context).colorScheme.tertiary,
+            height: isSuccess ? 160.h : 260.h,
+            child: isSuccess
+                ? Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Align(
+                        alignment: Alignment.bottomLeft,
+                        child: Icon(
+                          Icons.star,
+                          size: 75,
+                          color: Theme.of(context).colorScheme.tertiary,
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.topCenter,
+                        child: Icon(
+                          Icons.star,
+                          size: 135,
+                          color: Theme.of(context).colorScheme.tertiary,
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.bottomLeft,
+                        child: Icon(
+                          Icons.star,
+                          size: 75,
+                          color: Theme.of(context).colorScheme.tertiary,
+                        ),
+                      ),
+                    ],
+                  )
+                : SvgPicture.asset(
+                    AppImage.policeManRun,
+                    // height: 160,
+                    // width: 100,
+                    // width: 100.w,
                   ),
-                ),
-                Align(
-                  alignment: Alignment.topCenter,
-                  child: Icon(
-                    Icons.star,
-                    size: 135,
-                    color: Theme.of(context).colorScheme.tertiary,
-                  ),
-                ),
-                Align(
-                  alignment: Alignment.bottomLeft,
-                  child: Icon(
-                    Icons.star,
-                    size: 75,
-                    color: Theme.of(context).colorScheme.tertiary,
-                  ),
-                ),
-              ],
-            ),
           ),
         ],
       ),
     );
   }
 
-  SizedBox ribbon() {
+  SizedBox ribbon(bool isSuccess) {
     return SizedBox(
       height: 100,
       child: Stack(
@@ -124,7 +145,9 @@ class LevelScoreView extends StatelessWidget {
           Align(
             alignment: const Alignment(0, -0.2),
             child: CustomText(
-              text: tr('Complete').toUpperCase(),
+              text: isSuccess
+                  ? tr('Complete').toUpperCase()
+                  : tr('tryAgain').toUpperCase(),
               fontSize: 25,
               fontWeight: FontWeight.w700,
             ),

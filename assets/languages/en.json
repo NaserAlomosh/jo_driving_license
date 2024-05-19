@@ -1,3 +1,19 @@
 {
-    
+    "onBoardingTitle1": "Start your journey to safer driving!",
+    "onBoardingTitle2": "Drive safely with our expert tips!",
+    "onBoardingTitle3": "Follow traffic laws!",
+    "onBoardingSubtitle1": " Let's ensure your safety and the safety of others on the road.",
+    "onBoardingSubtitle2": "Learn essential driving tips and rules to navigate the roads safely and confidently.",
+    "onBoardingSubtitle3": "Dive into our interactive lessons to enhance your understanding of road laws and best practices.",
+    "next": "Next",
+    "skip": "Skip",
+    "getStarted": "Get started",
+    "hello": "Hello",
+    "profile": "Profile",
+    "home": "home",
+    "areYouReadyForYourDrivingLicence": "Are you ready to get your driving licence?",
+    "putYourSeatBelt": "Put Your Seat Belt!",
+    "favourite": "Favourite",
+    "search": "Search",
+    "logout": "Logout"
 }

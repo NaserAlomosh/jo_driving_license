@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jo_driving_license/core/helper/extensions.dart';
@@ -25,29 +26,28 @@ class AppDrawer extends StatelessWidget {
                   _listTile(
                     context,
                     leadingIcon: Icons.home,
-                    'الصفحة الرئيسية',
+                    tr('home'),
                     onTap: () => context.pop(),
                   ),
                   _listTile(
                     context,
                     leadingIcon: Icons.account_box,
-                    'الصفحة الشخصية',
+                    tr('profile'),
                   ),
                   _listTile(
-                    context,
-                    leadingIcon: Icons.favorite_border,
-                    'المفضلة',
-                  ),
+                      context,
+                      leadingIcon: Icons.favorite_border,
+                      tr('favourite')),
                   _listTile(
                     context,
                     leadingIcon: Icons.search_sharp,
-                    'البحث',
+                    tr('search'),
                   ),
                   //isPortraitScreen(context) ? heightSpace(450) : heightSpace(100),
                   const Spacer(),
                   _listTile(
                     context,
-                    'تسجيل خروج',
+                    tr('logout'),
                     trailingIcon: Icon(
                       Icons.logout,
                       size: 24.sp,

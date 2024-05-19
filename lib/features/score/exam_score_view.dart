@@ -1,7 +1,13 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+<<<<<<< HEAD
 import 'package:jo_driving_license/core/constants/dimentions.dart';
+=======
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:jo_driving_license/core/constants/dimentions.dart';
+import 'package:jo_driving_license/core/constants/image_path.dart';
+>>>>>>> 20d2f35 (add exam score view)
 import 'package:jo_driving_license/core/helper/spacing.dart';
 import 'package:jo_driving_license/core/widgets/buttons/custom_button.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
@@ -46,7 +52,11 @@ class ExamScoreView extends StatelessWidget {
         Container(
           width: 120.w,
           height: 120.w,
+<<<<<<< HEAD
           padding: EdgeInsets.all(10.sp),
+=======
+          padding: EdgeInsets.all(10),
+>>>>>>> 20d2f35 (add exam score view)
           decoration: BoxDecoration(
               border: Border.all(),
               borderRadius: BorderRadius.circular(
@@ -70,7 +80,11 @@ class ExamScoreView extends StatelessWidget {
         Container(
           width: 120.w,
           height: 120.w,
+<<<<<<< HEAD
           padding: EdgeInsets.all(10.sp),
+=======
+          padding: EdgeInsets.all(10),
+>>>>>>> 20d2f35 (add exam score view)
           decoration: BoxDecoration(
               border: Border.all(),
               borderRadius: BorderRadius.circular(
@@ -94,7 +108,11 @@ class ExamScoreView extends StatelessWidget {
         Container(
           width: 120.w,
           height: 120.w,
+<<<<<<< HEAD
           padding: EdgeInsets.all(10.sp),
+=======
+          padding: EdgeInsets.all(10),
+>>>>>>> 20d2f35 (add exam score view)
           decoration: BoxDecoration(
               border: Border.all(),
               borderRadius: BorderRadius.circular(
@@ -130,11 +148,19 @@ class ExamScoreView extends StatelessWidget {
           Row(
             children: [
               ribbon(context),
+<<<<<<< HEAD
               // SvgPicture.asset(
               //   AppImage.policeManHappy,
               //   height: 200.h,
               //   // width: 250.w,
               // ),
+=======
+              SvgPicture.asset(
+                AppImage.policeManHappy,
+                height: 200.h,
+                // width: 250.w,
+              ),
+>>>>>>> 20d2f35 (add exam score view)
             ],
           ),
 
@@ -204,6 +230,7 @@ class ExamScoreView extends StatelessWidget {
         // heightSpace(30),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 0.w),
+<<<<<<< HEAD
           // child: SvgPicture.asset(
           //   AppImage.fireworks,
           //   height: 80.h,
@@ -213,6 +240,15 @@ class ExamScoreView extends StatelessWidget {
 
           //   // width: 250.w,
           // ),
+=======
+          child: SvgPicture.asset(
+            AppImage.fireworks,
+            height: 80.h,
+            color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
+
+            // width: 250.w,
+          ),
+>>>>>>> 20d2f35 (add exam score view)
         ),
       ],
     );

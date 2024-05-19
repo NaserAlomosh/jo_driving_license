@@ -6,9 +6,13 @@ import 'package:jo_driving_license/core/helper/extensions.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
 import 'package:jo_driving_license/features/home/view_model/cubit.dart';
 import 'package:jo_driving_license/features/questions/view/quistions_view.dart';
+import 'package:jo_driving_license/features/score/exam_score_view.dart';
 import 'package:jo_driving_license/features/score/level_score_view.dart';
+<<<<<<< HEAD
 import 'package:jo_driving_license/features/score/score_view.dart';
 
+=======
+>>>>>>> 20d2f35 (add exam score view)
 import '../../../core/constants/image_path.dart';
 import '../../../core/helper/spacing.dart';
 import '../../../core/widgets/error_widget/error_widget.dart';
@@ -37,12 +41,12 @@ class HomeView extends StatelessWidget {
               children: [
                 IconButton(
                     onPressed: () {
-                      context.push(const ScoreView());
+                      context.push(const LevelScoreView());
                     },
                     icon: const Icon(Icons.star)),
                 IconButton(
                     onPressed: () {
-                      context.push(const LevelScoreView());
+                      context.push(const ExamScoreView());
                     },
                     icon: const Icon(Icons.star)),
               ],

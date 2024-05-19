@@ -6,26 +6,8 @@ import 'package:jo_driving_license/core/helper/extensions.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
 import 'package:jo_driving_license/features/home/view_model/cubit.dart';
 import 'package:jo_driving_license/features/questions/view/quistions_view.dart';
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 import 'package:jo_driving_license/features/score/exam_score_view.dart';
 import 'package:jo_driving_license/features/score/level_score_view.dart';
-<<<<<<< HEAD
-import 'package:jo_driving_license/features/score/score_view.dart';
-
-=======
->>>>>>> 20d2f35 (add exam score view)
-=======
-import 'package:jo_driving_license/features/score/score_view.dart';
->>>>>>> 44ae3d1 (Fix Code)
-=======
-
->>>>>>> 3f53868 (Fix)
-=======
-import 'package:jo_driving_license/features/score/exam_score_view.dart';
-import 'package:jo_driving_license/features/score/level_score_view.dart';
->>>>>>> 42e7299 (Fix Code)
 import '../../../core/constants/image_path.dart';
 import '../../../core/helper/spacing.dart';
 import '../../../core/widgets/error_widget/error_widget.dart';
@@ -67,7 +49,7 @@ class HomeView extends StatelessWidget {
                     icon: const Icon(Icons.star)),
                 IconButton(
                     onPressed: () {
-                      context.push(const ExamScoreView());
+                      // context.push(const ExamScoreView());
                     },
                     icon: const Icon(Icons.star)),
               ],

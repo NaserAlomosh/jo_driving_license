@@ -36,7 +36,7 @@ class CustomText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bool isTaplet = checkDeviceIsTaplet(context);
-    Color defaultColor = color ?? Theme.of(context).colorScheme.secondary;
+    Color defaultColor = color ?? Theme.of(context).colorScheme.onPrimary;
     return Text(
       text,
       textAlign: textAlign,

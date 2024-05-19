@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 //!  background   =    background
 //!  font familiar with bg   =    onBackground
 //!  containers familiar with background   =    surface
-
 //!  color of buttons  =   primary
-//!  text colored buttons   =    onPrimary
+//!  color of font buttons  =   onPrimary
+//!  color of buttons  =   primary
 //!  stars & more   =   tertiary
+//!  unchoosen answers & more   =   tertiaryContainer
 //!  error   =   wrong answers
 //!  onError   =   correct answers
 
@@ -18,7 +19,7 @@ ThemeData lightMode = ThemeData(
       onBackground: Color.fromARGB(255, 98, 94, 102),
       primary: Color(0xff7469B6),
       onPrimary: Color(0xFFFFFFFF),
-      secondary: Color.fromARGB(255, 255, 255, 255),
+      // secondary: Color.fromARGB(255, 211, 203, 212),
       // onSecondary: Color.fromARGB(255, 104, 101, 101),
       surface: Color.fromARGB(255, 238, 229, 245),
 <<<<<<< HEAD
@@ -33,7 +34,6 @@ ThemeData lightMode = ThemeData(
       // outline: Color(0xffEBECF1),
       // secondaryContainer: Color(0xfff43f5e),
       // tertiaryContainer: Color(0xFFDDDDDD),
->>>>>>> 20d2f35 (add exam score view)
       tertiary: Color(0xFFFFE15D)),
 );
 

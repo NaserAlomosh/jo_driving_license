@@ -13,7 +13,7 @@ class ExamScoreView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isSuccess = true;
+    bool isSuccess = false;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -128,11 +128,11 @@ class ExamScoreView extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          ribbon(context),
+          ribbon(context, isSuccess),
           heightSpace(25.h),
           Row(
             children: [
-              ribbon(context),
+              ribbon(context, isSuccess),
               SvgPicture.asset(
                 AppImage.policeManHappy,
                 height: 200.h,
@@ -142,7 +142,7 @@ class ExamScoreView extends StatelessWidget {
           ),
 
           CustomText(
-            text: tr('congratulations'),
+            text: isSuccess ? tr('congratulations') : tr('neverGiveUp'),
             fontSize: 25,
             fontWeight: FontWeight.w700,
             color: Theme.of(context).colorScheme.onBackground,
@@ -150,8 +150,8 @@ class ExamScoreView extends StatelessWidget {
 
           CustomText(
             text: isSuccess
-                ? 'Naser, ${tr('goForYourLicence.')}'
-                : 'Naser, ${tr('goForYourLicence.')}',
+                ? 'Naser, ${tr('goForYourLicence')}'
+                : 'Naser, ${tr('tryAgain.')} ${tr('and')} ${tr('goForYourLicence')}',
             fontSize: 14,
             textAlign: TextAlign.center,
             color: Theme.of(context).colorScheme.onBackground,
@@ -193,14 +193,14 @@ class ExamScoreView extends StatelessWidget {
     );
   }
 
-  ribbon(BuildContext context) {
+  ribbon(BuildContext context, bool isSuccess) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 0.w),
           child: SvgPicture.asset(
-            AppImage.fireworks,
+            isSuccess ? AppImage.fireworks : AppImage.motivationHand,
             height: 80.h,
             // ignore: deprecated_member_use
             color: Theme.of(context).colorScheme.primary.withOpacity(0.5),

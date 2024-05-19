@@ -137,11 +137,10 @@ class LevelScoreView extends StatelessWidget {
       height: 100,
       child: Stack(
         children: [
-          SvgPicture.asset(
-            AppImage.greenRibbon,
-            // ignore: deprecated_member_use
-            color: Colors.green.shade300,
-          ),
+          SvgPicture.asset(AppImage.greenRibbon,
+              // ignore: deprecated_member_use
+              color:
+                  isSuccess ? Colors.green.shade300 : Colors.blueGrey.shade300),
           Align(
             alignment: const Alignment(0, -0.2),
             child: CustomText(

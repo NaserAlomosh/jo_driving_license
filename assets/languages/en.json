@@ -30,5 +30,6 @@
     "supportQouteFail1": "Mistakes are proof that you are trying. Reflect on what went wrong and use it as a learning experience to improve.",
     "supportQouteFail2": "Great achievements are often born out of great setbacks. Use this experience to fuel your determination and keep going!",
 
-    "tryAgain":"Try again"
+    "tryAgain":"Try again",
+    "and" :"and"
 }

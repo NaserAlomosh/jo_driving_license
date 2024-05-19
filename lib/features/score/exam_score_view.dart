@@ -35,36 +35,67 @@ class ExamScoreView extends StatelessWidget {
     );
   }
 
-  Padding policeManAndFireworks(BuildContext context, bool isSuccess) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 0.w),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          SizedBox(
-            height: 260.h,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Align(
-                  alignment: Alignment.bottomLeft,
-                  child: ribbon(context, isSuccess),
+  policeManAndFireworks(BuildContext context, bool isSuccess) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        SizedBox(
+          height: 300.h,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Align(
+                alignment: Alignment.centerRight,
+                child: SvgPicture.asset(
+                  isSuccess ? AppImage.fireworks : AppImage.motivationHand,
+                  height: 80.h,
+                  // ignore: deprecated_member_use
+                  color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
                 ),
-                Align(
-                  alignment: Alignment.bottomCenter,
-                  child: SvgPicture.asset(
-                    AppImage.policeManHappy,
-                    height: 230.h,
-                  ),
+              ),
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: SvgPicture.asset(
+                  AppImage.policeManHappy,
+                  height: 230.h,
                 ),
-                Align(
-                  alignment: Alignment.topRight,
-                  child: ribbon(context, isSuccess),
+              ),
+              Align(
+                alignment: Alignment.topLeft,
+                child: SvgPicture.asset(
+                  isSuccess ? AppImage.fireworks : AppImage.motivationHand,
+                  height: 80.h,
+                  // ignore: deprecated_member_use
+                  color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-          congratulations(isSuccess, context),
+        ),
+        congratulations(isSuccess, context),
+      ],
+    );
+  }
+
+  congratulations(bool isSuccess, BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 20.h),
+      child: Column(
+        children: [
+          CustomText(
+            text: isSuccess ? tr('congratulations') : tr('neverGiveUp'),
+            fontSize: 25,
+            fontWeight: FontWeight.w700,
+            color: Theme.of(context).colorScheme.onBackground,
+          ),
+          CustomText(
+            text: isSuccess
+                ? 'Naser, ${tr('goForYourLicence')}'
+                : 'Naser, ${tr('tryAgain.')} ${tr('and')} ${tr('goForYourLicence')}',
+            fontSize: 14,
+            textAlign: TextAlign.center,
+            color: Theme.of(context).colorScheme.onBackground,
+          ),
         ],
       ),
     );
@@ -91,46 +122,6 @@ class ExamScoreView extends StatelessWidget {
           score: '98%',
           colorContainer:
               Theme.of(context).colorScheme.primary.withOpacity(0.45),
-        ),
-      ],
-    );
-  }
-
-  Column congratulations(bool isSuccess, BuildContext context) {
-    return Column(
-      children: [
-        CustomText(
-          text: isSuccess ? tr('congratulations') : tr('neverGiveUp'),
-          fontSize: 25,
-          fontWeight: FontWeight.w700,
-          color: Theme.of(context).colorScheme.onBackground,
-        ),
-        CustomText(
-          text: isSuccess
-              ? 'Naser, ${tr('goForYourLicence')}'
-              : 'Naser, ${tr('tryAgain.')} ${tr('and')} ${tr('goForYourLicence')}',
-          fontSize: 14,
-          textAlign: TextAlign.center,
-          color: Theme.of(context).colorScheme.onBackground,
-        ),
-      ],
-    );
-  }
-
-  ribbon(BuildContext context, bool isSuccess) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 0.w),
-          child: SvgPicture.asset(
-            isSuccess ? AppImage.fireworks : AppImage.motivationHand,
-            height: 80.h,
-            // ignore: deprecated_member_use
-            color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
-
-            // width: 250.w,
-          ),
         ),
       ],
     );

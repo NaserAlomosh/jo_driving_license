@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -25,6 +26,7 @@ class HomeView extends StatelessWidget {
             EdgeInsets.symmetric(horizontal: GeneralConst.horizontalPadding),
         child: Column(
           children: [
+            //will remove this Row later
             Row(
               children: [
                 IconButton(
@@ -67,8 +69,9 @@ class HomeView extends StatelessWidget {
                 children: [
                   CustomText(
                     height: 1.5.h,
-                    text: 'الاختبار النظري لرخصة القيادة',
-                    fontWeight: FontWeight.bold,
+                    // text: 'الاختبار النظري لرخصة القيادة',
+                    text: tr('putYourSeatBelt'),
+                    fontWeight: FontWeight.w900,
                     fontSize: 18,
                     // color: Theme.of(context).colorScheme.onSecondary,
                   ),
@@ -89,7 +92,8 @@ class HomeView extends StatelessWidget {
                 ],
               ),
               CustomText(
-                text: 'قم بفحص معلوماتك قبل الذهاب الى اختبار رخصة القيادة',
+                // text: 'قم بفحص معلوماتك قبل الذهاب الى اختبار رخصة القيادة',
+                text: tr('areYouReadyForYourDrivingLicence'),
                 fontSize: 16,
                 height: 2.h,
                 fontWeight: FontWeight.w100,

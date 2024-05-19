@@ -22,8 +22,8 @@ class OnBoardingViewTwo extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   CustomText(
-                    text: tr('Learn the rules of the road!'),
-                    fontSize: 20,
+                    text: tr('onBoardingTitle2'),
+                    fontSize: 25,
                     fontWeight: FontWeight.w700,
                     textAlign: TextAlign.center,
                     color: Theme.of(context).colorScheme.onBackground,
@@ -31,8 +31,8 @@ class OnBoardingViewTwo extends StatelessWidget {
                   const SizedBox(height: 10),
                   CustomText(
                     text: tr(
-                        'Learn essential driving tips and rules to navigate the roads safely and confidently.'),
-                    fontSize: 14,
+                        'onBoardingSubtitle2'),
+                    fontSize: 18,
                     textAlign: TextAlign.center,
                     color: Theme.of(context).colorScheme.onBackground,
                   ),

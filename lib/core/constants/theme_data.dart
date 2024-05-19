@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 //!  containers familiar with background   =    surface
 //!  color of buttons  =   primary
 //!  color of font buttons  =   onPrimary
-//!  color of buttons  =   primary
+//!  familiar with primary =   onSecondary
 //!  stars & more   =   tertiary
 //!  unchoosen answers & more   =   tertiaryContainer
 //!  error   =   wrong answers
@@ -19,8 +19,8 @@ ThemeData lightMode = ThemeData(
       onBackground: Color.fromARGB(255, 98, 94, 102),
       primary: Color(0xff6C5070),
       onPrimary: Color(0xFFFFFFFF),
-      // secondary: Color.fromARGB(255, 211, 203, 212),
-      // onSecondary: Color.fromARGB(255, 104, 101, 101),
+      // secondary: Colors.orange,
+      onSecondary: Color(0xff6C5070),
       surface: Color.fromARGB(255, 238, 229, 245),
       error: Color.fromARGB(255, 214, 130, 130),
       onError: Color.fromARGB(255, 122, 176, 134),

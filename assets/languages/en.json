@@ -15,5 +15,17 @@
     "putYourSeatBelt": "Put Your Seat Belt!",
     "favourite": "Favourite",
     "search": "Search",
-    "logout": "Logout"
+    "logout": "Logout",
+    "complete": "Complete",
+    "youComplete": "you complete",
+    "congratulations": "Congratulations!",
+    "continue":"Continue",
+    "goForYourLicence": "go for your license.",
+    "yourScore": "Your score",
+    "wrongs": "Wrongs",
+    "corrects": "Corrects",
+    "supportQouteSuccess1": "Fantastic work! Your consistent effort and determination are clearly paying off. Keep pushing forward; the results are truly impressive!",
+    "supportQouteSuccess2": "Outstanding performance! Your dedication to improving each day is evident, and it's taking you closer to your goals. Stay focused and keep up the excellent work!",
+    "supportQouteFail1": "Mistakes are proof that you are trying. Reflect on what went wrong and use it as a learning experience to improve.",
+    "supportQouteFail2": "Great achievements are often born out of great setbacks. Use this experience to fuel your determination and keep going!"
 }

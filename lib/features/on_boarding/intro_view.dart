@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jo_driving_license/core/constants/dimentions.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+
 import '../../core/widgets/general/custom_text.dart';
 import '../botton_nav_bar/botton_nav_bar.dart';
 import 'widgets/on_boarding_view1.dart';
@@ -90,7 +91,7 @@ class _IntroScreenState extends State<IntroScreen> {
                                     width: MediaQuery.of(context).size.height *
                                         0.18,
                                     padding: const EdgeInsets.all(5),
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                         // color: Theme.of(context)
                                         //     .colorScheme
                                         //     .surfaceVariant,
@@ -153,7 +154,7 @@ class _IntroScreenState extends State<IntroScreen> {
                                             MediaQuery.of(context).size.height *
                                                 0.18,
                                         padding: const EdgeInsets.all(5),
-                                        decoration: BoxDecoration(
+                                        decoration: const BoxDecoration(
                                             // color: Theme.of(context)
                                             //     .colorScheme
                                             //     .onSecondary,
@@ -187,7 +188,7 @@ class _IntroScreenState extends State<IntroScreen> {
                                     width: MediaQuery.of(context).size.height *
                                         0.18,
                                     padding: const EdgeInsets.all(5),
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                         // color: Theme.of(context)
                                         //     .colorScheme
                                         //     .onSecondary,

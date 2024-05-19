@@ -75,7 +75,7 @@ class HomeView extends StatelessWidget {
                     fontSize: 18,
                     // color: Theme.of(context).colorScheme.onSecondary,
                   ),
-                  Row(
+                  const Row(
                     children: [
                       // Image.asset(
                       //   AppImage.countryImage,

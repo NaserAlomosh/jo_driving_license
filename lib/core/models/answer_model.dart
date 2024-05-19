@@ -6,8 +6,8 @@ class AnswerModel {
 
   factory AnswerModel.fromJson(Map<String?, dynamic> json) {
     return AnswerModel(
-      answer: json['answer'] ?? '',
-      correct: json['correct'] ?? false,
+      answer: json['answer'],
+      correct: json['correct'],
     );
   }
 

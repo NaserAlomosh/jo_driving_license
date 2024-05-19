@@ -16,10 +16,10 @@ class QuestionModel {
 
   factory QuestionModel.fromJson(Map<String?, dynamic> json) {
     return QuestionModel(
-      id: json['id'] ?? '',
-      name: json['name'] ?? '',
-      image: json['image'] ?? '',
-      question: json['question'] ?? '',
+      id: json['id'],
+      name: json['name'],
+      image: json['image'],
+      question: json['question'],
       answers: json['answers'] != null
           ? List<AnswerModel>.from(
               json['answers'].map((x) => AnswerModel.fromJson(x)))

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,6 +14,7 @@ import 'package:jo_driving_license/core/widgets/general/custom_loading.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_network_image.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_show_dilog.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
+
 import '../../../core/constants/dimentions.dart';
 import '../../../core/constants/image_path.dart';
 import '../view_model/cubit.dart';
@@ -48,54 +51,55 @@ class QuistionsViewState extends State<QuistionsView> {
             color: Theme.of(context).colorScheme.onSecondary,
           ),
         ),
-        body: Padding(
-          padding: EdgeInsets.all(GeneralConst.horizontalPadding),
-          child: SafeArea(
-            child: BlocBuilder<QuistionsCubit, QuistionsState>(
-              builder: (context, state) {
-                final cubit = context.read<QuistionsCubit>();
-                if (state is QuistionsLoading) {
-                  return myLoadingIndicator(context);
-                } else if (state is QuistionsError) {
-                  return Center(child: CustomErrorWidget(msg: state.error));
-                } else {
-                  return PageView.builder(
-                    controller: _pageController,
-                    itemCount: cubit.questions.length,
-                    itemBuilder: (context, quistionIndex) {
-                      final question = cubit.questions[quistionIndex];
-                      return Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
+        body: SafeArea(
+          child: BlocBuilder<QuistionsCubit, QuistionsState>(
+            builder: (context, state) {
+              final cubit = context.read<QuistionsCubit>();
+
+              if (state is QuistionsLoading) {
+                return myLoadingIndicator(context);
+              } else if (state is QuistionsError) {
+                return Center(child: CustomErrorWidget(msg: state.error));
+              } else {
+                return PageView.builder(
+                  controller: _pageController,
+                  itemCount: cubit.questions.length,
+                  itemBuilder: (context, quistionIndex) {
+                    log(cubit.questions[quistionIndex]!.image.toString());
+                    final question = cubit.questions[quistionIndex];
+                    return Padding(
+                      padding: EdgeInsets.all(GeneralConst.horizontalPadding),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              linearIndicator(
-                                quistionIndex,
-                                cubit.questions.length,
-                              ),
-                              heightSpace(15),
-                              _questionCounter(
-                                quistionIndex,
-                                cubit.questions.length,
-                              ),
-                              heightSpace(15),
-                            ],
+                          linearIndicator(
+                            quistionIndex,
+                            cubit.questions.length,
                           ),
+                          heightSpace(15),
+                          _questionCounter(
+                            quistionIndex,
+                            cubit.questions.length,
+                          ),
+                          heightSpace(15),
                           _getQuestion(question),
                           heightSpace(8),
-                          CustomNetworkImage(imageUrl: question?.image ?? ''),
+                          question?.image == null
+                              ? const SizedBox.shrink()
+                              : CustomNetworkImage(
+                                  imageUrl: question?.image ?? '',
+                                ),
                           heightSpace(8),
                           _getListAnswers(quistionIndex, question),
                           _getNextButton(cubit, quistionIndex),
                         ],
-                      );
-                    },
-                  );
-                }
-              },
-            ),
+                      ),
+                    );
+                  },
+                );
+              }
+            },
           ),
         ),
       ),
@@ -104,7 +108,7 @@ class QuistionsViewState extends State<QuistionsView> {
 
   _questionCounter(int quistionIndex, int totalQuestions) {
     return CustomText(
-      text: '${tr('question')} 1/$totalQuestions',
+      text: '${tr('question')} ${quistionIndex + 1}/$totalQuestions',
       color: Theme.of(context).colorScheme.onBackground,
     );
   }
@@ -203,7 +207,7 @@ class QuistionsViewState extends State<QuistionsView> {
         alignment: Alignment.topLeft, // Adjust alignment as needed
         widthFactor: 1, // Fraction of the original width
         heightFactor: 0.7, // Fraction of the original height
-        child: Container(
+        child: SizedBox(
           height: 250.w,
           width: 150.w,
           child: SvgPicture.asset(

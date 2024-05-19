@@ -48,7 +48,7 @@ class ExamScoreView extends StatelessWidget {
         Container(
           width: 120.w,
           height: 120.w,
-          padding: EdgeInsets.all(10),
+          padding: EdgeInsets.all(10.sp),
           decoration: BoxDecoration(
               border: Border.all(),
               borderRadius: BorderRadius.circular(
@@ -72,7 +72,7 @@ class ExamScoreView extends StatelessWidget {
         Container(
           width: 120.w,
           height: 120.w,
-          padding: EdgeInsets.all(10),
+          padding: EdgeInsets.all(10.sp),
           decoration: BoxDecoration(
               border: Border.all(),
               borderRadius: BorderRadius.circular(
@@ -96,7 +96,7 @@ class ExamScoreView extends StatelessWidget {
         Container(
           width: 120.w,
           height: 120.w,
-          padding: EdgeInsets.all(10),
+          padding: EdgeInsets.all(10.sp),
           decoration: BoxDecoration(
               border: Border.all(),
               borderRadius: BorderRadius.circular(
@@ -194,21 +194,12 @@ class ExamScoreView extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // Padding(
-        //   padding: EdgeInsets.symmetric(horizontal: 0.w),
-        //   child: SvgPicture.asset(
-        //     AppImage.fireworks,
-        //     height: 80.h,
-        //     color: Theme.of(context).colorScheme.onError,
-        //     // width: 250.w,
-        //   ),
-        // ),
-        // heightSpace(30),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 0.w),
           child: SvgPicture.asset(
             AppImage.fireworks,
             height: 80.h,
+            // ignore: deprecated_member_use
             color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
 
             // width: 250.w,

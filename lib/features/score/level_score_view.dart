@@ -118,6 +118,7 @@ class LevelScoreView extends StatelessWidget {
         children: [
           SvgPicture.asset(
             AppImage.greenRibbon,
+            // ignore: deprecated_member_use
             color: Colors.green.shade300,
           ),
           Align(

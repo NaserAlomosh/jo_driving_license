@@ -97,7 +97,7 @@ class BottomNavBarAppState extends State<BottomNavBarApp> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 CustomText(
-                  text: '${tr('hello')}',
+                  text: tr('hello'),
                   color: Theme.of(context).colorScheme.primary,
                   fontWeight: FontWeight.w400,
                   fontSize: 16.sp,

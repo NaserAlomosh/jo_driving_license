@@ -9,7 +9,7 @@ import 'package:jo_driving_license/features/home/view_model/cubit.dart';
 import 'package:jo_driving_license/features/questions/view/quistions_view.dart';
 import 'package:jo_driving_license/features/score/exam_score_view.dart';
 import 'package:jo_driving_license/features/score/level_score_view.dart';
-import '../../../core/constants/image_path.dart';
+
 import '../../../core/helper/spacing.dart';
 import '../../../core/widgets/error_widget/error_widget.dart';
 import '../../../core/widgets/general/custom_loading.dart';
@@ -75,7 +75,7 @@ class HomeView extends StatelessWidget {
                     fontSize: 18,
                     // color: Theme.of(context).colorScheme.onSecondary,
                   ),
-                  Row(
+                  const Row(
                     children: [
                       // Image.asset(
                       //   AppImage.countryImage,

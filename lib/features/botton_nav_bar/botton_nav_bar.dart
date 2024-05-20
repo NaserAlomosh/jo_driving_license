@@ -7,7 +7,6 @@ import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
 import 'package:jo_driving_license/features/favorite/view/favorite_view.dart';
 import 'package:jo_driving_license/features/home/view/home_view.dart';
 import 'package:jo_driving_license/features/profile/view/profile_view.dart';
-
 import 'widgets/app_drawer.dart';
 
 class BottomNavBarApp extends StatefulWidget {
@@ -37,20 +36,16 @@ class BottomNavBarAppState extends State<BottomNavBarApp> {
   }
 
   final List<TabItem> items = [
-    TabItem(
+    const TabItem(
       icon: Icons.home,
       // title: tr('home'),
     ),
-    TabItem(
+    const TabItem(
       icon: Icons.favorite,
       // title: tr('favourite'),
     ),
-    // const TabItem(
-    //   icon: Icons.search_sharp,
-    //   title: 'Wishlist',
-    // ),
-    TabItem(
-      icon: Icons.account_box,
+    const TabItem(
+      icon: Icons.person,
       // title: tr('profile'),
     ),
   ];
@@ -119,6 +114,7 @@ class BottomNavBarAppState extends State<BottomNavBarApp> {
         backgroundColor: Theme.of(context).colorScheme.primary,
         items: items,
         color: Colors.white,
+        iconSize: 30.sp,
         colorSelected: Colors.white,
         indexSelected: initialIndex,
         onTap: (int selectedIndex) => setState(() {
@@ -126,7 +122,7 @@ class BottomNavBarAppState extends State<BottomNavBarApp> {
         }),
         chipStyle: ChipStyle(
           convexBridge: true,
-          background: Theme.of(context).colorScheme.onSecondary,
+          background: Theme.of(context).colorScheme.surface.withOpacity(0.2),
         ),
         itemStyle: ItemStyle.circle,
         animated: false,

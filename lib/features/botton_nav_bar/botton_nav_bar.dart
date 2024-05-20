@@ -4,6 +4,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
+import 'package:jo_driving_license/features/car_offices/view/car_ofifces_view.dart';
 import 'package:jo_driving_license/features/favorite/view/favorite_view.dart';
 import 'package:jo_driving_license/features/home/view/home_view.dart';
 import 'package:jo_driving_license/features/profile/view/profile_view.dart';
@@ -26,7 +27,7 @@ class BottomNavBarAppState extends State<BottomNavBarApp> {
   List<Widget> screens = [
     const HomeView(),
     const FavoriteView(),
-    // const FavoriteView(),
+    const CarOfficesView(),
     const ProfileView(),
   ];
   @override
@@ -42,6 +43,10 @@ class BottomNavBarAppState extends State<BottomNavBarApp> {
     ),
     const TabItem(
       icon: Icons.favorite,
+      // title: tr('favourite'),
+    ),
+    const TabItem(
+      icon: Icons.local_taxi,
       // title: tr('favourite'),
     ),
     const TabItem(

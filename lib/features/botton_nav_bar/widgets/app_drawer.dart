@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jo_driving_license/core/helper/extensions.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
+import 'package:jo_driving_license/features/profile/view/profile_view.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({super.key});
@@ -33,6 +34,7 @@ class AppDrawer extends StatelessWidget {
                     context,
                     leadingIcon: Icons.account_box,
                     tr('profile'),
+                    onTap: () => context.push(const ProfileView()),
                   ),
                   _listTile(
                       context,

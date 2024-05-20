@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
 import 'package:jo_driving_license/features/favorite/view/favorite_view.dart';
 import 'package:jo_driving_license/features/home/view/home_view.dart';
+import 'package:jo_driving_license/features/profile/view/profile_view.dart';
 
 import 'widgets/app_drawer.dart';
 
@@ -27,7 +28,7 @@ class BottomNavBarAppState extends State<BottomNavBarApp> {
     const HomeView(),
     const FavoriteView(),
     const FavoriteView(),
-    const FavoriteView(),
+    const ProfileView(),
   ];
   @override
   void initState() {

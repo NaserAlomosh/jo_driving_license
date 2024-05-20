@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../helper/get_device_type.dart';
 
 class CustomTextFormField extends StatelessWidget {
@@ -27,6 +26,7 @@ class CustomTextFormField extends StatelessWidget {
   final Color? suffixIconColor;
   final TextAlign? textAlign;
   final double? borderRadius;
+
   const CustomTextFormField({
     super.key,
     this.contentPadding,
@@ -82,8 +82,8 @@ class CustomTextFormField extends StatelessWidget {
             OutlineInputBorder(
               borderRadius: BorderRadius.circular(borderRadius ?? 1),
               borderSide: BorderSide(
-                color:
-                    borderSideColor ?? Theme.of(context).colorScheme.onPrimary,
+                color: borderSideColor ??
+                    Theme.of(context).colorScheme.onBackground,
                 width: 1,
               ),
             ),
@@ -108,7 +108,7 @@ class CustomTextFormField extends StatelessWidget {
           borderRadius: BorderRadius.circular(borderRadius ?? 1),
           borderSide: borderSide ??
               BorderSide(
-                color: Theme.of(context).colorScheme.onPrimary,
+                color: Theme.of(context).colorScheme.onBackground,
                 width: 1,
               ),
         ),

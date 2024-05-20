@@ -48,7 +48,7 @@ class ExamScoreView extends StatelessWidget {
                 alignment: Alignment.centerRight,
                 child: SvgPicture.asset(
                   isSuccess ? AppImage.fireworks : AppImage.motivationHand,
-                  height: 80.h,
+                  height: 90.h,
                   // ignore: deprecated_member_use
                   color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
                 ),
@@ -57,14 +57,14 @@ class ExamScoreView extends StatelessWidget {
                 alignment: Alignment.bottomCenter,
                 child: SvgPicture.asset(
                   AppImage.policeManHappy,
-                  height: 230.h,
+                  height: 260.h,
                 ),
               ),
               Align(
                 alignment: Alignment.topLeft,
                 child: SvgPicture.asset(
                   isSuccess ? AppImage.fireworks : AppImage.motivationHand,
-                  height: 80.h,
+                  height: 90.h,
                   // ignore: deprecated_member_use
                   color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
                 ),
@@ -79,12 +79,12 @@ class ExamScoreView extends StatelessWidget {
 
   congratulations(bool isSuccess, BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 20.h),
+      padding: EdgeInsets.only(top: 30.h),
       child: Column(
         children: [
           CustomText(
             text: isSuccess ? tr('congratulations') : tr('neverGiveUp'),
-            fontSize: 25,
+            fontSize: 30.sp,
             fontWeight: FontWeight.w700,
             color: Theme.of(context).colorScheme.onBackground,
           ),
@@ -92,7 +92,7 @@ class ExamScoreView extends StatelessWidget {
             text: isSuccess
                 ? 'Naser, ${tr('goForYourLicence')}'
                 : 'Naser, ${tr('tryAgain.')} ${tr('and')} ${tr('goForYourLicence')}',
-            fontSize: 14,
+            fontSize: 18,
             textAlign: TextAlign.center,
             color: Theme.of(context).colorScheme.onBackground,
           ),

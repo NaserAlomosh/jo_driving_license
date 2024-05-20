@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -75,8 +77,6 @@ class HomeView extends StatelessWidget {
                     ),
                   ),
                   Positioned(
-                    // bottom: 2.8,
-                    // left: 18.9,
                     child: SvgPicture.asset(
                       AppImage.policeManRun,
                       height: 130.h,

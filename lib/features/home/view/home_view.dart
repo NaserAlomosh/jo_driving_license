@@ -65,17 +65,21 @@ class HomeView extends StatelessWidget {
             children: [
               Stack(
                 children: [
-                  SvgPicture.asset(
-                    AppImage.policeManRun,
-                    height: 150.h,
-                    color: Colors.white,
-                  ),
                   Positioned(
-                    bottom: 2.8,
-                    left: 18.9,
+                    top: -3,
+                    left: 7,
                     child: SvgPicture.asset(
                       AppImage.policeManRun,
-                      height: 95.h,
+                      height: 107.h,
+                      color: Colors.white,
+                    ),
+                  ),
+                  Positioned(
+                    // bottom: 2.8,
+                    // left: 18.9,
+                    child: SvgPicture.asset(
+                      AppImage.policeManRun,
+                      height: 130.h,
                     ),
                   ),
                 ],

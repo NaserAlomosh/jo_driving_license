@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,7 +13,6 @@ import 'package:jo_driving_license/core/widgets/general/custom_loading.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_network_image.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_show_dilog.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
-
 import '../../../core/constants/dimentions.dart';
 import '../../../core/constants/image_path.dart';
 import '../view_model/cubit.dart';

@@ -7,6 +7,8 @@ import 'package:jo_driving_license/core/constants/image_path.dart';
 import 'package:jo_driving_license/core/widgets/buttons/custom_button.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
 
+import '../widget/score_container.dart';
+
 class ExamScoreView extends StatelessWidget {
   const ExamScoreView({super.key});
 
@@ -137,56 +139,4 @@ class ExamScoreView extends StatelessWidget {
   }
 }
 
-class ScoreContainer extends StatelessWidget {
-  const ScoreContainer({
-    super.key,
-    required this.title,
-    required this.score,
-    required this.colorContainer,
-  });
 
-  final String title;
-  final String score;
-  final Color colorContainer;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 120.w,
-      height: 110.w,
-      padding: EdgeInsets.all(10.sp),
-      decoration: BoxDecoration(
-        color: colorContainer,
-        border: Border.all(color: colorContainer),
-        borderRadius: BorderRadius.circular(25),
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          CustomText(
-            text: tr(title),
-            color: Theme.of(context).colorScheme.onBackground,
-            fontWeight: FontWeight.w700,
-          ),
-          Container(
-            height: 60.h,
-            width: double.infinity,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12),
-              color: Theme.of(context).colorScheme.background,
-            ),
-            child: Center(
-              child: CustomText(
-                text: score,
-                textAlign: TextAlign.center,
-                fontSize: 30.sp,
-                fontWeight: FontWeight.w900,
-                color: Theme.of(context).colorScheme.onBackground,
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}

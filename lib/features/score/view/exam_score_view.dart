@@ -25,9 +25,10 @@ class ExamScoreView extends StatelessWidget {
         child: SafeArea(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
+            // crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               policeManAndFireworks(context, isSuccess),
+              congratulations(isSuccess, context),
               score(context),
               continueButton()
             ],
@@ -74,32 +75,28 @@ class ExamScoreView extends StatelessWidget {
             ],
           ),
         ),
-        congratulations(isSuccess, context),
       ],
     );
   }
 
   congratulations(bool isSuccess, BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(top: 30.h),
-      child: Column(
-        children: [
-          CustomText(
-            text: isSuccess ? tr('congratulations') : tr('neverGiveUp'),
-            fontSize: 30.sp,
-            fontWeight: FontWeight.w700,
-            color: Theme.of(context).colorScheme.onBackground,
-          ),
-          CustomText(
-            text: isSuccess
-                ? 'Naser, ${tr('goForYourLicence')}'
-                : 'Naser, ${tr('tryAgain.')} ${tr('and')} ${tr('goForYourLicence')}',
-            fontSize: 18,
-            textAlign: TextAlign.center,
-            color: Theme.of(context).colorScheme.onBackground,
-          ),
-        ],
-      ),
+    return Column(
+      children: [
+        CustomText(
+          text: isSuccess ? tr('congratulations') : tr('neverGiveUp'),
+          fontSize: 30.sp,
+          fontWeight: FontWeight.w700,
+          color: Theme.of(context).colorScheme.onBackground,
+        ),
+        CustomText(
+          text: isSuccess
+              ? 'Naser, ${tr('goForYourLicence')}'
+              : 'Naser, ${tr('tryAgain.')} ${tr('and')} ${tr('goForYourLicence')}',
+          fontSize: 18,
+          textAlign: TextAlign.center,
+          color: Theme.of(context).colorScheme.onBackground,
+        ),
+      ],
     );
   }
 
@@ -138,5 +135,3 @@ class ExamScoreView extends StatelessWidget {
     );
   }
 }
-
-

@@ -29,12 +29,6 @@ class AppDrawer extends StatelessWidget {
                     tr('home'),
                     onTap: () => context.pop(),
                   ),
-                  // _listTile(
-                  //   context,
-                  //   leadingIcon: Icons.account_box,
-                  //   tr('profile'),
-                  //   onTap: () => context.push(const ProfileView()),
-                  // ),
                   _listTile(
                       context,
                       leadingIcon: Icons.favorite_border,
@@ -51,11 +45,8 @@ class AppDrawer extends StatelessWidget {
                     child: _listTile(
                       context,
                       tr('logout'),
-                      trailingIcon: Icon(
-                        Icons.logout,
-                        size: 24.sp,
-                        color: Theme.of(context).colorScheme.onPrimary,
-                      ),
+                      leadingIcon: Icons.logout,
+                      trailingIcon: const SizedBox(),
                     ),
                   ),
                 ],

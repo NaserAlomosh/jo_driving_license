@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:jo_driving_license/core/constants/dimentions.dart';
 import 'package:jo_driving_license/core/helper/extensions.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
@@ -9,7 +10,7 @@ import 'package:jo_driving_license/features/home/view_model/cubit.dart';
 import 'package:jo_driving_license/features/questions/view/questions_view.dart';
 import 'package:jo_driving_license/features/score/exam_score_view.dart';
 import 'package:jo_driving_license/features/score/level_score_view.dart';
-
+import '../../../core/constants/image_path.dart';
 import '../../../core/helper/spacing.dart';
 import '../../../core/widgets/error_widget/error_widget.dart';
 import '../../../core/widgets/general/custom_loading.dart';
@@ -53,51 +54,57 @@ class HomeView extends StatelessWidget {
   Widget _getCard(BuildContext context) {
     return SizedBox(
       width: double.infinity,
+      height: 150.h,
       child: Card(
         color: Theme.of(context).colorScheme.primary,
         child: Padding(
           padding: EdgeInsets.symmetric(
             vertical: 20.h,
-            horizontal: 20.w,
           ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
+          child: Row(
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              Stack(
                 children: [
-                  CustomText(
-                    height: 1.5.h,
-                    // text: 'الاختبار النظري لرخصة القيادة',
-                    text: tr('putYourSeatBelt'),
-                    fontWeight: FontWeight.w900,
-                    fontSize: 18,
-                    // color: Theme.of(context).colorScheme.onSecondary,
+                  SvgPicture.asset(
+                    AppImage.policeManRun,
+                    height: 150.h,
+                    color: Colors.white,
                   ),
-                  const Row(
-                    children: [
-                      // Image.asset(
-                      //   AppImage.countryImage,
-                      //   height: 30.sp,
-                      // ),
-                      // widthSpace(16),
-                      // Image.asset(
-                      //   AppImage.card,
-                      //   height: 30.sp,
-                      //   color: Theme.of(context).colorScheme.onPrimary,
-                      // ),
-                    ],
-                  )
+                  Positioned(
+                    bottom: 2.8,
+                    left: 18.9,
+                    child: SvgPicture.asset(
+                      AppImage.policeManRun,
+                      height: 95.h,
+                    ),
+                  ),
                 ],
               ),
-              CustomText(
-                // text: 'قم بفحص معلوماتك قبل الذهاب الى اختبار رخصة القيادة',
-                text: tr('areYouReadyForYourDrivingLicence'),
-                fontSize: 16,
-                height: 2.h,
-                fontWeight: FontWeight.w100,
-                // color: Theme.of(context).colorScheme.onPrimary,
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      CustomText(
+                        height: 1.5.h,
+                        text: tr('putYourSeatBelt'),
+                        fontWeight: FontWeight.w900,
+                        fontSize: 18,
+                      ),
+                      const Row(
+                        children: [],
+                      )
+                    ],
+                  ),
+                  CustomText(
+                    text: tr('areYouReadyForYourDrivingLicence'),
+                    fontSize: 16,
+                    height: 2.h,
+                    fontWeight: FontWeight.w100,
+                  ),
+                ],
               ),
             ],
           ),
@@ -134,21 +141,12 @@ class HomeView extends StatelessWidget {
                           ),
                         );
                       },
-                      child:
-                          //CircleAvatar(
-                          Container(
-                        height: 100,
-                        width: 100,
-                        decoration: BoxDecoration(
-                            color: Theme.of(context).colorScheme.primary,
-                            borderRadius: BorderRadius.circular(70.sp)),
-                        // radius: 70.sp,
-                        // backgroundColor: Theme.of(context).colorScheme.primary,
+                      child: CircleAvatar(
+                        radius: 45.sp,
                         child: Center(
                           child: CustomText(
                             textAlign: TextAlign.center,
                             text: cubit.quizzes[index]?.name ?? '',
-                            // color: Theme.of(context).colorScheme.onPrimary,
                           ),
                         ),
                       ),

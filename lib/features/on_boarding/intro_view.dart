@@ -12,7 +12,7 @@ import 'widgets/on_boarding_view3.dart';
 
 class IntroScreen extends StatefulWidget {
   const IntroScreen({super.key});
-
+//
   @override
   State<IntroScreen> createState() => _IntroScreenState();
 }

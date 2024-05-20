@@ -40,11 +40,11 @@ class AppDrawer extends StatelessWidget {
                       context,
                       leadingIcon: Icons.favorite_border,
                       tr('favourite')),
-                  _listTile(
-                    context,
-                    leadingIcon: Icons.search_sharp,
-                    tr('search'),
-                  ),
+                  // _listTile(
+                  //   context,
+                  //   leadingIcon: Icons.search_sharp,
+                  //   tr('search'),
+                  // ),
                   //isPortraitScreen(context) ? heightSpace(450) : heightSpace(100),
                   const Spacer(),
                   _listTile(

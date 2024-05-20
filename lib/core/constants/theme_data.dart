@@ -1,17 +1,5 @@
 import 'package:flutter/material.dart';
 
-//!  background   =    background
-//!  font familiar with bg   =    onBackground
-//!  containers familiar with background   =    surface
-//!  color of buttons  =   primary
-//!  color of font buttons  =   onPrimary
-//!  familiar with primary =   onSecondary
-//!  stars & more   =   tertiary
-//!  unchoosen answers & more   =   tertiaryContainer
-//!  error   =   wrong answers
-//!  onError   =   correct answers
-
-// theme light mode
 ThemeData lightMode = ThemeData(
   brightness: Brightness.light,
   colorScheme: const ColorScheme.light(

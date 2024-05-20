@@ -84,8 +84,9 @@ class LevelScoreView extends StatelessWidget {
             text: isSuccess
                 ? 'Naser, ${tr('you complete')} level 1'
                 : 'Naser, ${tr('neverGiveUp')}',
-            fontSize: 18,
+            fontSize: 20,
             color: Theme.of(context).colorScheme.onBackground,
+            fontWeight: FontWeight.w700,
           ),
           heightSpace(10),
           SizedBox(
@@ -122,9 +123,6 @@ class LevelScoreView extends StatelessWidget {
                   )
                 : SvgPicture.asset(
                     AppImage.policeManRun,
-                    // height: 160,
-                    // width: 100,
-                    // width: 100.w,
                   ),
           ),
         ],

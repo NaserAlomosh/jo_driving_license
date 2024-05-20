@@ -27,7 +27,7 @@ class BottomNavBarAppState extends State<BottomNavBarApp> {
   List<Widget> screens = [
     const HomeView(),
     const FavoriteView(),
-    const FavoriteView(),
+    // const FavoriteView(),
     const ProfileView(),
   ];
   @override
@@ -37,21 +37,21 @@ class BottomNavBarAppState extends State<BottomNavBarApp> {
   }
 
   final List<TabItem> items = [
-    const TabItem(
+    TabItem(
       icon: Icons.home,
-      title: 'الصفحة الرئيسية',
+      title: tr('home'),
     ),
-    const TabItem(
-      icon: Icons.favorite_border,
-      title: 'المفضلة',
+    TabItem(
+      icon: Icons.favorite,
+      title: tr('favourite'),
     ),
-    const TabItem(
-      icon: Icons.search_sharp,
-      title: 'Wishlist',
-    ),
-    const TabItem(
+    // const TabItem(
+    //   icon: Icons.search_sharp,
+    //   title: 'Wishlist',
+    // ),
+    TabItem(
       icon: Icons.account_box,
-      title: 'profile',
+      title: tr('profile'),
     ),
   ];
   @override

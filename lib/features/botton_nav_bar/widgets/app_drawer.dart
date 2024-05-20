@@ -30,12 +30,12 @@ class AppDrawer extends StatelessWidget {
                     tr('home'),
                     onTap: () => context.pop(),
                   ),
-                  _listTile(
-                    context,
-                    leadingIcon: Icons.account_box,
-                    tr('profile'),
-                    onTap: () => context.push(const ProfileView()),
-                  ),
+                  // _listTile(
+                  //   context,
+                  //   leadingIcon: Icons.account_box,
+                  //   tr('profile'),
+                  //   onTap: () => context.push(const ProfileView()),
+                  // ),
                   _listTile(
                       context,
                       leadingIcon: Icons.favorite_border,

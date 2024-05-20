@@ -39,11 +39,11 @@ class BottomNavBarAppState extends State<BottomNavBarApp> {
   final List<TabItem> items = [
     TabItem(
       icon: Icons.home,
-      title: tr('home'),
+      // title: tr('home'),
     ),
     TabItem(
       icon: Icons.favorite,
-      title: tr('favourite'),
+      // title: tr('favourite'),
     ),
     // const TabItem(
     //   icon: Icons.search_sharp,
@@ -51,7 +51,7 @@ class BottomNavBarAppState extends State<BottomNavBarApp> {
     // ),
     TabItem(
       icon: Icons.account_box,
-      title: tr('profile'),
+      // title: tr('profile'),
     ),
   ];
   @override

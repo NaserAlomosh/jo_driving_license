@@ -47,13 +47,16 @@ class AppDrawer extends StatelessWidget {
                   // ),
                   //isPortraitScreen(context) ? heightSpace(450) : heightSpace(100),
                   const Spacer(),
-                  _listTile(
-                    context,
-                    tr('logout'),
-                    trailingIcon: Icon(
-                      Icons.logout,
-                      size: 24.sp,
-                      color: Theme.of(context).colorScheme.onPrimary,
+                  Padding(
+                    padding: EdgeInsets.only(bottom: 30.h),
+                    child: _listTile(
+                      context,
+                      tr('logout'),
+                      trailingIcon: Icon(
+                        Icons.logout,
+                        size: 24.sp,
+                        color: Theme.of(context).colorScheme.onPrimary,
+                      ),
                     ),
                   ),
                 ],

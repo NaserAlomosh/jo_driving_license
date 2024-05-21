@@ -8,10 +8,11 @@ import 'package:flutter_svg/svg.dart';
 import 'package:jo_driving_license/core/constants/dimentions.dart';
 import 'package:jo_driving_license/core/helper/extensions.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
+import 'package:jo_driving_license/features/botton_nav_bar/botton_nav_bar.dart';
 import 'package:jo_driving_license/features/home/view_model/cubit.dart';
 import 'package:jo_driving_license/features/questions/view/questions_view.dart';
 import 'package:jo_driving_license/features/score/view/exam_score_view.dart';
-import 'package:jo_driving_license/features/score/view/level_score_view.dart';
+
 import '../../../core/constants/image_path.dart';
 import '../../../core/helper/spacing.dart';
 import '../../../core/widgets/error_widget/error_widget.dart';
@@ -32,11 +33,6 @@ class HomeView extends StatelessWidget {
             //will remove this Row later
             Row(
               children: [
-                IconButton(
-                    onPressed: () {
-                      context.push(const LevelScoreView());
-                    },
-                    icon: const Icon(Icons.star)),
                 IconButton(
                     onPressed: () {
                       context.push(const ExamScoreView());
@@ -133,10 +129,7 @@ class HomeView extends StatelessWidget {
                 itemCount: cubit.quizzes.length,
                 separatorBuilder: (context, index) => heightSpace(10),
                 itemBuilder: (context, index) {
-                  return
-                      // (index % 2 == 0)
-                      //     ?
-                      Container(
+                  return SizedBox(
                     height: 100,
                     child: Align(
                       alignment: index <= 2
@@ -145,20 +138,21 @@ class HomeView extends StatelessWidget {
                               ? Alignment(index.toDouble() - 3, 0)
                               : index >= 4
                                   ? Alignment((index.toDouble() * -0.6) + 3, 0)
-                                  : Alignment(0, 0),
-                      // (index % 2 == 0)
-                      // ? Alignment.centerRight
-                      // : Alignment.centerLeft,
+                                  : const Alignment(0, 0),
                       child: Stack(
                         children: [
                           GestureDetector(
                             onTap: () {
-                              context.push(
-                                QuistionsView(
-                                  quizId: cubit.quizzes[index]?.id ?? '',
-                                  levelName: cubit.quizzes[index]?.name ?? '',
-                                ),
-                              );
+                              index == cubit.quizzes.length - 1
+                                  ? context.pushReplacement(
+                                      const BottomNavBarApp(index: 1))
+                                  : context.push(
+                                      QuistionsView(
+                                        quizId: cubit.quizzes[index]?.id ?? '',
+                                        levelName:
+                                            cubit.quizzes[index]?.name ?? '',
+                                      ),
+                                    );
                             },
                             child: index == cubit.quizzes.length - 1
                                 ? Column(
@@ -177,7 +171,6 @@ class HomeView extends StatelessWidget {
                                         color: Theme.of(context)
                                             .colorScheme
                                             .onBackground,
-                                        // text: cubit.quizzes[index]?.name ?? '',
                                       )
                                     ],
                                   )

@@ -8,13 +8,22 @@ import 'package:jo_driving_license/core/helper/extensions.dart';
 import 'package:jo_driving_license/core/helper/spacing.dart';
 import 'package:jo_driving_license/core/widgets/buttons/custom_button.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
+import 'package:jo_driving_license/features/botton_nav_bar/botton_nav_bar.dart';
 
 import '../../botton_nav_bar/botton_nav_bar.dart';
 import '../../home/view/home_view.dart';
 import '../widget/score_container.dart';
 
 class LevelScoreView extends StatelessWidget {
-  const LevelScoreView({super.key});
+  final int correctsNumber;
+  final int wrongsNumber;
+  final double scoreNumber;
+  const LevelScoreView({
+    super.key,
+    required this.correctsNumber,
+    required this.wrongsNumber,
+    required this.scoreNumber,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -29,16 +38,26 @@ class LevelScoreView extends StatelessWidget {
         padding: EdgeInsets.symmetric(
             horizontal: GeneralConst.horizontalPadding, vertical: 30.h),
         child: SafeArea(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              ribbon(isSuccess),
-              stars(context, isSuccess),
-              score(context),
-              supportQoute(isSuccess, context),
-              continueButton(context)
-            ],
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                ribbon(isSuccess),
+                stars(context, isSuccess),
+                heightSpace(30),
+                _score(
+                  context,
+                  correctsNumber: correctsNumber,
+                  wrongsNumber: wrongsNumber,
+                  score: scoreNumber,
+                ),
+                heightSpace(30),
+                supportQoute(isSuccess, context),
+                heightSpace(40),
+                continueButton(context)
+              ],
+            ),
           ),
         ),
       ),
@@ -51,7 +70,7 @@ class LevelScoreView extends StatelessWidget {
       fontSize: 20,
       fontWeight: FontWeight.w700,
       onPressed: () {
-        context.push(BottomNavBarApp());
+        context.pushReplacementBottomToTop(const BottomNavBarApp());
       },
     );
   }
@@ -65,24 +84,29 @@ class LevelScoreView extends StatelessWidget {
     );
   }
 
-  score(BuildContext context) {
+  _score(
+    BuildContext context, {
+    required int correctsNumber,
+    required int wrongsNumber,
+    required double score,
+  }) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         ScoreContainer(
           title: 'corrects',
-          score: '47',
+          score: '$correctsNumber',
           colorContainer:
               Theme.of(context).colorScheme.onError.withOpacity(0.2),
         ),
         ScoreContainer(
           title: 'wrongs',
-          score: '3',
+          score: '$wrongsNumber',
           colorContainer: Theme.of(context).colorScheme.error.withOpacity(0.3),
         ),
         ScoreContainer(
           title: 'yourScore',
-          score: '98%',
+          score: '$score%',
           colorContainer:
               Theme.of(context).colorScheme.primary.withOpacity(0.4),
         ),

@@ -5,10 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
 import 'package:jo_driving_license/features/car_offices/view/car_ofifces_view.dart';
-import 'package:jo_driving_license/features/favorite/view/final_exam_view.dart';
+import 'package:jo_driving_license/features/final_exam/view/final_exam_view.dart';
 import 'package:jo_driving_license/features/home/view/home_view.dart';
-import 'package:jo_driving_license/features/profile/view/profile_view.dart';
-import '../score/view/exam_score_view.dart';
 import 'widgets/app_drawer.dart';
 
 class BottomNavBarApp extends StatefulWidget {
@@ -28,9 +26,7 @@ class BottomNavBarAppState extends State<BottomNavBarApp> {
   List<Widget> screens = [
     const HomeView(),
     const FinalExamView(),
-    const ExamScoreView(),
-    // const CarOfficesView(),
-    // const ProfileView(),
+    const CarOfficesView(),
   ];
   @override
   void initState() {

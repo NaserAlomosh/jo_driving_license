@@ -130,34 +130,150 @@ class HomeView extends StatelessWidget {
               return CustomErrorWidget(msg: state.error);
             } else {
               return ListView.separated(
+                itemCount: cubit.quizzes.length,
                 separatorBuilder: (context, index) => heightSpace(10),
                 itemBuilder: (context, index) {
-                  return Align(
-                    alignment: (index % 2 == 0)
-                        ? Alignment.centerRight
-                        : Alignment.centerLeft,
-                    child: GestureDetector(
-                      onTap: () {
-                        context.push(
-                          QuistionsView(
-                            quizId: cubit.quizzes[index]?.id ?? '',
-                            levelName: cubit.quizzes[index]?.name ?? '',
+                  return
+                      // (index % 2 == 0)
+                      //     ?
+                      Container(
+                    height: 100,
+                    child: Align(
+                      alignment: index <= 2
+                          ? Alignment(-0.5 * index.toDouble(), 0)
+                          : index >= 2 && index <= 4
+                              ? Alignment(index.toDouble() - 3, 0)
+                              : index >= 4
+                                  ? Alignment((index.toDouble() * -0.6) + 3, 0)
+                                  : Alignment(0, 0),
+                      // (index % 2 == 0)
+                      // ? Alignment.centerRight
+                      // : Alignment.centerLeft,
+                      child: Stack(
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              context.push(
+                                QuistionsView(
+                                  quizId: cubit.quizzes[index]?.id ?? '',
+                                  levelName: cubit.quizzes[index]?.name ?? '',
+                                ),
+                              );
+                            },
+                            child: index == cubit.quizzes.length - 1
+                                ? Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Icon(
+                                        Icons.emoji_events,
+                                        size: 70,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .tertiary,
+                                      ),
+                                      CustomText(
+                                        textAlign: TextAlign.center,
+                                        text: tr('finalExam'),
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .onBackground,
+                                        // text: cubit.quizzes[index]?.name ?? '',
+                                      )
+                                    ],
+                                  )
+                                : CircleAvatar(
+                                    backgroundColor: index ==
+                                            cubit.quizzes.length - 1
+                                        ? Colors.amber.shade800
+                                        : Theme.of(context).colorScheme.primary,
+                                    radius: 50.sp,
+                                    child: index == cubit.quizzes.length - 1
+                                        ? Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              const Icon(
+                                                Icons.emoji_events,
+                                                size: 35,
+                                              ),
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                        horizontal: 5),
+                                                child: CustomText(
+                                                  textAlign: TextAlign.center,
+                                                  text: tr('finalExam'),
+
+                                                  // text: cubit.quizzes[index]?.name ?? '',
+                                                ),
+                                              )
+                                            ],
+                                          )
+                                        : CustomText(
+                                            textAlign: TextAlign.center,
+                                            text: cubit.quizzes[index]?.name ??
+                                                '',
+                                          ),
+                                  ),
                           ),
-                        );
-                      },
-                      child: CircleAvatar(
-                        radius: 45.sp,
-                        child: Center(
-                          child: CustomText(
-                            textAlign: TextAlign.center,
-                            text: cubit.quizzes[index]?.name ?? '',
-                          ),
-                        ),
+                          // Padding(
+                          //   padding: EdgeInsets.only(right: 100.w),
+                          //   child: Transform.rotate(
+                          //     angle: 90,
+                          //     child: SvgPicture.asset(
+                          //       AppImage.curvedLine,
+                          //       height: 80.h,
+                          //     ),
+                          //   ),
+                          // )
+                        ],
                       ),
                     ),
                   );
+                  // : Container(
+                  //     height: 100,
+                  //     width: 200,
+                  //     child: Align(
+                  //       alignment: (index % 2 == 0)
+                  //           ? Alignment.centerRight
+                  //           : Alignment.centerLeft,
+                  //       child: Stack(
+                  //         children: [
+                  //           GestureDetector(
+                  //             onTap: () {
+                  //               context.push(
+                  //                 QuistionsView(
+                  //                   quizId: cubit.quizzes[index]?.id ?? '',
+                  //                   levelName:
+                  //                       cubit.quizzes[index]?.name ?? '',
+                  //                 ),
+                  //               );
+                  //             },
+                  //             child: CircleAvatar(
+                  //               radius: 45.sp,
+                  //               child: Center(
+                  //                 child: CustomText(
+                  //                   textAlign: TextAlign.center,
+                  //                   text: cubit.quizzes[index]?.name ?? '',
+                  //                 ),
+                  //               ),
+                  //             ),
+                  //           ),
+                  //           // Positioned(
+                  //           //   left: 10,
+                  //           //   child: Transform.rotate(
+                  //           //     angle: 90,
+                  //           //     child: SvgPicture.asset(
+                  //           //       AppImage.curvedLine,
+                  //           //       height: 80.h,
+                  //           //     ),
+                  //           //   ),
+                  //           // ),
+                  //         ],
+                  //       ),
+                  //     ),
+                  //   );
                 },
-                itemCount: cubit.quizzes.length,
               );
             }
           },

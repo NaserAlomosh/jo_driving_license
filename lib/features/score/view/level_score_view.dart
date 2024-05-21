@@ -8,6 +8,8 @@ import 'package:jo_driving_license/core/helper/spacing.dart';
 import 'package:jo_driving_license/core/widgets/buttons/custom_button.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
 
+import '../widget/score_container.dart';
+
 class LevelScoreView extends StatelessWidget {
   const LevelScoreView({super.key});
 
@@ -57,19 +59,26 @@ class LevelScoreView extends StatelessWidget {
     );
   }
 
-  Column score(BuildContext context) {
-    return Column(
+  score(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        CustomText(
-          text: tr('yourScore'),
-          color: Theme.of(context).colorScheme.onBackground,
-          fontSize: 16,
+        ScoreContainer(
+          title: 'corrects',
+          score: '47',
+          colorContainer:
+              Theme.of(context).colorScheme.onError.withOpacity(0.2),
         ),
-        CustomText(
-          text: tr('98%'),
-          fontSize: 60.sp,
-          fontWeight: FontWeight.w900,
-          color: Theme.of(context).colorScheme.onBackground,
+        ScoreContainer(
+          title: 'wrongs',
+          score: '3',
+          colorContainer: Theme.of(context).colorScheme.error.withOpacity(0.3),
+        ),
+        ScoreContainer(
+          title: 'yourScore',
+          score: '98%',
+          colorContainer:
+              Theme.of(context).colorScheme.primary.withOpacity(0.4),
         ),
       ],
     );
@@ -135,10 +144,11 @@ class LevelScoreView extends StatelessWidget {
       height: 100,
       child: Stack(
         children: [
-          SvgPicture.asset(AppImage.greenRibbon,
-              // ignore: deprecated_member_use
-              color:
-                  isSuccess ? Colors.green.shade300 : Colors.blueGrey.shade300),
+          SvgPicture.asset(
+            AppImage.greenRibbon,
+            // ignore: deprecated_member_use
+            color: isSuccess ? Colors.green.shade300 : Colors.blueGrey.shade300,
+          ),
           Align(
             alignment: const Alignment(0, -0.2),
             child: CustomText(

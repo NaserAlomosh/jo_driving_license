@@ -4,10 +4,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:jo_driving_license/core/constants/dimentions.dart';
 import 'package:jo_driving_license/core/constants/image_path.dart';
+import 'package:jo_driving_license/core/helper/extensions.dart';
 import 'package:jo_driving_license/core/helper/spacing.dart';
 import 'package:jo_driving_license/core/widgets/buttons/custom_button.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
 
+import '../../botton_nav_bar/botton_nav_bar.dart';
+import '../../home/view/home_view.dart';
 import '../widget/score_container.dart';
 
 class LevelScoreView extends StatelessWidget {
@@ -20,6 +23,7 @@ class LevelScoreView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
+        leading: SizedBox(),
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(
@@ -33,7 +37,7 @@ class LevelScoreView extends StatelessWidget {
               stars(context, isSuccess),
               score(context),
               supportQoute(isSuccess, context),
-              continueButton()
+              continueButton(context)
             ],
           ),
         ),
@@ -41,12 +45,14 @@ class LevelScoreView extends StatelessWidget {
     );
   }
 
-  CustomButton continueButton() {
+  CustomButton continueButton(BuildContext context) {
     return CustomButton(
       title: tr('continue').toUpperCase(),
       fontSize: 20,
       fontWeight: FontWeight.w700,
-      onPressed: () {},
+      onPressed: () {
+        context.push(BottomNavBarApp());
+      },
     );
   }
 

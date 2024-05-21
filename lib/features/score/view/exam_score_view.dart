@@ -4,9 +4,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:jo_driving_license/core/constants/dimentions.dart';
 import 'package:jo_driving_license/core/constants/image_path.dart';
+import 'package:jo_driving_license/core/helper/extensions.dart';
 import 'package:jo_driving_license/core/widgets/buttons/custom_button.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
+import 'package:jo_driving_license/features/home/view/home_view.dart';
 
+import '../../botton_nav_bar/botton_nav_bar.dart';
 import '../widget/score_container.dart';
 
 class ExamScoreView extends StatelessWidget {
@@ -18,6 +21,7 @@ class ExamScoreView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
+        leading: SizedBox(),
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(
@@ -30,7 +34,7 @@ class ExamScoreView extends StatelessWidget {
               policeManAndFireworks(context, isSuccess),
               congratulations(isSuccess, context),
               score(context),
-              continueButton()
+              continueButton(context)
             ],
           ),
         ),
@@ -126,12 +130,14 @@ class ExamScoreView extends StatelessWidget {
     );
   }
 
-  continueButton() {
+  continueButton(BuildContext context) {
     return CustomButton(
       title: tr('continue').toUpperCase(),
       fontSize: 20,
       fontWeight: FontWeight.w700,
-      onPressed: () {},
+      onPressed: () {
+        context.push(BottomNavBarApp());
+      },
     );
   }
 }

@@ -46,7 +46,7 @@ class ScoreContainer extends StatelessWidget {
               child: CustomText(
                 text: score,
                 textAlign: TextAlign.center,
-                fontSize: 30.sp,
+                fontSize: 24,
                 fontWeight: FontWeight.w900,
                 color: Theme.of(context).colorScheme.onBackground,
               ),

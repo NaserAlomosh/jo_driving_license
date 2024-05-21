@@ -1,18 +1,20 @@
 import 'dart:developer';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:jo_driving_license/core/helper/extensions.dart';
 import 'package:jo_driving_license/core/helper/spacing.dart';
 import 'package:jo_driving_license/core/models/question_model.dart';
 import 'package:jo_driving_license/core/widgets/buttons/custom_button.dart';
 import 'package:jo_driving_license/core/widgets/error_widget/error_widget.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_loading.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_network_image.dart';
-import 'package:jo_driving_license/core/widgets/general/custom_show_dilog.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
+import 'package:jo_driving_license/features/score/view/level_score_view.dart';
+
 import '../../../core/constants/dimentions.dart';
 import '../../../core/constants/image_path.dart';
 import '../view_model/cubit.dart';
@@ -34,6 +36,8 @@ class QuistionsView extends StatefulWidget {
 class QuistionsViewState extends State<QuistionsView> {
   final PageController _pageController = PageController();
   Map<int, Map<int, Color>> answerColors = {};
+  List<bool> answersCorrectness = [];
+  List<bool> answerSelected = []; // Track if an answer has been selected
 
   @override
   Widget build(BuildContext context) {
@@ -65,6 +69,9 @@ class QuistionsViewState extends State<QuistionsView> {
                   itemBuilder: (context, quistionIndex) {
                     log(cubit.questions[quistionIndex]!.image.toString());
                     final question = cubit.questions[quistionIndex];
+                    if (answerSelected.length <= quistionIndex) {
+                      answerSelected.add(false); // Initialize selection state
+                    }
                     return Padding(
                       padding: EdgeInsets.all(GeneralConst.horizontalPadding),
                       child: Column(
@@ -148,8 +155,11 @@ class QuistionsViewState extends State<QuistionsView> {
         itemCount: question?.answers.length ?? 0,
         itemBuilder: (context, answerIndex) => GestureDetector(
           onTap: () {
-            setState(() {});
-            _onClickAnswer(quistionIndex, answerIndex, question);
+            if (!answerSelected[quistionIndex]) {
+              setState(() {
+                _onClickAnswer(quistionIndex, answerIndex, question);
+              });
+            }
           },
           child: Container(
             padding: EdgeInsets.symmetric(vertical: 15.h),
@@ -167,8 +177,6 @@ class QuistionsViewState extends State<QuistionsView> {
                       Theme.of(context).colorScheme.onError
                   ? Theme.of(context).colorScheme.onPrimary
                   : Theme.of(context).colorScheme.onBackground,
-              // ? Theme.of(context).colorScheme.onBackground
-              // : Theme.of(context).colorScheme.onBackground,
             ),
           ),
         ),
@@ -182,11 +190,13 @@ class QuistionsViewState extends State<QuistionsView> {
       children: [
         policeImage(),
         CustomButton(
-          title: tr('next'),
+          title: quistionIndex == cubit.questions.length - 1
+              ? 'انهاء'
+              : tr('next'),
           fontSize: 20,
           onPressed: () {
             if (quistionIndex == cubit.questions.length - 1) {
-              showDialogSuccessBack(context, 'msg');
+              _showResultsDialog();
             } else {
               _pageController.nextPage(
                 duration: const Duration(milliseconds: 300),
@@ -196,6 +206,20 @@ class QuistionsViewState extends State<QuistionsView> {
           },
         ),
       ],
+    );
+  }
+
+  void _showResultsDialog() {
+    final correctAnswers =
+        answersCorrectness.where((correct) => correct).length;
+    final incorrectAnswers = answersCorrectness.length - correctAnswers;
+
+    context.push(
+      LevelScoreView(
+        correctsNumber: correctAnswers,
+        wrongsNumber: incorrectAnswers,
+        scoreNumber: 50.2,
+      ),
     );
   }
 
@@ -229,6 +253,16 @@ class QuistionsViewState extends State<QuistionsView> {
           ? Theme.of(context).colorScheme.onError
           : Theme.of(context).colorScheme.error;
     }
+
+    // Store the correctness of the user's answer
+    if (answersCorrectness.length > quistionIndex) {
+      answersCorrectness[quistionIndex] = correct;
+    } else {
+      answersCorrectness.add(correct);
+    }
+
+    // Mark this question as answered
+    answerSelected[quistionIndex] = true;
   }
 
   @override

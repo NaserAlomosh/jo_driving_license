@@ -20,7 +20,7 @@ class CarOfficesView extends StatelessWidget {
             crossAxisCount: 2,
           ),
           itemBuilder: (context, index) {
-            return CarOfficeItem();
+            return const CarOfficeItem();
           },
         ),
       ),

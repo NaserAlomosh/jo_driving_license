@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class FavoriteView extends StatelessWidget {
-  const FavoriteView({super.key});
+class FinalExamView extends StatelessWidget {
+  const FinalExamView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return const Center(
-      child: Text('Favorite'),
+      child: Text('Final Exam View'),
     );
   }
 }

@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
 import 'package:jo_driving_license/features/car_offices/view/car_ofifces_view.dart';
-import 'package:jo_driving_license/features/favorite/view/favorite_view.dart';
+import 'package:jo_driving_license/features/favorite/view/final_exam_view.dart';
 import 'package:jo_driving_license/features/home/view/home_view.dart';
 import 'package:jo_driving_license/features/profile/view/profile_view.dart';
 import 'widgets/app_drawer.dart';
@@ -26,7 +26,7 @@ class BottomNavBarAppState extends State<BottomNavBarApp> {
   late int initialIndex;
   List<Widget> screens = [
     const HomeView(),
-    const FavoriteView(),
+    const FinalExamView(),
     const CarOfficesView(),
     const ProfileView(),
   ];
@@ -42,7 +42,7 @@ class BottomNavBarAppState extends State<BottomNavBarApp> {
       // title: tr('home'),
     ),
     const TabItem(
-      icon: Icons.favorite,
+      icon: Icons.quiz,
       // title: tr('favourite'),
     ),
     const TabItem(

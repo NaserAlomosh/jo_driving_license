@@ -49,10 +49,10 @@ class BottomNavBarAppState extends State<BottomNavBarApp> {
       icon: Icons.local_taxi,
       // title: tr('favourite'),
     ),
-    const TabItem(
-      icon: Icons.person,
-      // title: tr('profile'),
-    ),
+    // const TabItem(
+    //   icon: Icons.person,
+    //   // title: tr('profile'),
+    // ),
   ];
   @override
   Widget build(BuildContext context) {
@@ -119,7 +119,7 @@ class BottomNavBarAppState extends State<BottomNavBarApp> {
         backgroundColor: Theme.of(context).colorScheme.primary,
         items: items,
         color: Colors.white,
-        iconSize: 30.sp,
+        iconSize: 32.sp,
         colorSelected: Colors.white,
         indexSelected: initialIndex,
         onTap: (int selectedIndex) => setState(() {

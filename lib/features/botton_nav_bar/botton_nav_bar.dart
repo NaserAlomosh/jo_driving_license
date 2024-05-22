@@ -7,6 +7,8 @@ import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
 import 'package:jo_driving_license/features/car_offices/view/car_ofifces_view.dart';
 import 'package:jo_driving_license/features/final_exam/view/final_exam_view.dart';
 import 'package:jo_driving_license/features/home/view/home_view.dart';
+import '../../core/helper/get_device_type.dart';
+import 'all_questions/view/all_questions_view.dart';
 import 'widgets/app_drawer.dart';
 
 class BottomNavBarApp extends StatefulWidget {
@@ -25,8 +27,8 @@ class BottomNavBarAppState extends State<BottomNavBarApp> {
   late int initialIndex;
   List<Widget> screens = [
     const HomeView(),
+    const AllQuestionsView(),
     const FinalExamView(),
-    const CarOfficesView(),
   ];
   @override
   void initState() {
@@ -114,10 +116,11 @@ class BottomNavBarAppState extends State<BottomNavBarApp> {
       ),
       body: screens[initialIndex],
       bottomNavigationBar: BottomBarInspiredInside(
+        height: checkDeviceIsTaplet(context) ? 80 : 40,
         backgroundColor: Theme.of(context).colorScheme.primary,
         items: items,
         color: Colors.white,
-        iconSize: 32.sp,
+        iconSize: checkDeviceIsTaplet(context) ? 40.sp : 32.sp,
         colorSelected: Colors.white,
         indexSelected: initialIndex,
         onTap: (int selectedIndex) => setState(() {
@@ -126,9 +129,11 @@ class BottomNavBarAppState extends State<BottomNavBarApp> {
         chipStyle: ChipStyle(
           convexBridge: true,
           background: Theme.of(context).colorScheme.surface.withOpacity(0.2),
+          // size: checkDeviceIsTaplet(context) ? 100.sp : 20.sp,
         ),
         itemStyle: ItemStyle.circle,
         animated: false,
+        sizeInside: checkDeviceIsTaplet(context) ? 80 : 48,
       ),
     );
   }

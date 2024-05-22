@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:jo_driving_license/core/constants/dimentions.dart';
 import 'package:jo_driving_license/core/constants/image_path.dart';
 import 'package:jo_driving_license/core/helper/extensions.dart';
+import 'package:jo_driving_license/core/helper/get_device_type.dart';
 import 'package:jo_driving_license/core/widgets/buttons/custom_button.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
 import 'package:jo_driving_license/features/home/view/home_view.dart';
@@ -47,7 +48,7 @@ class ExamScoreView extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         SizedBox(
-          height: 300.h,
+          height: checkDeviceIsTaplet(context) ? 400.h : 300.h,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -55,7 +56,7 @@ class ExamScoreView extends StatelessWidget {
                 alignment: Alignment.centerRight,
                 child: SvgPicture.asset(
                   isSuccess ? AppImage.fireworks : AppImage.motivationHand,
-                  height: 90.h,
+                  height: checkDeviceIsTaplet(context) ? 190 : 90.h,
                   // ignore: deprecated_member_use
                   color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
                 ),
@@ -64,14 +65,14 @@ class ExamScoreView extends StatelessWidget {
                 alignment: Alignment.bottomCenter,
                 child: SvgPicture.asset(
                   AppImage.policeManHappy,
-                  height: 260.h,
+                  height: checkDeviceIsTaplet(context) ? 360 : 260.h,
                 ),
               ),
               Align(
                 alignment: Alignment.topLeft,
                 child: SvgPicture.asset(
                   isSuccess ? AppImage.fireworks : AppImage.motivationHand,
-                  height: 90.h,
+                  height: checkDeviceIsTaplet(context) ? 190 : 90.h,
                   // ignore: deprecated_member_use
                   color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
                 ),
@@ -96,7 +97,7 @@ class ExamScoreView extends StatelessWidget {
           text: isSuccess
               ? 'Naser, ${tr('goForYourLicence')}'
               : 'Naser, ${tr('tryAgain.')} ${tr('and')} ${tr('goForYourLicence')}',
-          fontSize: 18,
+          fontSize: 20.sp,
           textAlign: TextAlign.center,
           color: Theme.of(context).colorScheme.onBackground,
         ),
@@ -132,8 +133,9 @@ class ExamScoreView extends StatelessWidget {
 
   continueButton(BuildContext context) {
     return CustomButton(
+      height: 60.w,
       title: tr('continue').toUpperCase(),
-      fontSize: 20,
+      fontSize: 20.sp,
       fontWeight: FontWeight.w700,
       onPressed: () {
         context.push(BottomNavBarApp());

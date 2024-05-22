@@ -9,9 +9,6 @@ import 'package:jo_driving_license/core/helper/spacing.dart';
 import 'package:jo_driving_license/core/widgets/buttons/custom_button.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
 import 'package:jo_driving_license/features/botton_nav_bar/botton_nav_bar.dart';
-
-import '../../botton_nav_bar/botton_nav_bar.dart';
-import '../../home/view/home_view.dart';
 import '../widget/score_container.dart';
 
 class LevelScoreView extends StatelessWidget {
@@ -32,7 +29,7 @@ class LevelScoreView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        leading: SizedBox(),
+        leading: const SizedBox(),
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(
@@ -41,7 +38,7 @@ class LevelScoreView extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
+              // crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 ribbon(isSuccess),
                 stars(context, isSuccess),

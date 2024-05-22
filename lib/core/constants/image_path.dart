@@ -23,5 +23,7 @@ class AppImage {
   static const String policeManHappy = 'assets/images/svg/police_man_happy.svg';
   static const String fireworks = 'assets/images/svg/fireworks.svg';
   static const String motivationHand = 'assets/images/svg/motivation.svg';
-  static const String curvedLine = 'assets/images/svg/curved_line.svg';
+  static const String currvedLineUp = 'assets/images/svg/curved_up.svg';
+  static const String currvedLineDown = 'assets/images/svg/curved_down.svg';
+  static const String trophy = 'assets/images/svg/trophy.svg';
 }

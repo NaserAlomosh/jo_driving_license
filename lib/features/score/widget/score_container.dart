@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:jo_driving_license/core/helper/get_device_type.dart';
 
 import '../../../core/widgets/general/custom_text.dart';
 
@@ -19,8 +20,8 @@ class ScoreContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 120.w,
-      height: 110.w,
+      width: checkDeviceIsTaplet(context) ? 290 : 120.w,
+      height: checkDeviceIsTaplet(context) ? 290 : 110.w,
       padding: EdgeInsets.all(10.sp),
       decoration: BoxDecoration(
         color: colorContainer,
@@ -33,10 +34,11 @@ class ScoreContainer extends StatelessWidget {
           CustomText(
             text: tr(title),
             color: Theme.of(context).colorScheme.onBackground,
+            fontSize: 18.sp,
             fontWeight: FontWeight.w700,
           ),
           Container(
-            height: 60.h,
+            height: checkDeviceIsTaplet(context) ? 180 : 60.h,
             width: double.infinity,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
@@ -46,7 +48,7 @@ class ScoreContainer extends StatelessWidget {
               child: CustomText(
                 text: score,
                 textAlign: TextAlign.center,
-                fontSize: 24,
+                fontSize: 24.sp,
                 fontWeight: FontWeight.w900,
                 color: Theme.of(context).colorScheme.onBackground,
               ),

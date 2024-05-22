@@ -8,7 +8,7 @@ import 'package:jo_driving_license/features/car_offices/view/car_ofifces_view.da
 import 'package:jo_driving_license/features/final_exam/view/final_exam_view.dart';
 import 'package:jo_driving_license/features/home/view/home_view.dart';
 import '../../core/helper/get_device_type.dart';
-import 'all_questions/view/all_questions_view.dart';
+import 'all_questions/view/questions_view.dart';
 import 'widgets/app_drawer.dart';
 
 class BottomNavBarApp extends StatefulWidget {
@@ -27,7 +27,7 @@ class BottomNavBarAppState extends State<BottomNavBarApp> {
   late int initialIndex;
   List<Widget> screens = [
     const HomeView(),
-    const AllQuestionsView(),
+    const QuestionsView(),
     const FinalExamView(),
   ];
   @override

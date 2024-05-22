@@ -117,18 +117,19 @@ class BottomNavBarAppState extends State<BottomNavBarApp> {
       body: screens[initialIndex],
       bottomNavigationBar: BottomBarInspiredInside(
         height: checkDeviceIsTaplet(context) ? 80 : 40,
-        backgroundColor: Theme.of(context).colorScheme.primary,
+        elevation: 100,
+        backgroundColor: Theme.of(context).colorScheme.background,
+        color: Theme.of(context).colorScheme.primary.withOpacity(0.4),
+        colorSelected: Theme.of(context).colorScheme.primary.withOpacity(0.9),
         items: items,
-        color: Colors.white,
         iconSize: checkDeviceIsTaplet(context) ? 40.sp : 32.sp,
-        colorSelected: Colors.white,
         indexSelected: initialIndex,
         onTap: (int selectedIndex) => setState(() {
           initialIndex = selectedIndex;
         }),
         chipStyle: ChipStyle(
           convexBridge: true,
-          background: Theme.of(context).colorScheme.surface.withOpacity(0.2),
+          background: Theme.of(context).colorScheme.surface.withOpacity(0.6),
           // size: checkDeviceIsTaplet(context) ? 100.sp : 20.sp,
         ),
         itemStyle: ItemStyle.circle,

@@ -60,7 +60,7 @@ class BottomNavBarAppState extends State<BottomNavBarApp> {
       drawer: const AppDrawer(),
       appBar: AppBar(
         centerTitle: false,
-        backgroundColor: Theme.of(context).colorScheme.onPrimary,
+        backgroundColor: Colors.transparent,
         leading: Builder(
           builder: (BuildContext context) {
             return InkWell(

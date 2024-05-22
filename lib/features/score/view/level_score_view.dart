@@ -37,7 +37,7 @@ class LevelScoreView extends StatelessWidget {
         child: SafeArea(
           child: SingleChildScrollView(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
               // crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 ribbon(isSuccess),

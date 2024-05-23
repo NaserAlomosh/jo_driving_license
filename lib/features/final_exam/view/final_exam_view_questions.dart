@@ -6,6 +6,6 @@ class FinalExamViewQuestions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ExamScoreView();
+    return const ExamScoreView();
   }
 }

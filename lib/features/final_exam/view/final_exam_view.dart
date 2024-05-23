@@ -64,7 +64,7 @@ class FinalExamView extends StatelessWidget {
             child: CustomButton(
               title: tr('startNow'),
               onPressed: () {
-                context.push(FinalExamViewQuestions());
+                context.push(const FinalExamViewQuestions());
               },
             ),
           ),

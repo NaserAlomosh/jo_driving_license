@@ -190,8 +190,8 @@ class HomeView extends StatelessWidget {
     );
   }
 
-  Container finalExam(BuildContext context) {
-    return Container(
+  SizedBox finalExam(BuildContext context) {
+    return SizedBox(
       width: 300.w,
       height: 140.h,
       child: Column(

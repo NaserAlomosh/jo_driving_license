@@ -11,6 +11,7 @@ import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
 import 'package:jo_driving_license/features/botton_nav_bar/botton_nav_bar.dart';
 import 'package:jo_driving_license/features/home/view_model/cubit.dart';
 import 'package:jo_driving_license/features/questions/view/questions_view.dart';
+
 import '../../../core/constants/image_path.dart';
 import '../../../core/helper/get_device_type.dart';
 import '../../../core/helper/spacing.dart';
@@ -155,38 +156,15 @@ class HomeView extends StatelessWidget {
       children: [
         Container(
           width: 300.w,
-          height: 140.h,
           padding: EdgeInsets.only(bottom: 40.h),
           child: CircleAvatar(
             backgroundColor: Theme.of(context).colorScheme.primary,
-            radius: checkDeviceIsTaplet(context) ? 70.w : 50.w,
-            child: index == cubit.quizzes.length - 1
-                //final exam
-                ? Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(
-                        Icons.emoji_events,
-                        size: checkDeviceIsTaplet(context) ? 105.w : 35.w,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 5,
-                        ),
-                        child: CustomText(
-                          textAlign: TextAlign.center,
-                          text: tr('finalExam'),
-                          // text: cubit.quizzes[index]?.name ?? '',
-                        ),
-                      )
-                    ],
-                  )
-                //level name
-                : CustomText(
-                    textAlign: TextAlign.center,
-                    text: cubit.quizzes[index]?.name ?? '',
-                    fontSize: 20.sp,
-                  ),
+            radius: 60.sp,
+            child: CustomText(
+              textAlign: TextAlign.center,
+              text: cubit.quizzes[index]?.name ?? '',
+              fontSize: 16,
+            ),
           ),
         ),
         (index % 2 == 0)

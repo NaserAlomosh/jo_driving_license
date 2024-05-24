@@ -44,7 +44,9 @@ class HomeView extends StatelessWidget {
       ),
       child: SizedBox(
         width: double.infinity,
-        height: checkDeviceIsTaplet(context) ? 300.h : 150.w,
+        height: checkDeviceIsTaplet(context)
+            ? 300.h
+            : MediaQuery.of(context).size.height * 0.18,
         child: Card(
           color: Theme.of(context).colorScheme.primary,
           child: Padding(
@@ -55,18 +57,16 @@ class HomeView extends StatelessWidget {
               children: [
                 Stack(
                   children: [
-                    Positioned(
-                      top: -3.h,
-                      left: 7.w,
-                      child: SvgPicture.asset(
-                        AppImage.policeManRun,
-                        height: checkDeviceIsTaplet(context) ? 207.h : 107.h,
-                        color: Colors.white,
-                      ),
-                    ),
+                    // SvgPicture.asset(
+                    //   AppImage.policeManRun,
+                    //   height: checkDeviceIsTaplet(context) ? 207.h : 103.h,
+                    //   color: Colors.white,
+                    //   fit: BoxFit.contain,
+                    // ),
                     SvgPicture.asset(
                       AppImage.policeManRun,
                       height: checkDeviceIsTaplet(context) ? 230.h : 130.h,
+                      fit: BoxFit.contain,
                     ),
                   ],
                 ),
@@ -138,7 +138,7 @@ class HomeView extends StatelessWidget {
                       },
                       child: index == cubit.quizzes.length - 1
                           ? finalExam(context)
-                          : levelExam(context, index, cubit),
+                          : levelQuestions(context, index, cubit),
                     ),
                   );
                 },
@@ -150,43 +150,24 @@ class HomeView extends StatelessWidget {
     );
   }
 
-  Stack levelExam(BuildContext context, int index, HomeCubit cubit) {
+  Stack levelQuestions(BuildContext context, int index, HomeCubit cubit) {
+    List<String>? words = cubit.quizzes[index]?.name!.split(' ');
+
     return Stack(
       children: [
         Container(
-          width: 300.w,
+          width: checkDeviceIsTaplet(context)
+              ? MediaQuery.of(context).size.height * 0.3
+              : MediaQuery.of(context).size.height * 0.3,
           height: 140.h,
           padding: EdgeInsets.only(bottom: 40.h),
           child: CircleAvatar(
             backgroundColor: Theme.of(context).colorScheme.primary,
             radius: checkDeviceIsTaplet(context) ? 70.w : 50.w,
-            child: index == cubit.quizzes.length - 1
-                //final exam
-                ? Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(
-                        Icons.emoji_events,
-                        size: checkDeviceIsTaplet(context) ? 105.w : 35.w,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 5,
-                        ),
-                        child: CustomText(
-                          textAlign: TextAlign.center,
-                          text: tr('finalExam'),
-                          // text: cubit.quizzes[index]?.name ?? '',
-                        ),
-                      )
-                    ],
-                  )
-                //level name
-                : CustomText(
-                    textAlign: TextAlign.center,
-                    text: cubit.quizzes[index]?.name ?? '',
-                    fontSize: 20.sp,
-                  ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: words!.map((word) => Text(word)).toList(),
+            ),
           ),
         ),
         (index % 2 == 0)
@@ -224,11 +205,7 @@ class HomeView extends StatelessWidget {
             height: 110.h,
             // width: 100.w,
           ),
-          // Icon(
-          //   Icons.emoji_events,
-          //   size: 70.sp,
-          //   color: Theme.of(context).colorScheme.tertiary,
-          // ),
+
           // Center(
           //   child: CustomText(
           //     textAlign: TextAlign.center,

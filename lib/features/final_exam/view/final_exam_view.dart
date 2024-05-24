@@ -2,10 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jo_driving_license/core/constants/dimentions.dart';
-import 'package:jo_driving_license/core/helper/extensions.dart';
-import 'package:jo_driving_license/core/widgets/buttons/custom_button.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
-import 'package:jo_driving_license/features/final_exam/view/final_exam_view_questions.dart';
 
 class FinalExamView extends StatelessWidget {
   const FinalExamView({super.key});
@@ -73,7 +70,7 @@ class FinalExamView extends StatelessWidget {
                         Theme.of(context).colorScheme.primary.withOpacity(0.2),
                     spreadRadius: 2,
                     blurRadius: 1,
-                    offset: Offset(3, 2), // changes position of shadow
+                    offset: const Offset(3, 2), // changes position of shadow
                   ),
                 ],
               ),
@@ -83,13 +80,6 @@ class FinalExamView extends StatelessWidget {
                 ),
               ),
             ),
-            //  CustomButton(
-
-            //   title: tr('startNow'),
-            //   onPressed: () {
-            //     context.push(FinalExamViewQuestions());
-            //   },
-            // ),
           ),
           const Spacer(flex: 5),
         ],

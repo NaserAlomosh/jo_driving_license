@@ -29,7 +29,6 @@ class ExamScoreView extends StatelessWidget {
         child: SafeArea(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            // crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               policeManAndFireworks(context, isSuccess),
               congratulations(isSuccess, context),

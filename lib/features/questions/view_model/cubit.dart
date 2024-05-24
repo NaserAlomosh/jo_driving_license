@@ -14,7 +14,7 @@ class QuistionsCubit extends Cubit<QuistionsState> {
   getQuistionsCubit(String quizId) async {
     try {
       emit(QuistionsLoading());
-      questions = await getQuistions(quizId);
+      questions = await getQuestions(quizId);
       emit(QuistionsSuccess());
     } on FirebaseException catch (e) {
       emit(QuistionsError(error: firebaseErrorHandler(e.code)));

@@ -10,12 +10,13 @@ import 'package:jo_driving_license/core/helper/extensions.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
 import 'package:jo_driving_license/features/botton_nav_bar/botton_nav_bar.dart';
 import 'package:jo_driving_license/features/home/view_model/cubit.dart';
-import 'package:jo_driving_license/features/questions/view/questions_view.dart';
+
 import '../../../core/constants/image_path.dart';
 import '../../../core/helper/get_device_type.dart';
 import '../../../core/helper/spacing.dart';
 import '../../../core/widgets/animated/animated_widgets/animation_opacity_color_widget.dart';
 import '../../../core/widgets/error_widget/error_widget.dart';
+import '../../questions/view/questions_view.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -150,8 +151,6 @@ class HomeView extends StatelessWidget {
     );
   }
 
-
-
   Widget _getLoadingListQuizzes() {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 0.w),
@@ -209,8 +208,6 @@ class HomeView extends StatelessWidget {
       ],
     );
   }
-
-
 
   Stack levelQuestions(BuildContext context, int index, HomeCubit cubit) {
     List<String>? words = cubit.quizzes[index]?.name!.split(' ');

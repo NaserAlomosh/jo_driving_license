@@ -20,8 +20,8 @@ class ScoreContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: checkDeviceIsTaplet(context) ? 290 : 120.w,
-      height: checkDeviceIsTaplet(context) ? 290 : 110.w,
+      width: 120.w,
+      height: 110.w,
       padding: EdgeInsets.all(10.sp),
       decoration: BoxDecoration(
         color: colorContainer,

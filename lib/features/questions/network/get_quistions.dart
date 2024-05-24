@@ -1,10 +1,9 @@
-import 'dart:convert';
-import 'dart:developer';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-import 'package:jo_driving_license/core/firebase_constants/firebase_constants.dart';
-import 'package:jo_driving_license/core/models/question_model.dart';
+import '../../../core/firebase_constants/firebase_constants.dart';
+import '../../../core/models/question_model.dart';
 
-Future<List<QuestionModel?>> getQuistions(String quizId) async {
+Future<List<QuestionModel?>> getQuestions(String quizId) async {
   List<QuestionModel?> questionModel = [];
   await quizzesFirestore
       .doc(quizId)
@@ -12,8 +11,15 @@ Future<List<QuestionModel?>> getQuistions(String quizId) async {
       .get()
       .then((value) {
     for (var element in value.docs) {
-      log(jsonEncode(element.data()));
-      questionModel.add(QuestionModel.fromJson(element.data()));
+      Map<String, dynamic> data = element.data();
+      data.forEach((key, value) {
+        if (value is Timestamp) {
+          // Convert Timestamp to DateTime
+          data[key] = value.toDate();
+        }
+      });
+
+      questionModel.add(QuestionModel.fromJson(data));
     }
   });
 

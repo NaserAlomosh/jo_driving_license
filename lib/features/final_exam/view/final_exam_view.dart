@@ -61,12 +61,35 @@ class FinalExamView extends StatelessWidget {
           const Spacer(flex: 3),
           Container(
             padding: EdgeInsets.symmetric(vertical: 0.h),
-            child: CustomButton(
-              title: tr('startNow'),
-              onPressed: () {
-                context.push(FinalExamViewQuestions());
-              },
+            child: Container(
+              height: 100,
+              width: 100,
+              decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.primary,
+                borderRadius: BorderRadius.circular(50),
+                boxShadow: [
+                  BoxShadow(
+                    color:
+                        Theme.of(context).colorScheme.primary.withOpacity(0.2),
+                    spreadRadius: 2,
+                    blurRadius: 1,
+                    offset: Offset(3, 2), // changes position of shadow
+                  ),
+                ],
+              ),
+              child: Center(
+                child: CustomText(
+                  text: tr('startNow'),
+                ),
+              ),
             ),
+            //  CustomButton(
+
+            //   title: tr('startNow'),
+            //   onPressed: () {
+            //     context.push(FinalExamViewQuestions());
+            //   },
+            // ),
           ),
           const Spacer(flex: 5),
         ],

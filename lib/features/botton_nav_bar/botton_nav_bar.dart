@@ -39,20 +39,13 @@ class BottomNavBarAppState extends State<BottomNavBarApp> {
   final List<TabItem> items = [
     const TabItem(
       icon: Icons.home,
-      // title: tr('home'),
     ),
     const TabItem(
       icon: Icons.quiz,
-      // title: tr('favourite'),
     ),
     const TabItem(
       icon: Icons.emoji_events,
-      // title: tr('favourite'),
     ),
-    // const TabItem(
-    //   icon: Icons.person,
-    //   // title: tr('profile'),
-    // ),
   ];
   @override
   Widget build(BuildContext context) {
@@ -122,7 +115,7 @@ class BottomNavBarAppState extends State<BottomNavBarApp> {
         color: Theme.of(context).colorScheme.primary.withOpacity(0.4),
         colorSelected: Theme.of(context).colorScheme.primary.withOpacity(0.9),
         items: items,
-        iconSize: checkDeviceIsTaplet(context) ? 40.sp : 32.sp,
+        iconSize: checkDeviceIsTaplet(context) ? 40.sp : 33.sp,
         indexSelected: initialIndex,
         onTap: (int selectedIndex) => setState(() {
           initialIndex = selectedIndex;

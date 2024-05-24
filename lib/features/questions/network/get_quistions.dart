@@ -18,7 +18,6 @@ Future<List<QuestionModel?>> getQuestions(String quizId) async {
           data[key] = value.toDate();
         }
       });
-
       questionModel.add(QuestionModel.fromJson(data));
     }
   });

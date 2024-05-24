@@ -133,7 +133,8 @@ class HomeView extends StatelessWidget {
                             : context.push(
                                 QuistionsView(
                                   quizId: cubit.quizzes[index]?.id ?? '',
-                                  levelName: cubit.quizzes[index]?.name ?? '',
+                                  categoryName:
+                                      cubit.quizzes[index]?.name ?? '',
                                 ),
                               );
                       },

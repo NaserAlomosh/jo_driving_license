@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jo_driving_license/core/constants/dimentions.dart';
+import 'package:jo_driving_license/core/widgets/buttons/custom_button.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
 
 class FinalExamView extends StatelessWidget {
@@ -58,27 +59,11 @@ class FinalExamView extends StatelessWidget {
           const Spacer(flex: 3),
           Container(
             padding: EdgeInsets.symmetric(vertical: 0.h),
-            child: Container(
-              height: 100,
-              width: 100,
-              decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.primary,
-                borderRadius: BorderRadius.circular(50),
-                boxShadow: [
-                  BoxShadow(
-                    color:
-                        Theme.of(context).colorScheme.primary.withOpacity(0.2),
-                    spreadRadius: 2,
-                    blurRadius: 1,
-                    offset: const Offset(3, 2), // changes position of shadow
-                  ),
-                ],
-              ),
-              child: Center(
-                child: CustomText(
-                  text: tr('startNow'),
-                ),
-              ),
+            child: CustomButton(
+              title: tr('startNow'),
+              onPressed: () {
+                // context.push(const FinalExamViewQuestions());
+              },
             ),
           ),
           const Spacer(flex: 5),

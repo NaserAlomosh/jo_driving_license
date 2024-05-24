@@ -13,27 +13,27 @@ import 'package:jo_driving_license/core/widgets/error_widget/error_widget.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_loading.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_network_image.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
+import 'package:jo_driving_license/features/score/view/category_score_view.dart';
 
 import '../../../core/constants/dimentions.dart';
 import '../../../core/constants/image_path.dart';
-import '../../score/view/category_score_view.dart';
-import '../view_model/cubit.dart';
+import '../../questions/view_model/cubit.dart';
 
-class QuistionsView extends StatefulWidget {
+class FullQuistionsView extends StatefulWidget {
   final String quizId;
   final String categoryName;
 
-  const QuistionsView({
+  const FullQuistionsView({
     super.key,
     required this.quizId,
     required this.categoryName,
   });
 
   @override
-  QuistionsViewState createState() => QuistionsViewState();
+  FullQuistionsViewState createState() => FullQuistionsViewState();
 }
 
-class QuistionsViewState extends State<QuistionsView> {
+class FullQuistionsViewState extends State<FullQuistionsView> {
   final PageController _pageController = PageController();
   Map<int, Map<int, Color>> answerColors = {};
   List<bool> answersCorrectness = [];
@@ -134,13 +134,15 @@ class QuistionsViewState extends State<QuistionsView> {
   }
 
   Widget _getQuestion(QuestionModel? question) {
-    return Align(
-      alignment: Alignment.center,
-      child: CustomText(
-        text: question?.question ?? '',
-        fontSize: 20,
-        color: Theme.of(context).colorScheme.onSecondary,
-      ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        CustomText(
+          text: question?.question ?? '',
+          fontSize: 20,
+          color: Theme.of(context).colorScheme.onSecondary,
+        ),
+      ],
     );
   }
 
@@ -194,7 +196,7 @@ class QuistionsViewState extends State<QuistionsView> {
           fontSize: 20,
           onPressed: () {
             if (quistionIndex == cubit.questions.length - 1) {
-              _showResultsDialog();
+              _goToResultsScreen();
             } else {
               _pageController.nextPage(
                 duration: const Duration(milliseconds: 300),
@@ -207,15 +209,13 @@ class QuistionsViewState extends State<QuistionsView> {
     );
   }
 
-  void _showResultsDialog() {
+  void _goToResultsScreen() {
     final correctAnswers =
         answersCorrectness.where((correct) => correct).length;
     final incorrectAnswers = answersCorrectness.length - correctAnswers;
     int totalQuestions = correctAnswers + incorrectAnswers;
-
     // Calculate the score percentage
     double scorePercentage = (correctAnswers / totalQuestions) * 100;
-
     // Convert the score percentage to an integer
     int scoreNumber = scorePercentage.toInt();
     context.push(

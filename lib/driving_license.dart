@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'core/constants/theme_data.dart';
 import 'core/helper/design_size_responsive.dart';
 import 'features/on_boarding/intro_view.dart';

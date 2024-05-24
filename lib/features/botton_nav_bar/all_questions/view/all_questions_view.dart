@@ -6,7 +6,7 @@ class AllQuestionsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LevelScoreView(
+    return const LevelScoreView(
       correctsNumber: 2,
       wrongsNumber: 1,
       scoreNumber: 98,

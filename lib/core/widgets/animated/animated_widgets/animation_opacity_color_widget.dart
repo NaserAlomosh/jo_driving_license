@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AnimationColorWidget extends StatefulWidget {
-  final Widget? animationWidget;
 
-  const AnimationColorWidget({super.key, this.animationWidget});
+  final Widget? child;
+
+  const AnimationColorWidget({super.key, this.child});
 
   @override
   AnimationColorWidgetState createState() => AnimationColorWidgetState();
@@ -43,8 +44,12 @@ class AnimationColorWidgetState extends State<AnimationColorWidget>
       ),
       child: FadeTransition(
         opacity: fadingAnimation!,
-        child: widget.animationWidget,
+        child: widget.child,
       ),
     );
   }
 }
+
+
+
+

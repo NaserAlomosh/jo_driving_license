@@ -14,8 +14,8 @@ import 'package:jo_driving_license/features/questions/view/questions_view.dart';
 import '../../../core/constants/image_path.dart';
 import '../../../core/helper/get_device_type.dart';
 import '../../../core/helper/spacing.dart';
+import '../../../core/widgets/animated/animated_widgets/animation_opacity_color_widget.dart';
 import '../../../core/widgets/error_widget/error_widget.dart';
-import '../../../core/widgets/general/custom_loading.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -112,7 +112,7 @@ class HomeView extends StatelessWidget {
           builder: (context, state) {
             final cubit = context.read<HomeCubit>();
             if (state is HomeLoading) {
-              return myLoadingIndicator(context);
+              return _getLoadingListQuizzes();
             } else if (state is HomeError) {
               return CustomErrorWidget(msg: state.error);
             } else {
@@ -149,6 +149,68 @@ class HomeView extends StatelessWidget {
       ),
     );
   }
+
+
+
+  Widget _getLoadingListQuizzes() {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 0.w),
+      child: BlocBuilder<HomeCubit, HomeState>(
+        builder: (context, state) {
+          return ListView.separated(
+            itemCount: 6,
+            separatorBuilder: (context, index) => heightSpace(0.h),
+            itemBuilder: (context, index) {
+              return Align(
+                alignment: (index % 2 == 0)
+                    ? Alignment.centerRight
+                    : Alignment.centerLeft,
+                child: index == 7 - 1
+                    ? finalExam(context)
+                    : AnimationColorWidget(child: loading(context, index)),
+              );
+            },
+          );
+        },
+      ),
+    );
+  }
+
+  Widget loading(BuildContext context, int index) {
+    return Stack(
+      children: [
+        Container(
+          width: 300.w,
+          padding: EdgeInsets.only(bottom: 40.h),
+          child: CircleAvatar(
+            backgroundColor: Theme.of(context).colorScheme.primary,
+            radius: 60.sp,
+          ),
+        ),
+        (index % 2 == 0)
+            ? Positioned(
+                bottom: -5.h,
+                left: 20,
+                child: SvgPicture.asset(
+                  AppImage.currvedLineUp,
+                  height: 130.h,
+                  color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
+                ),
+              )
+            : Positioned(
+                bottom: 5.h,
+                right: 20.w,
+                child: SvgPicture.asset(
+                  AppImage.currvedLineDown,
+                  height: 130.h,
+                  color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
+                ),
+              )
+      ],
+    );
+  }
+
+
 
   Stack levelQuestions(BuildContext context, int index, HomeCubit cubit) {
     List<String>? words = cubit.quizzes[index]?.name!.split(' ');

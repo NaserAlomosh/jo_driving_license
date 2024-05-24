@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jo_driving_license/features/score/view/level_score_view.dart';
+import 'package:jo_driving_license/features/questions/view/level_score_view.dart';
 
 class AllQuestionsView extends StatelessWidget {
   const AllQuestionsView({super.key});

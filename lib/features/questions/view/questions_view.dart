@@ -13,7 +13,7 @@ import 'package:jo_driving_license/core/widgets/error_widget/error_widget.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_loading.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_network_image.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
-import 'package:jo_driving_license/features/score/view/level_score_view.dart';
+import 'package:jo_driving_license/features/questions/view/level_score_view.dart';
 
 import '../../../core/constants/dimentions.dart';
 import '../../../core/constants/image_path.dart';

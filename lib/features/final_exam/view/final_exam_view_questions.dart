@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jo_driving_license/features/score/view/exam_score_view.dart';
+import 'package:jo_driving_license/features/final_exam/view/exam_score_view.dart';
 
 class FinalExamViewQuestions extends StatelessWidget {
   const FinalExamViewQuestions({super.key});

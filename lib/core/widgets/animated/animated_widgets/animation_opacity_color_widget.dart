@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AnimationColorWidget extends StatefulWidget {
-
   final Widget? child;
 
   const AnimationColorWidget({super.key, this.child});
@@ -37,19 +35,9 @@ class AnimationColorWidgetState extends State<AnimationColorWidget>
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(
-        horizontal: 10.w,
-        vertical: 10.h,
-      ),
-      child: FadeTransition(
-        opacity: fadingAnimation!,
-        child: widget.child,
-      ),
+    return FadeTransition(
+      opacity: fadingAnimation!,
+      child: widget.child,
     );
   }
 }
-
-
-
-

@@ -18,12 +18,12 @@ class OnBoardingViewOne extends StatelessWidget {
             child: Column(
                 mainAxisAlignment: MediaQuery.of(context).size.width < 800
                     ? MainAxisAlignment.center
-                    : MainAxisAlignment.start,
+                    : MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   CustomText(
                     text: tr('onBoardingTitle1'),
-                    fontSize: 25,
+                    fontSize: 25.sp,
                     fontWeight: FontWeight.w700,
                     textAlign: TextAlign.center,
                     color: Theme.of(context).colorScheme.onBackground,
@@ -31,7 +31,7 @@ class OnBoardingViewOne extends StatelessWidget {
                   const SizedBox(height: 10),
                   CustomText(
                     text: tr('onBoardingSubtitle1'),
-                    fontSize: 18,
+                    fontSize: 18.sp,
                     textAlign: TextAlign.center,
                     color: Theme.of(context).colorScheme.onBackground,
                   ),
@@ -40,12 +40,8 @@ class OnBoardingViewOne extends StatelessWidget {
                     alignment: AlignmentDirectional.center,
                     children: [
                       Container(
-                        height: MediaQuery.of(context).size.width > 800
-                            ? 180.w
-                            : 240.w,
-                        width: MediaQuery.of(context).size.width > 800
-                            ? 180.w
-                            : 240.w,
+                        height: 300.w,
+                        width: 300.w,
                         decoration: BoxDecoration(
                           color: Theme.of(context).colorScheme.surface,
                           borderRadius: MediaQuery.of(context).size.width > 800
@@ -55,8 +51,8 @@ class OnBoardingViewOne extends StatelessWidget {
                       ),
                       Lottie.asset(
                         AppImage.onBoardingBus,
-                        height: 250.w,
-                        width: 240.w,
+                        height: 300.w,
+                        width: 300.w,
                       ),
                     ],
                   ),

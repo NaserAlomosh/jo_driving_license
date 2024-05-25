@@ -105,7 +105,7 @@ class _IntroScreenState extends State<IntroScreen> {
                                     child: CustomText(
                                       text: tr('skip'),
                                       textAlign: TextAlign.center,
-                                      fontSize: 15,
+                                      fontSize: 18.sp,
                                       fontWeight: FontWeight.w400,
                                       color: Theme.of(context)
                                           .colorScheme
@@ -164,7 +164,7 @@ class _IntroScreenState extends State<IntroScreen> {
                                         child: CustomText(
                                           text: tr('getStarted'),
                                           textAlign: TextAlign.center,
-                                          fontSize: 14,
+                                          fontSize: 18.sp,
                                           fontWeight: FontWeight.w400,
                                           color: Theme.of(context)
                                               .colorScheme
@@ -197,7 +197,7 @@ class _IntroScreenState extends State<IntroScreen> {
                                     child: CustomText(
                                       text: tr('next'),
                                       textAlign: TextAlign.center,
-                                      fontSize: 15,
+                                      fontSize: 18.sp,
                                       fontWeight: FontWeight.w400,
                                       color: Theme.of(context)
                                           .colorScheme

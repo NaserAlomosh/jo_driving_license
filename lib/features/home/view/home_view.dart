@@ -10,7 +10,6 @@ import 'package:jo_driving_license/core/helper/extensions.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
 import 'package:jo_driving_license/features/botton_nav_bar/botton_nav_bar.dart';
 import 'package:jo_driving_license/features/home/view_model/cubit.dart';
-
 import '../../../core/constants/image_path.dart';
 import '../../../core/helper/get_device_type.dart';
 import '../../../core/helper/spacing.dart';
@@ -29,7 +28,6 @@ class HomeView extends StatelessWidget {
       child: Column(
         children: [
           heightSpace(20),
-          // _getCard(context),
           card(context),
           heightSpace(20),
           _getListQuizzes(),
@@ -44,109 +42,27 @@ class HomeView extends StatelessWidget {
       child: Stack(
         children: [
           Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(100),
-            ),
+            height: MediaQuery.of(context).size.width * 0.45,
+            width: double.infinity,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(15),
               child: Image.asset(
                 AppImage.carWithBackground,
-                // fit: BoxFit.fill,
-                // width: 350,
-                // height: 250,
+                fit: BoxFit.cover,
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Column(
-                  children: [
-                    CustomText(
-                      height: 1.5.h,
-                      text: tr('putYourSeatBelt'),
-                      fontWeight: FontWeight.w900,
-                      fontSize: 18.sp,
-                    ),
-                    CustomText(
-                      text: tr('areYouReadyForYourDrivingLicence'),
-                      fontSize: 16.sp,
-                      height: 2.h,
-                      fontWeight: FontWeight.w100,
-                    ),
-                    heightSpace(10),
-                    SizedBox(
-                        height: 40.h,
-                        width: 140.w,
-                        child: CustomButton(
-                          borderRadius: 50,
-                          background: Theme.of(context).colorScheme.tertiary,
-                          elevation: 10,
-                          title: tr('finalExam'),
-                          fontSize: 14,
-                          textColor: Theme.of(context).colorScheme.primary,
-                          onPressed: () {
-                            context.pushReplacement(
-                                const BottomNavBarApp(index: 2));
-                          },
-                        ))
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _getCard(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(
-        horizontal: checkDeviceIsTaplet(context)
-            ? GeneralConst.horizontalPaddingTablet
-            : GeneralConst.horizontalPadding,
-      ),
-      child: SizedBox(
-        width: double.infinity,
-        height: checkDeviceIsTaplet(context)
-            ? 300.h
-            : MediaQuery.of(context).size.height * 0.18,
-        child: Card(
-          color: Theme.of(context).colorScheme.primary,
-          child: Padding(
+          Container(
             padding: EdgeInsets.symmetric(
-              vertical: 20.h,
-            ),
+                horizontal: MediaQuery.of(context).size.width * 0.06),
+            height: MediaQuery.of(context).size.width * 0.45,
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Stack(
-                  children: [
-                    // ),
-
-                    // SvgPicture.asset(
-                    //   AppImage.policeManRun,
-                    //   height: checkDeviceIsTaplet(context) ? 207.h : 103.h,
-                    //   color: Colors.white,
-                    //   fit: BoxFit.contain,
-                    // ),
-
-                    SvgPicture.asset(
-                      AppImage.policeManRun,
-                      height: checkDeviceIsTaplet(context) ? 230.h : 130.h,
-                      fit: BoxFit.contain,
-                    ),
-                  ],
-                ),
                 Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    Column(
                       children: [
                         CustomText(
                           height: 1.5.h,
@@ -154,23 +70,36 @@ class HomeView extends StatelessWidget {
                           fontWeight: FontWeight.w900,
                           fontSize: 18.sp,
                         ),
-                        const Row(
-                          children: [],
-                        )
+                        CustomText(
+                          text: tr('areYouReadyForYourDrivingLicence'),
+                          fontSize: 16.sp,
+                          height: 2.h,
+                          fontWeight: FontWeight.w100,
+                        ),
                       ],
                     ),
-                    CustomText(
-                      text: tr('areYouReadyForYourDrivingLicence'),
-                      fontSize: 16.sp,
-                      height: 2.h,
-                      fontWeight: FontWeight.w100,
-                    ),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.width * 0.1,
+                      width: MediaQuery.of(context).size.width * 0.3,
+                      child: CustomButton(
+                        borderRadius: 50,
+                        background: Theme.of(context).colorScheme.tertiary,
+                        elevation: 10,
+                        title: tr('finalExam'),
+                        fontSize: 14.sp,
+                        textColor: Theme.of(context).colorScheme.primary,
+                        onPressed: () {
+                          context
+                              .pushReplacement(const BottomNavBarApp(index: 2));
+                        },
+                      ),
+                    )
                   ],
                 ),
               ],
             ),
           ),
-        ),
+        ],
       ),
     );
   }
@@ -293,17 +222,19 @@ class HomeView extends StatelessWidget {
           Stack(
             children: [
               Container(
-                width: 300.w,
+                width: checkDeviceIsTaplet(context)
+                    ? MediaQuery.of(context).size.width * 0.5
+                    : MediaQuery.of(context).size.width * 0.7,
                 padding: EdgeInsets.only(bottom: 40.h),
                 child: CircleAvatar(
                   backgroundColor: Theme.of(context).colorScheme.primary,
-                  radius: checkDeviceIsTaplet(context) ? 70.w : 60.w,
+                  radius: MediaQuery.of(context).size.width * 0.125,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: words!
                         .map((word) => CustomText(
                               text: word,
-                              fontSize: checkDeviceIsTaplet(context) ? 20 : 16,
+                              fontSize: 18.sp,
                             ))
                         .toList(),
                   ),
@@ -311,11 +242,17 @@ class HomeView extends StatelessWidget {
               ),
               (index % 2 == 0)
                   ? Positioned(
-                      bottom: -5.h,
-                      left: 20,
+                      bottom: checkDeviceIsTaplet(context)
+                          ? MediaQuery.of(context).size.height * -0.007
+                          : MediaQuery.of(context).size.height * -0.002,
+                      left: checkDeviceIsTaplet(context)
+                          ? MediaQuery.of(context).size.height * 0.01
+                          : MediaQuery.of(context).size.height * 0.01,
                       child: SvgPicture.asset(
                         AppImage.currvedLineUp,
-                        height: 130.h,
+                        height: checkDeviceIsTaplet(context)
+                            ? MediaQuery.of(context).size.height * 0.18
+                            : MediaQuery.of(context).size.height * 0.15,
                         color: Theme.of(context)
                             .colorScheme
                             .primary
@@ -323,11 +260,15 @@ class HomeView extends StatelessWidget {
                       ),
                     )
                   : Positioned(
-                      bottom: 5.h,
-                      right: 20.w,
+                      bottom: checkDeviceIsTaplet(context)
+                          ? MediaQuery.of(context).size.height * 0.001
+                          : MediaQuery.of(context).size.height * 0.01,
+                      right: MediaQuery.of(context).size.height * 0.03,
                       child: SvgPicture.asset(
                         AppImage.currvedLineDown,
-                        height: 130.h,
+                        height: checkDeviceIsTaplet(context)
+                            ? MediaQuery.of(context).size.height * 0.18
+                            : MediaQuery.of(context).size.height * 0.15,
                         color: Theme.of(context)
                             .colorScheme
                             .primary
@@ -347,23 +288,14 @@ class HomeView extends StatelessWidget {
           horizontal: checkDeviceIsTaplet(context) ? 100.w : 0),
       child: SizedBox(
         width: 300.w,
-        height: 140.h,
+        height: MediaQuery.of(context).size.height * 0.17,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SvgPicture.asset(
-              AppImage.trophy,
-              height: 110.h,
-              // width: 100.w,
-            ),
-
-            // Center(
-            //   child: CustomText(
-            //     textAlign: TextAlign.center,
-            //     text: tr('finalExam'),
-            //     color: Theme.of(context).colorScheme.onBackground,
-            //   ),
-            // )
+            SvgPicture.asset(AppImage.trophy,
+                height: MediaQuery.of(context).size.height * 0.13
+                // width: 100.w,
+                ),
           ],
         ),
       ),

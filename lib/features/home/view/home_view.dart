@@ -10,6 +10,7 @@ import 'package:jo_driving_license/core/helper/extensions.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
 import 'package:jo_driving_license/features/botton_nav_bar/botton_nav_bar.dart';
 import 'package:jo_driving_license/features/home/view_model/cubit.dart';
+
 import '../../../core/constants/image_path.dart';
 import '../../../core/helper/get_device_type.dart';
 import '../../../core/helper/spacing.dart';
@@ -62,10 +63,7 @@ class HomeView extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Column(),
                 Column(
-                  // mainAxisAlignment: MainAxisAlignment.center,
-                  // crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     CustomText(
                       height: 1.5.h,
@@ -79,10 +77,10 @@ class HomeView extends StatelessWidget {
                       height: 2.h,
                       fontWeight: FontWeight.w100,
                     ),
-                    SizedBox(height: 10),
-                    Container(
-                        height: 40,
-                        width: 130,
+                    heightSpace(10),
+                    SizedBox(
+                        height: 40.h,
+                        width: 140.w,
                         child: CustomButton(
                           borderRadius: 50,
                           background: Theme.of(context).colorScheme.tertiary,
@@ -94,19 +92,7 @@ class HomeView extends StatelessWidget {
                             context.pushReplacement(
                                 const BottomNavBarApp(index: 2));
                           },
-                        )
-                        //  ElevatedButton(
-                        //   onPressed: () {
-                        //     context.pushReplacement(
-                        //       const BottomNavBarApp(index: 2),
-                        //     );
-                        //   },
-                        //   child: CustomText(
-                        //     text: tr('finalExam'),
-                        //     color: Theme.of(context).colorScheme.primary,
-                        //   ),
-                        // ),
-                        )
+                        ))
                   ],
                 ),
               ],
@@ -290,34 +276,39 @@ class HomeView extends StatelessWidget {
     );
   }
 
-  Stack categoryQuestions(BuildContext context, int index, HomeCubit cubit) {
+  Widget categoryQuestions(BuildContext context, int index, HomeCubit cubit) {
     List<String>? words = cubit.quizzes[index]?.name!.split(' ');
-    return Stack(
-      children: [
-        Container(
-          height: MediaQuery.of(context).size.height * 0.17,
-          // color: Colors.red.shade100,
-          width: checkDeviceIsTaplet(context)
-              ? MediaQuery.of(context).size.height * 0.3
-              : MediaQuery.of(context).size.height * 0.29,
-          child: Stack(
-            alignment: Alignment.topCenter,
+    return Padding(
+      padding: EdgeInsets.symmetric(
+          horizontal: checkDeviceIsTaplet(context) ? 100.w : 0),
+      child: Stack(
+        children: [
+          Stack(
             children: [
-              CircleAvatar(
-                backgroundColor: Theme.of(context).colorScheme.primary,
-                radius: checkDeviceIsTaplet(context) ? 70.w : 60.w,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: words!.map((word) => Text(word)).toList(),
+              Container(
+                width: 300.w,
+                padding: EdgeInsets.only(bottom: 40.h),
+                child: CircleAvatar(
+                  backgroundColor: Theme.of(context).colorScheme.primary,
+                  radius: checkDeviceIsTaplet(context) ? 70.w : 60.w,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: words!
+                        .map((word) => CustomText(
+                              text: word,
+                              fontSize: checkDeviceIsTaplet(context) ? 20 : 16,
+                            ))
+                        .toList(),
+                  ),
                 ),
               ),
               (index % 2 == 0)
                   ? Positioned(
-                      top: 20,
-                      left: 0,
+                      bottom: -5.h,
+                      left: 20,
                       child: SvgPicture.asset(
                         AppImage.currvedLineUp,
-                        height: 120.h,
+                        height: 130.h,
                         color: Theme.of(context)
                             .colorScheme
                             .primary
@@ -325,11 +316,11 @@ class HomeView extends StatelessWidget {
                       ),
                     )
                   : Positioned(
-                      top: 15,
+                      bottom: 5.h,
                       right: 20.w,
                       child: SvgPicture.asset(
                         AppImage.currvedLineDown,
-                        height: 120.h,
+                        height: 130.h,
                         color: Theme.of(context)
                             .colorScheme
                             .primary
@@ -338,51 +329,36 @@ class HomeView extends StatelessWidget {
                     )
             ],
           ),
-        ),
-        // (index % 2 == 0)
-        //     ? Positioned(
-        //         bottom: -5.h,
-        //         left: 20,
-        //         child: SvgPicture.asset(
-        //           AppImage.currvedLineUp,
-        //           height: 130.h,
-        //           color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
-        //         ),
-        //       )
-        //     : Positioned(
-        //         bottom: 5.h,
-        //         right: 20.w,
-        //         child: SvgPicture.asset(
-        //           AppImage.currvedLineDown,
-        //           height: 130.h,
-        //           color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
-        //         ),
-        //       )
-      ],
+        ],
+      ),
     );
   }
 
-  SizedBox finalExam(BuildContext context) {
-    return SizedBox(
-      width: 300.w,
-      height: 140.h,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          SvgPicture.asset(
-            AppImage.trophy,
-            height: 110.h,
-            // width: 100.w,
-          ),
+  Widget finalExam(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(
+          horizontal: checkDeviceIsTaplet(context) ? 100.w : 0),
+      child: SizedBox(
+        width: 300.w,
+        height: 140.h,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SvgPicture.asset(
+              AppImage.trophy,
+              height: 110.h,
+              // width: 100.w,
+            ),
 
-          // Center(
-          //   child: CustomText(
-          //     textAlign: TextAlign.center,
-          //     text: tr('finalExam'),
-          //     color: Theme.of(context).colorScheme.onBackground,
-          //   ),
-          // )
-        ],
+            // Center(
+            //   child: CustomText(
+            //     textAlign: TextAlign.center,
+            //     text: tr('finalExam'),
+            //     color: Theme.of(context).colorScheme.onBackground,
+            //   ),
+            // )
+          ],
+        ),
       ),
     );
   }

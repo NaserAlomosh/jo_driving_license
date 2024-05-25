@@ -54,6 +54,7 @@ class BottomNavBarAppState extends State<BottomNavBarApp> {
     return Scaffold(
       drawer: const AppDrawer(),
       appBar: AppBar(
+        toolbarHeight: 60.h,
         centerTitle: false,
         backgroundColor: Colors.transparent,
         leading: Builder(
@@ -69,49 +70,41 @@ class BottomNavBarAppState extends State<BottomNavBarApp> {
             );
           },
         ),
-        title: Row(
-          children: [
-            // CustomText(
-            //   text: 'الاردن',
-            //   color: Theme.of(context).colorScheme.primary,
-            //   fontWeight: FontWeight.bold,
-            //   fontSize: 20.sp,
-            // ),
-            // const Spacer(),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 5),
-              child: CircleAvatar(
-                radius: 20.sp,
-                backgroundColor: Colors.transparent,
-                child: SvgPicture.asset(
-                  AppImage.policeManHappyHead,
-                  height: checkDeviceIsTaplet(context) ? 230.h : 130.h,
-                  fit: BoxFit.contain,
+        title: Padding(
+          padding: EdgeInsets.symmetric(vertical: 10.h),
+          child: Row(
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 5),
+                child: CircleAvatar(
+                  radius: 20.sp,
+                  backgroundColor: Colors.transparent,
+                  child: SvgPicture.asset(
+                    AppImage.policeManHappyHead,
+                    height: checkDeviceIsTaplet(context) ? 230.h : 130.h,
+                    fit: BoxFit.contain,
+                  ),
                 ),
-                //  Icon(
-                //   Icons.person,
-                //   size: 28.sp,
-                // ),
               ),
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                CustomText(
-                  text: tr('hello'),
-                  color: Theme.of(context).colorScheme.primary,
-                  fontWeight: FontWeight.w400,
-                  fontSize: 16.sp,
-                ),
-                CustomText(
-                  text: 'Tasneem',
-                  color: Theme.of(context).colorScheme.primary,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20.sp,
-                ),
-              ],
-            ),
-          ],
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  CustomText(
+                    text: tr('hello'),
+                    color: Theme.of(context).colorScheme.primary,
+                    fontWeight: FontWeight.w400,
+                    fontSize: 16,
+                  ),
+                  CustomText(
+                    text: 'Tasneem',
+                    color: Theme.of(context).colorScheme.primary,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
       body: screens[initialIndex],

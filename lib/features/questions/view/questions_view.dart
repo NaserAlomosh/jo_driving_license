@@ -194,7 +194,7 @@ class QuistionsViewState extends State<QuistionsView> {
           fontSize: 20,
           onPressed: () {
             if (quistionIndex == cubit.questions.length - 1) {
-              _showResultsDialog();
+              _showResultsDialog(widget.categoryName);
             } else {
               _pageController.nextPage(
                 duration: const Duration(milliseconds: 300),
@@ -207,7 +207,7 @@ class QuistionsViewState extends State<QuistionsView> {
     );
   }
 
-  void _showResultsDialog() {
+  void _showResultsDialog(String categoryName) {
     final correctAnswers =
         answersCorrectness.where((correct) => correct).length;
     final incorrectAnswers = answersCorrectness.length - correctAnswers;
@@ -223,6 +223,8 @@ class QuistionsViewState extends State<QuistionsView> {
         correctsNumber: correctAnswers,
         wrongsNumber: incorrectAnswers,
         scoreNumber: scoreNumber.toString(),
+        isSuccess: scoreNumber >= 80 ? true : false,
+        categoryName: categoryName,
       ),
     );
   }

@@ -5,6 +5,13 @@ class AllQuestionsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center();
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+      ),
+      body: Center(
+        child: Text('all Qs here'),
+      ),
+    );
   }
 }

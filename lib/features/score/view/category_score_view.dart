@@ -9,24 +9,27 @@ import 'package:jo_driving_license/core/helper/spacing.dart';
 import 'package:jo_driving_license/core/widgets/buttons/custom_button.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
 import 'package:jo_driving_license/features/botton_nav_bar/botton_nav_bar.dart';
-
 import '../../final_exam/widget/score_container.dart';
 
 class CategoryScoreView extends StatelessWidget {
   final int correctsNumber;
   final int wrongsNumber;
   final String scoreNumber;
+  final String categoryName;
+
+  final bool isSuccess;
+
   const CategoryScoreView({
     super.key,
     required this.correctsNumber,
     required this.wrongsNumber,
     required this.scoreNumber,
+    required this.isSuccess,
+    required this.categoryName,
   });
 
   @override
   Widget build(BuildContext context) {
-    bool isSuccess = false;
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -34,51 +37,55 @@ class CategoryScoreView extends StatelessWidget {
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(
-            horizontal: GeneralConst.horizontalPadding, vertical: 30.h),
+            horizontal: GeneralConst.horizontalPadding, vertical: 0.h),
         child: SafeArea(
-          child: SingleChildScrollView(
-            child: Column(
-              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              // crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                ribbon(isSuccess),
-                stars(context, isSuccess),
-                heightSpace(30),
-                _score(
-                  context,
-                  correctsNumber: correctsNumber,
-                  wrongsNumber: wrongsNumber,
-                  score: scoreNumber,
-                ),
-                heightSpace(30),
-                supportQoute(isSuccess, context),
-                heightSpace(40),
-                continueButton(context)
-              ],
-            ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            // crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              ribbon(isSuccess),
+              stars(context, isSuccess),
+              heightSpace(30),
+              _score(
+                context,
+                correctsNumber: correctsNumber,
+                wrongsNumber: wrongsNumber,
+                score: scoreNumber,
+              ),
+              // heightSpace(30),
+              supportQoute(isSuccess, context),
+              Spacer(),
+              // heightSpace(40),
+              continueButton(context)
+            ],
           ),
         ),
       ),
     );
   }
 
-  CustomButton continueButton(BuildContext context) {
-    return CustomButton(
-      title: tr('continue').toUpperCase(),
-      fontSize: 20,
-      fontWeight: FontWeight.w700,
-      onPressed: () {
-        context.pushReplacementBottomToTop(const BottomNavBarApp());
-      },
-    );
-  }
-
-  CustomText supportQoute(bool isSuccess, BuildContext context) {
-    return CustomText(
-      text: isSuccess ? tr('supportQouteSuccess1') : tr('supportQouteFail1'),
-      fontSize: 16,
-      textAlign: TextAlign.center,
-      color: Theme.of(context).colorScheme.onBackground,
+  SizedBox ribbon(bool isSuccess) {
+    return SizedBox(
+      height: 100,
+      child: Stack(
+        children: [
+          SvgPicture.asset(
+            AppImage.greenRibbon,
+            // ignore: deprecated_member_use
+            color: isSuccess ? Colors.green.shade300 : Colors.blueGrey.shade300,
+          ),
+          Align(
+            alignment: const Alignment(0, -0.2),
+            child: CustomText(
+              text: isSuccess
+                  ? tr('complete').toUpperCase()
+                  : tr('tryAgain').toUpperCase(),
+              fontSize: 25,
+              fontWeight: FontWeight.w700,
+            ),
+          ),
+        ],
+      ),
     );
   }
 
@@ -119,7 +126,7 @@ class CategoryScoreView extends StatelessWidget {
         children: [
           CustomText(
             text: isSuccess
-                ? 'Naser, ${tr('you complete')} level 1'
+                ? 'Naser, ${tr('youComplete')} $categoryName'
                 : 'Naser, ${tr('neverGiveUp')}',
             fontSize: 20,
             color: Theme.of(context).colorScheme.onBackground,
@@ -136,7 +143,7 @@ class CategoryScoreView extends StatelessWidget {
                         alignment: Alignment.bottomLeft,
                         child: Icon(
                           Icons.star,
-                          size: 75,
+                          size: 65,
                           color: Theme.of(context).colorScheme.tertiary,
                         ),
                       ),
@@ -144,7 +151,7 @@ class CategoryScoreView extends StatelessWidget {
                         alignment: Alignment.topCenter,
                         child: Icon(
                           Icons.star,
-                          size: 135,
+                          size: 125,
                           color: Theme.of(context).colorScheme.tertiary,
                         ),
                       ),
@@ -152,7 +159,7 @@ class CategoryScoreView extends StatelessWidget {
                         alignment: Alignment.bottomLeft,
                         child: Icon(
                           Icons.star,
-                          size: 75,
+                          size: 65,
                           color: Theme.of(context).colorScheme.tertiary,
                         ),
                       ),
@@ -160,6 +167,7 @@ class CategoryScoreView extends StatelessWidget {
                   )
                 : SvgPicture.asset(
                     AppImage.policeManRun,
+                    height: 220.h,
                   ),
           ),
         ],
@@ -167,28 +175,26 @@ class CategoryScoreView extends StatelessWidget {
     );
   }
 
-  SizedBox ribbon(bool isSuccess) {
-    return SizedBox(
-      height: 100,
-      child: Stack(
-        children: [
-          SvgPicture.asset(
-            AppImage.greenRibbon,
-            // ignore: deprecated_member_use
-            color: isSuccess ? Colors.green.shade300 : Colors.blueGrey.shade300,
-          ),
-          Align(
-            alignment: const Alignment(0, -0.2),
-            child: CustomText(
-              text: isSuccess
-                  ? tr('Complete').toUpperCase()
-                  : tr('tryAgain').toUpperCase(),
-              fontSize: 25,
-              fontWeight: FontWeight.w700,
-            ),
-          ),
-        ],
+  supportQoute(bool isSuccess, BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 20),
+      child: CustomText(
+        text: isSuccess ? tr('supportQouteSuccess1') : tr('supportQouteFail1'),
+        fontSize: 16.sp,
+        textAlign: TextAlign.center,
+        color: Theme.of(context).colorScheme.onBackground,
       ),
+    );
+  }
+
+  continueButton(BuildContext context) {
+    return CustomButton(
+      title: tr('continue').toUpperCase(),
+      fontSize: 20,
+      fontWeight: FontWeight.w700,
+      onPressed: () {
+        context.pushReplacementBottomToTop(const BottomNavBarApp());
+      },
     );
   }
 }

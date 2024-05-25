@@ -97,7 +97,8 @@ class FullQuistionsViewState extends State<FullQuistionsView> {
                                 ),
                           heightSpace(8),
                           _getListAnswers(quistionIndex, question),
-                          _getNextButton(cubit, quistionIndex),
+                          _getNextButton(
+                              cubit, quistionIndex, widget.categoryName),
                         ],
                       ),
                     );
@@ -184,7 +185,8 @@ class FullQuistionsViewState extends State<FullQuistionsView> {
     );
   }
 
-  Widget _getNextButton(QuistionsCubit cubit, int quistionIndex) {
+  Widget _getNextButton(
+      QuistionsCubit cubit, int quistionIndex, String categoryName) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
@@ -196,7 +198,7 @@ class FullQuistionsViewState extends State<FullQuistionsView> {
           fontSize: 20,
           onPressed: () {
             if (quistionIndex == cubit.questions.length - 1) {
-              _goToResultsScreen();
+              _goToResultsScreen(categoryName);
             } else {
               _pageController.nextPage(
                 duration: const Duration(milliseconds: 300),
@@ -209,7 +211,7 @@ class FullQuistionsViewState extends State<FullQuistionsView> {
     );
   }
 
-  void _goToResultsScreen() {
+  void _goToResultsScreen(String categoryName) {
     final correctAnswers =
         answersCorrectness.where((correct) => correct).length;
     final incorrectAnswers = answersCorrectness.length - correctAnswers;
@@ -223,6 +225,8 @@ class FullQuistionsViewState extends State<FullQuistionsView> {
         correctsNumber: correctAnswers,
         wrongsNumber: incorrectAnswers,
         scoreNumber: scoreNumber.toString(),
+        isSuccess: scoreNumber >= 80 ? true : true,
+        categoryName: categoryName,
       ),
     );
   }

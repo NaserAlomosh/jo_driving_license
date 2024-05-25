@@ -12,8 +12,8 @@ import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
 import '../../botton_nav_bar/botton_nav_bar.dart';
 import '../widget/score_container.dart';
 
-class ExamScoreView extends StatelessWidget {
-  const ExamScoreView({super.key});
+class FinalExamScoreView extends StatelessWidget {
+  const FinalExamScoreView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +54,7 @@ class ExamScoreView extends StatelessWidget {
                 alignment: Alignment.centerRight,
                 child: SvgPicture.asset(
                   isSuccess ? AppImage.fireworks : AppImage.motivationHand,
-                  height: checkDeviceIsTaplet(context) ? 190 : 90.h,
+                  height: checkDeviceIsTaplet(context) ? 190 : 80.h,
                   // ignore: deprecated_member_use
                   color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
                 ),
@@ -63,14 +63,14 @@ class ExamScoreView extends StatelessWidget {
                 alignment: Alignment.bottomCenter,
                 child: SvgPicture.asset(
                   AppImage.policeManHappy,
-                  height: checkDeviceIsTaplet(context) ? 360 : 260.h,
+                  height: checkDeviceIsTaplet(context) ? 360 : 230.h,
                 ),
               ),
               Align(
                 alignment: Alignment.topLeft,
                 child: SvgPicture.asset(
                   isSuccess ? AppImage.fireworks : AppImage.motivationHand,
-                  height: checkDeviceIsTaplet(context) ? 190 : 90.h,
+                  height: checkDeviceIsTaplet(context) ? 190 : 80.h,
                   // ignore: deprecated_member_use
                   color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
                 ),

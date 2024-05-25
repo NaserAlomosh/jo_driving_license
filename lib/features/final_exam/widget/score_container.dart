@@ -38,7 +38,7 @@ class ScoreContainer extends StatelessWidget {
             fontWeight: FontWeight.w700,
           ),
           Container(
-            height: checkDeviceIsTaplet(context) ? 180 : 60.h,
+            height: checkDeviceIsTaplet(context) ? 180 : 50.h,
             width: double.infinity,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),

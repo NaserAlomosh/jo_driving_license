@@ -10,11 +10,11 @@ import 'package:jo_driving_license/core/helper/extensions.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
 import 'package:jo_driving_license/features/botton_nav_bar/botton_nav_bar.dart';
 import 'package:jo_driving_license/features/home/view_model/cubit.dart';
-
 import '../../../core/constants/image_path.dart';
 import '../../../core/helper/get_device_type.dart';
 import '../../../core/helper/spacing.dart';
 import '../../../core/widgets/animated/animated_widgets/animation_opacity_color_widget.dart';
+import '../../../core/widgets/buttons/custom_button.dart';
 import '../../../core/widgets/error_widget/error_widget.dart';
 import '../../questions/view/questions_view.dart';
 
@@ -28,9 +28,87 @@ class HomeView extends StatelessWidget {
       child: Column(
         children: [
           heightSpace(20),
-          _getCard(context),
+          // _getCard(context),
+          card(context),
           heightSpace(20),
           _getListQuizzes(),
+        ],
+      ),
+    );
+  }
+
+  Padding card(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: GeneralConst.horizontalPadding),
+      child: Stack(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(100),
+            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(15),
+              child: Image.asset(
+                AppImage.carWithBackground,
+                // fit: BoxFit.fill,
+                // width: 350,
+                // height: 250,
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Column(),
+                Column(
+                  // mainAxisAlignment: MainAxisAlignment.center,
+                  // crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    CustomText(
+                      height: 1.5.h,
+                      text: tr('putYourSeatBelt'),
+                      fontWeight: FontWeight.w900,
+                      fontSize: 18.sp,
+                    ),
+                    CustomText(
+                      text: tr('areYouReadyForYourDrivingLicence'),
+                      fontSize: 16.sp,
+                      height: 2.h,
+                      fontWeight: FontWeight.w100,
+                    ),
+                    SizedBox(height: 10),
+                    Container(
+                        height: 40,
+                        width: 130,
+                        child: CustomButton(
+                          borderRadius: 50,
+                          background: Theme.of(context).colorScheme.tertiary,
+                          elevation: 10,
+                          title: tr('finalExam'),
+                          fontSize: 14,
+                          textColor: Theme.of(context).colorScheme.primary,
+                          onPressed: () {},
+                        )
+                        //  ElevatedButton(
+                        //   onPressed: () {
+                        //     context.pushReplacement(
+                        //       const BottomNavBarApp(index: 2),
+                        //     );
+                        //   },
+                        //   child: CustomText(
+                        //     text: tr('finalExam'),
+                        //     color: Theme.of(context).colorScheme.primary,
+                        //   ),
+                        // ),
+                        )
+                  ],
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );
@@ -58,12 +136,15 @@ class HomeView extends StatelessWidget {
               children: [
                 Stack(
                   children: [
+                    // ),
+
                     // SvgPicture.asset(
                     //   AppImage.policeManRun,
                     //   height: checkDeviceIsTaplet(context) ? 207.h : 103.h,
                     //   color: Colors.white,
                     //   fit: BoxFit.contain,
                     // ),
+
                     SvgPicture.asset(
                       AppImage.policeManRun,
                       height: checkDeviceIsTaplet(context) ? 230.h : 130.h,
@@ -107,47 +188,43 @@ class HomeView extends StatelessWidget {
 
   Widget _getListQuizzes() {
     return Expanded(
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 0.w),
-        child: BlocBuilder<HomeCubit, HomeState>(
-          builder: (context, state) {
-            final cubit = context.read<HomeCubit>();
-            if (state is HomeLoading) {
-              return _getLoadingListQuizzes();
-            } else if (state is HomeError) {
-              return CustomErrorWidget(msg: state.error);
-            } else {
-              return ListView.separated(
-                itemCount: cubit.quizzes.length,
-                separatorBuilder: (context, index) => heightSpace(0.h),
-                itemBuilder: (context, index) {
-                  return Align(
-                    alignment: (index % 2 == 0)
-                        ? Alignment.centerRight
-                        : Alignment.centerLeft,
-                    child: GestureDetector(
-                      onTap: () {
-                        index == cubit.quizzes.length - 1
-                            ? context.pushReplacement(
-                                const BottomNavBarApp(index: 2))
-                            : context.push(
-                                QuistionsView(
-                                  quizId: cubit.quizzes[index]?.id ?? '',
-                                  categoryName:
-                                      cubit.quizzes[index]?.name ?? '',
-                                ),
-                              );
-                      },
-                      child: index == cubit.quizzes.length - 1
-                          ? finalExam(context)
-                          : levelQuestions(context, index, cubit),
-                    ),
-                  );
-                },
-              );
-            }
-          },
-        ),
+      child: BlocBuilder<HomeCubit, HomeState>(
+        builder: (context, state) {
+          final cubit = context.read<HomeCubit>();
+          if (state is HomeLoading) {
+            return _getLoadingListQuizzes();
+          } else if (state is HomeError) {
+            return CustomErrorWidget(msg: state.error);
+          } else {
+            return ListView.separated(
+              itemCount: cubit.quizzes.length,
+              separatorBuilder: (context, index) => heightSpace(0),
+              itemBuilder: (context, index) {
+                return Align(
+                  alignment: (index % 2 == 0)
+                      ? Alignment.centerRight
+                      : Alignment.centerLeft,
+                  child: GestureDetector(
+                    onTap: () {
+                      index == cubit.quizzes.length - 1
+                          ? context
+                              .pushReplacement(const BottomNavBarApp(index: 2))
+                          : context.push(
+                              QuistionsView(
+                                quizId: cubit.quizzes[index]?.id ?? '',
+                                categoryName: cubit.quizzes[index]?.name ?? '',
+                              ),
+                            );
+                    },
+                    child: index == cubit.quizzes.length - 1
+                        ? finalExam(context)
+                        : categoryQuestions(context, index, cubit),
+                  ),
+                );
+              },
+            );
+          }
+        },
       ),
     );
   }
@@ -210,45 +287,74 @@ class HomeView extends StatelessWidget {
     );
   }
 
-  Stack levelQuestions(BuildContext context, int index, HomeCubit cubit) {
+  Stack categoryQuestions(BuildContext context, int index, HomeCubit cubit) {
     List<String>? words = cubit.quizzes[index]?.name!.split(' ');
-
     return Stack(
       children: [
         Container(
+          height: MediaQuery.of(context).size.height * 0.17,
+          // color: Colors.red.shade100,
           width: checkDeviceIsTaplet(context)
               ? MediaQuery.of(context).size.height * 0.3
-              : MediaQuery.of(context).size.height * 0.3,
-          height: 140.h,
-          padding: EdgeInsets.only(bottom: 40.h),
-          child: CircleAvatar(
-            backgroundColor: Theme.of(context).colorScheme.primary,
-            radius: checkDeviceIsTaplet(context) ? 70.w : 50.w,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: words!.map((word) => Text(word)).toList(),
-            ),
+              : MediaQuery.of(context).size.height * 0.29,
+          child: Stack(
+            alignment: Alignment.topCenter,
+            children: [
+              CircleAvatar(
+                backgroundColor: Theme.of(context).colorScheme.primary,
+                radius: checkDeviceIsTaplet(context) ? 70.w : 60.w,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: words!.map((word) => Text(word)).toList(),
+                ),
+              ),
+              (index % 2 == 0)
+                  ? Positioned(
+                      top: 20,
+                      left: 0,
+                      child: SvgPicture.asset(
+                        AppImage.currvedLineUp,
+                        height: 120.h,
+                        color: Theme.of(context)
+                            .colorScheme
+                            .primary
+                            .withOpacity(0.5),
+                      ),
+                    )
+                  : Positioned(
+                      top: 15,
+                      right: 20.w,
+                      child: SvgPicture.asset(
+                        AppImage.currvedLineDown,
+                        height: 120.h,
+                        color: Theme.of(context)
+                            .colorScheme
+                            .primary
+                            .withOpacity(0.5),
+                      ),
+                    )
+            ],
           ),
         ),
-        (index % 2 == 0)
-            ? Positioned(
-                bottom: -5.h,
-                left: 20,
-                child: SvgPicture.asset(
-                  AppImage.currvedLineUp,
-                  height: 130.h,
-                  color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
-                ),
-              )
-            : Positioned(
-                bottom: 5.h,
-                right: 20.w,
-                child: SvgPicture.asset(
-                  AppImage.currvedLineDown,
-                  height: 130.h,
-                  color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
-                ),
-              )
+        // (index % 2 == 0)
+        //     ? Positioned(
+        //         bottom: -5.h,
+        //         left: 20,
+        //         child: SvgPicture.asset(
+        //           AppImage.currvedLineUp,
+        //           height: 130.h,
+        //           color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
+        //         ),
+        //       )
+        //     : Positioned(
+        //         bottom: 5.h,
+        //         right: 20.w,
+        //         child: SvgPicture.asset(
+        //           AppImage.currvedLineDown,
+        //           height: 130.h,
+        //           color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
+        //         ),
+        //       )
       ],
     );
   }

@@ -3,10 +3,12 @@ import 'package:awesome_bottom_bar/widgets/inspired/inspired.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
 import 'package:jo_driving_license/features/final_exam/view/final_exam_view.dart';
 import 'package:jo_driving_license/features/home/view/home_view.dart';
 
+import '../../core/constants/image_path.dart';
 import '../../core/helper/get_device_type.dart';
 import 'all_questions/view/questions_view.dart';
 import 'widgets/app_drawer.dart';
@@ -80,11 +82,16 @@ class BottomNavBarAppState extends State<BottomNavBarApp> {
               padding: const EdgeInsets.symmetric(horizontal: 5),
               child: CircleAvatar(
                 radius: 20.sp,
-                backgroundColor: Theme.of(context).colorScheme.primary,
-                child: Icon(
-                  Icons.person,
-                  size: 28.sp,
+                backgroundColor: Colors.transparent,
+                child: SvgPicture.asset(
+                  AppImage.policeManHappyHead,
+                  height: checkDeviceIsTaplet(context) ? 230.h : 130.h,
+                  fit: BoxFit.contain,
                 ),
+                //  Icon(
+                //   Icons.person,
+                //   size: 28.sp,
+                // ),
               ),
             ),
             Column(

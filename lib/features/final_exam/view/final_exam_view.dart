@@ -2,8 +2,12 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jo_driving_license/core/constants/dimentions.dart';
+import 'package:jo_driving_license/core/helper/extensions.dart';
 import 'package:jo_driving_license/core/widgets/buttons/custom_button.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
+import 'package:jo_driving_license/features/final_exam/view/exam_score_view.dart';
+
+import '../../score/view/exam_score_view.dart';
 
 class FinalExamView extends StatelessWidget {
   const FinalExamView({super.key});
@@ -62,7 +66,7 @@ class FinalExamView extends StatelessWidget {
             child: CustomButton(
               title: tr('startNow'),
               onPressed: () {
-                // context.push(const FinalExamViewQuestions());
+                context.push(const FinalExamScoreView());
               },
             ),
           ),

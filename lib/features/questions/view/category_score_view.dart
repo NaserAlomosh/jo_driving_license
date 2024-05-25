@@ -16,17 +16,18 @@ class CategoryScoreView extends StatelessWidget {
   final int correctsNumber;
   final int wrongsNumber;
   final String scoreNumber;
+  final bool isSuccess;
+
   const CategoryScoreView({
     super.key,
     required this.correctsNumber,
     required this.wrongsNumber,
     required this.scoreNumber,
+    required this.isSuccess,
   });
 
   @override
   Widget build(BuildContext context) {
-    bool isSuccess = false;
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -34,35 +35,35 @@ class CategoryScoreView extends StatelessWidget {
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(
-            horizontal: GeneralConst.horizontalPadding, vertical: 30.h),
+          horizontal: GeneralConst.horizontalPadding,
+          vertical: 30.h,
+        ),
         child: SafeArea(
-          child: SingleChildScrollView(
-            child: Column(
-              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              // crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                ribbon(isSuccess),
-                stars(context, isSuccess),
-                heightSpace(30),
-                _score(
-                  context,
-                  correctsNumber: correctsNumber,
-                  wrongsNumber: wrongsNumber,
-                  score: scoreNumber,
-                ),
-                heightSpace(30),
-                supportQoute(isSuccess, context),
-                heightSpace(40),
-                continueButton(context)
-              ],
-            ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              ribbon(isSuccess),
+              stars(context, isSuccess),
+              heightSpace(30),
+              _score(
+                context,
+                correctsNumber: correctsNumber,
+                wrongsNumber: wrongsNumber,
+                score: scoreNumber,
+              ),
+              heightSpace(30),
+              supportQoute(isSuccess, context),
+              heightSpace(40),
+              continueButton(context)
+            ],
           ),
         ),
       ),
     );
   }
 
-  CustomButton continueButton(BuildContext context) {
+  continueButton(BuildContext context) {
     return CustomButton(
       title: tr('continue').toUpperCase(),
       fontSize: 20,

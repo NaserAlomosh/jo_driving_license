@@ -14,7 +14,6 @@ class AppImage {
   //onboadring screen
   static const String onBoardingBus = 'assets/images/json/bus.json';
   static const String onBoardingTaxi = 'assets/images/json/taxi.json';
-
   //question screen
   static const String policeManRun = 'assets/images/svg/police_man_run.svg';
   static const String policeManWait = 'assets/images/svg/police_man_wait.svg';
@@ -26,4 +25,8 @@ class AppImage {
   static const String currvedLineUp = 'assets/images/svg/curved_up.svg';
   static const String currvedLineDown = 'assets/images/svg/curved_down.svg';
   static const String trophy = 'assets/images/svg/trophy.svg';
+  static const String policeManHappyHead =
+      'assets/images/svg/police_man_happy_face.svg';
+  static const String carWithBackground =
+      'assets/images/png/car_with_background.png';
 }

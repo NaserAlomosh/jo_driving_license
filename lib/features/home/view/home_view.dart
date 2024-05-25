@@ -243,36 +243,43 @@ class HomeView extends StatelessWidget {
   }
 
   Widget loading(BuildContext context, int index) {
-    return Stack(
-      children: [
-        Container(
-          width: 300.w,
-          padding: EdgeInsets.only(bottom: 40.h),
-          child: CircleAvatar(
-            backgroundColor: Theme.of(context).colorScheme.primary,
-            radius: 60.sp,
+    return Padding(
+      padding: EdgeInsets.symmetric(
+        horizontal: checkDeviceIsTaplet(context) ? 100.w : 0,
+      ),
+      child: Stack(
+        children: [
+          Container(
+            width: 300.w,
+            padding: EdgeInsets.only(bottom: 40.h),
+            child: CircleAvatar(
+              backgroundColor: Theme.of(context).colorScheme.primary,
+              radius: checkDeviceIsTaplet(context) ? 70.w : 60.w,
+            ),
           ),
-        ),
-        (index % 2 == 0)
-            ? Positioned(
-                bottom: -5.h,
-                left: 20,
-                child: SvgPicture.asset(
-                  AppImage.currvedLineUp,
-                  height: 130.h,
-                  color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
-                ),
-              )
-            : Positioned(
-                bottom: 5.h,
-                right: 20.w,
-                child: SvgPicture.asset(
-                  AppImage.currvedLineDown,
-                  height: 130.h,
-                  color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
-                ),
-              )
-      ],
+          (index % 2 == 0)
+              ? Positioned(
+                  bottom: -5.h,
+                  left: 20,
+                  child: SvgPicture.asset(
+                    AppImage.currvedLineUp,
+                    height: 130.h,
+                    color:
+                        Theme.of(context).colorScheme.primary.withOpacity(0.5),
+                  ),
+                )
+              : Positioned(
+                  bottom: 5.h,
+                  right: 20.w,
+                  child: SvgPicture.asset(
+                    AppImage.currvedLineDown,
+                    height: 130.h,
+                    color:
+                        Theme.of(context).colorScheme.primary.withOpacity(0.5),
+                  ),
+                )
+        ],
+      ),
     );
   }
 

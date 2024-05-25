@@ -90,7 +90,10 @@ class HomeView extends StatelessWidget {
                           title: tr('finalExam'),
                           fontSize: 14,
                           textColor: Theme.of(context).colorScheme.primary,
-                          onPressed: () {},
+                          onPressed: () {
+                            context.pushReplacement(
+                                const BottomNavBarApp(index: 2));
+                          },
                         )
                         //  ElevatedButton(
                         //   onPressed: () {

@@ -9,6 +9,7 @@ import 'package:jo_driving_license/core/helper/spacing.dart';
 import 'package:jo_driving_license/core/widgets/buttons/custom_button.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
 import 'package:jo_driving_license/features/botton_nav_bar/botton_nav_bar.dart';
+
 import '../../final_exam/view/widget/score_container.dart';
 
 class CategoryScoreView extends StatelessWidget {
@@ -53,7 +54,7 @@ class CategoryScoreView extends StatelessWidget {
               ),
               // heightSpace(30),
               supportQoute(isSuccess, context),
-              Spacer(),
+              const Spacer(),
               // heightSpace(40),
               continueButton(context)
             ],

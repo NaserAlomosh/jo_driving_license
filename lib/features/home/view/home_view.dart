@@ -10,6 +10,7 @@ import 'package:jo_driving_license/core/helper/extensions.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
 import 'package:jo_driving_license/features/botton_nav_bar/botton_nav_bar.dart';
 import 'package:jo_driving_license/features/home/view_model/cubit.dart';
+
 import '../../../core/constants/image_path.dart';
 import '../../../core/helper/get_device_type.dart';
 import '../../../core/helper/spacing.dart';
@@ -41,7 +42,7 @@ class HomeView extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: GeneralConst.horizontalPadding),
       child: Stack(
         children: [
-          Container(
+          SizedBox(
             height: MediaQuery.of(context).size.width * 0.45,
             width: double.infinity,
             child: ClipRRect(

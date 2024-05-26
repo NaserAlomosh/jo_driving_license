@@ -5,7 +5,7 @@ import 'package:jo_driving_license/core/constants/dimentions.dart';
 import 'package:jo_driving_license/core/helper/extensions.dart';
 import 'package:jo_driving_license/core/widgets/buttons/custom_button.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
-import 'package:jo_driving_license/features/final_exam/view/exam_score_view.dart';
+import 'package:jo_driving_license/features/questions/view/questions_view.dart';
 
 class FinalExamView extends StatelessWidget {
   const FinalExamView({super.key});
@@ -60,7 +60,7 @@ class FinalExamView extends StatelessWidget {
             child: CustomButton(
               title: tr('startNow'),
               onPressed: () {
-                context.push(const FinalExamScoreView());
+                context.push(const QuestionsView(countRandomQuestions: 5));
               },
             ),
           ),

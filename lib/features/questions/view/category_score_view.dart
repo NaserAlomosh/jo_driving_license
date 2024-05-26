@@ -52,10 +52,8 @@ class CategoryScoreView extends StatelessWidget {
                 wrongsNumber: wrongsNumber,
                 score: scoreNumber,
               ),
-              // heightSpace(30),
               supportQoute(isSuccess, context),
               const Spacer(),
-              // heightSpace(40),
               continueButton(context)
             ],
           ),

@@ -6,11 +6,17 @@ import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
 
 import '../../../core/widgets/general/custom_switch_button.dart';
 
-class SettingsView extends StatelessWidget {
+class SettingsView extends StatefulWidget {
   const SettingsView({super.key});
 
   @override
+  State<SettingsView> createState() => _SettingsViewState();
+}
+
+class _SettingsViewState extends State<SettingsView> {
+  @override
   Widget build(BuildContext context) {
+    bool darkMode = false;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,

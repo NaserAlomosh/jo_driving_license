@@ -24,37 +24,33 @@ class FinalExamView extends StatelessWidget {
             color: Theme.of(context).colorScheme.onBackground,
           ),
           SizedBox(height: 20.h),
-          CustomText(
-            text: tr('putYourSeatBelt'),
-            fontSize: 20.sp,
-            color: Theme.of(context).colorScheme.onBackground,
-          ),
-          SizedBox(height: 20.h),
           Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
                 children: [
                   CustomText(
-                    text: tr('Remember the following instructions'),
+                    text: tr('rememberTheFollowingInstructions'),
                     fontSize: 20.sp,
                     color: Theme.of(context).colorScheme.onBackground,
                   ),
                 ],
               ),
               CustomText(
-                text: tr('Remember the following instructions'),
+                text: tr('timeOfExamIs60Minutes'),
                 fontSize: 20.sp,
                 color: Theme.of(context).colorScheme.onBackground,
               ),
               CustomText(
-                text: tr('Remember the following instructions'),
+                text: tr('youCanGet6WrongAnswers'),
                 fontSize: 20.sp,
                 color: Theme.of(context).colorScheme.onBackground,
               ),
               CustomText(
-                text: tr('Remember the following instructions'),
+                text: tr('andNeverForgetWeBelieveInYou'),
                 fontSize: 20.sp,
                 color: Theme.of(context).colorScheme.onBackground,
+                fontWeight: FontWeight.w900,
               ),
             ],
           ),

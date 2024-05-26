@@ -42,6 +42,16 @@
     "settings":"Settings",
     "allQuestions":"All questions",
     "myFriend":"Buddy",
-    "welcome": "Welcome"
+    "welcome": "Welcome",
+
+    "rememberTheFollowingInstructions":"Remember the following instructions:",
+    "timeOfExamIs60Minutes": "Time of exam is 60 minutes",
+    "youCanGet6WrongAnswers": "You can get 6 wrong answers",
+    "andNeverForgetWeBelieveInYou": "And never forget we believe in you"
+
+
+
+
+
 
 }

@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:jo_driving_license/core/helper/extensions.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
+import 'package:jo_driving_license/features/botton_nav_bar/botton_nav_bar.dart';
 
 import '../../../core/constants/image_path.dart';
 import '../../settings/view/settings_view.dart';
@@ -39,15 +40,21 @@ class AppDrawer extends StatelessWidget {
                     tr('settings'),
                     onTap: () => context.push(SettingsView()),
                   ),
-                  _listTile(
-                    context,
-                    leadingIcon: Icons.emoji_events,
-                    tr('finalExam'),
-                  ),
+
                   _listTile(
                     context,
                     leadingIcon: Icons.quiz,
                     tr('allQuestions'),
+                    onTap: () => context
+                        .pushReplacement(const BottomNavBarApp(index: 1)),
+                  ),
+
+                  _listTile(
+                    context,
+                    leadingIcon: Icons.emoji_events,
+                    tr('finalExam'),
+                    onTap: () => context
+                        .pushReplacement(const BottomNavBarApp(index: 2)),
                   ),
                   // _listTile(
                   //   context,

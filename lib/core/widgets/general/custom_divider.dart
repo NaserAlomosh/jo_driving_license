@@ -9,7 +9,7 @@ Widget getDivider(
   return Padding(
     padding: padding ?? EdgeInsets.only(left: 3.w, right: 1.w),
     child: Divider(
-      color: Theme.of(context).colorScheme.tertiaryContainer,
+      color: Theme.of(context).colorScheme.onBackground,
       thickness: thickness,
     ),
   );

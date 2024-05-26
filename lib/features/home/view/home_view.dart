@@ -193,8 +193,10 @@ class HomeView extends StatelessWidget {
                   child: SvgPicture.asset(
                     AppImage.currvedLineUp,
                     height: 130.h,
-                    color:
-                        Theme.of(context).colorScheme.primary.withOpacity(0.5),
+                    color: Theme.of(context)
+                        .colorScheme
+                        .secondary
+                        .withOpacity(0.5),
                   ),
                 )
               : Positioned(
@@ -203,8 +205,10 @@ class HomeView extends StatelessWidget {
                   child: SvgPicture.asset(
                     AppImage.currvedLineDown,
                     height: 130.h,
-                    color:
-                        Theme.of(context).colorScheme.primary.withOpacity(0.5),
+                    color: Theme.of(context)
+                        .colorScheme
+                        .secondary
+                        .withOpacity(0.5),
                   ),
                 )
         ],
@@ -255,7 +259,7 @@ class HomeView extends StatelessWidget {
                             : MediaQuery.of(context).size.height * 0.15,
                         color: Theme.of(context)
                             .colorScheme
-                            .primary
+                            .secondary
                             .withOpacity(0.5),
                       ),
                     )
@@ -271,7 +275,7 @@ class HomeView extends StatelessWidget {
                             : MediaQuery.of(context).size.height * 0.15,
                         color: Theme.of(context)
                             .colorScheme
-                            .primary
+                            .secondary
                             .withOpacity(0.5),
                       ),
                     )

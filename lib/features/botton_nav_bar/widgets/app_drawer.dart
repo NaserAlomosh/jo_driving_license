@@ -1,8 +1,12 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:jo_driving_license/core/helper/extensions.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
+
+import '../../../core/constants/image_path.dart';
+import '../../settings/view/settings_view.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({super.key});
@@ -30,25 +34,38 @@ class AppDrawer extends StatelessWidget {
                     onTap: () => context.pop(),
                   ),
                   _listTile(
-                      context,
-                      leadingIcon: Icons.favorite_border,
-                      tr('favourite')),
+                    context,
+                    leadingIcon: Icons.settings,
+                    tr('settings'),
+                    onTap: () => context.push(SettingsView()),
+                  ),
+                  _listTile(
+                    context,
+                    leadingIcon: Icons.emoji_events,
+                    tr('finalExam'),
+                  ),
+                  _listTile(
+                    context,
+                    leadingIcon: Icons.quiz,
+                    tr('allQuestions'),
+                  ),
                   // _listTile(
                   //   context,
                   //   leadingIcon: Icons.search_sharp,
                   //   tr('search'),
                   // ),
                   //isPortraitScreen(context) ? heightSpace(450) : heightSpace(100),
-                  const Spacer(),
-                  Padding(
-                    padding: EdgeInsets.only(bottom: 30.h),
-                    child: _listTile(
-                      context,
-                      tr('logout'),
-                      leadingIcon: Icons.logout,
-                      trailingIcon: const SizedBox(),
-                    ),
-                  ),
+
+                  // const Spacer(),
+                  // Padding(
+                  //   padding: EdgeInsets.only(bottom: 30.h),
+                  //   child: _listTile(
+                  //     context,
+                  //     tr('logout'),
+                  //     leadingIcon: Icons.logout,
+                  //     trailingIcon: const SizedBox(),
+                  //   ),
+                  // ),
                 ],
               ),
             ),
@@ -59,16 +76,21 @@ class AppDrawer extends StatelessWidget {
   }
 
   Widget _getHeaders(BuildContext context) {
+    String userName = '${tr('welcome')} ${tr('myFriend')}';
     return UserAccountsDrawerHeader(
       currentAccountPictureSize: const Size.square(70),
-      accountName: const CustomText(
-        text: 'fullName',
+      accountName: CustomText(
+        text: userName,
       ),
       accountEmail: const CustomText(
         text: 'example@gmail.com ',
       ),
-      currentAccountPicture: const CircleAvatar(
-        backgroundColor: Color.fromARGB(255, 0, 44, 79),
+      currentAccountPicture: CircleAvatar(
+        child: SvgPicture.asset(
+          AppImage.policeManHappyHead,
+          fit: BoxFit.contain,
+        ),
+        // backgroundColor: Color.fromARGB(255, 0, 44, 79),
       ),
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.primary,

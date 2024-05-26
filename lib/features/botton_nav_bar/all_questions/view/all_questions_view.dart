@@ -1,16 +1,41 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:jo_driving_license/core/constants/dimentions.dart';
+import 'package:jo_driving_license/core/helper/extensions.dart';
+import 'package:jo_driving_license/core/widgets/buttons/custom_button.dart';
+import '../../../../core/widgets/general/custom_text.dart';
+import '../widget/all_exam_questions_view.dart';
 
-class AllQuestionsView extends StatelessWidget {
-  const AllQuestionsView({super.key});
+class QuestionsView extends StatelessWidget {
+  const QuestionsView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
+    return Padding(
+      padding: EdgeInsets.symmetric(
+        horizontal: GeneralConst.horizontalPadding,
+        vertical: GeneralConst.horizontalPadding,
       ),
-      body: Center(
-        child: Text('all Qs here'),
+      child: Column(
+        children: [
+          CustomText(
+            text: tr('you will test all questions'),
+            fontSize: 20.sp,
+            color: Theme.of(context).colorScheme.onBackground,
+          ),
+          CustomText(
+            text: tr('are you ready'),
+            fontSize: 20.sp,
+            color: Theme.of(context).colorScheme.onBackground,
+          ),
+          CustomButton(
+            title: tr('startNow'),
+            onPressed: () {
+              context.push(const AllExamQuestionsView());
+            },
+          ),
+        ],
       ),
     );
   }

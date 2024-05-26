@@ -10,7 +10,7 @@
         "next": "التالي",
         "skip": "تخطي",
         "getStarted": "ابدأ",
-        "hello": "مرحبا",
+        "hello": "مرحباً بك",
         "profile": "الملف الشخصي",
         "home": "الصفحة الرئيسية",
         "areYouReadyForYourDrivingLicence": "مستعد للحصول على رخصة القيادة؟",
@@ -39,7 +39,14 @@
         "question": "سؤال",
         "email": "البريد الإلكتروني",
 
-        "finalExam":"الامتحان النهائي"
+        "finalExam":"الامتحان النهائي",
+
+        "darkMode": "الوضع الداكن",
+        "settings": "الإعدادات",
+        "allQuestions": "جميع الأسئلة",
+        "myFriend": "صديقي",
+        "welcome": "أهلاً بك"
+
 
 
       

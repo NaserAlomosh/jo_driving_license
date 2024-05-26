@@ -4,16 +4,16 @@ ThemeData lightMode = ThemeData(
   brightness: Brightness.light,
   colorScheme: const ColorScheme.light(
       background: Color.fromARGB(255, 247, 245, 248),
-      onBackground: Color.fromARGB(255, 98, 94, 102),
+      onBackground: Color(0xff6C5070),
       primary: Color(0xff6C5070),
       onPrimary: Color(0xFFFFFFFF),
-      // secondary: Colors.orange,
+      secondary: Color(0xff6C5070),
       onSecondary: Color(0xff6C5070),
       surface: Color.fromARGB(255, 238, 229, 245),
       error: Color.fromARGB(255, 214, 130, 130),
       onError: Color.fromARGB(255, 122, 176, 134),
       // primaryContainer: Color(0xff01DC82),
-      // outline: Color(0xffEBECF1),
+      outline: Color.fromARGB(255, 194, 180, 196),
       // secondaryContainer: Color(0xfff43f5e),
       tertiaryContainer: Color(0xFFDDDDDD),
       tertiary: Color(0xFFFFE15D)),
@@ -23,27 +23,18 @@ ThemeData lightMode = ThemeData(
 ThemeData darkMode = ThemeData(
   brightness: Brightness.dark,
   colorScheme: const ColorScheme.dark(
-    // colorPrimary
-    primary: Color.fromARGB(255, 43, 50, 117),
-    // colorOnPrimary
-    onPrimary: Color(0xFFFFFFFF),
-    // colorButtons and Icons
-    secondary: Color(0xffF58025),
-    // color Font
-    onSecondary: Color.fromARGB(91, 255, 255, 255),
-    // background
-    background: Color.fromARGB(255, 255, 255, 255),
-    // background: Color.fromARGB(171, 3, 0, 54),
-    // colorGreen
-    primaryContainer: Color(0xff01DC82),
-    // colorBorder
-    outline: Color(0xffEBECF1),
-    // colorRed
-    secondaryContainer: Color(0xfff43f5e),
-    // colorGrey
-    // tertiaryContainer:const Color(0xffEBECF1),
-    tertiaryContainer: Color(0xFFDDDDDD),
-    // black color
-    tertiary: Colors.black,
-  ),
+      background: Color.fromARGB(255, 75, 53, 79),
+      onBackground: Color(0xFFFFFFFF),
+      primary: Color(0xff6C5070),
+      onPrimary: Color(0xFFFFFFFF),
+      secondary: Color.fromARGB(255, 254, 245, 255),
+      onSecondary: Color.fromARGB(255, 121, 67, 128),
+      surface: Color.fromARGB(255, 164, 146, 167),
+      error: Color.fromARGB(255, 214, 130, 130),
+      onError: Color.fromARGB(255, 122, 176, 134),
+      // primaryContainer: Color(0xff01DC82),
+      outline: Color.fromARGB(255, 194, 180, 196),
+      // secondaryContainer: Color(0xfff43f5e),
+      tertiaryContainer: Color(0xFFDDDDDD),
+      tertiary: Color(0xFFFFE15D)),
 );

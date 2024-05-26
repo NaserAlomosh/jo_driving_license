@@ -36,5 +36,12 @@
 
     "email": "Email",
 
-    "finalExam":"Final Exam"
+    "finalExam":"Final Exam",
+
+    "darkMode":"Dark mode",
+    "settings":"Settings",
+    "allQuestions":"All questions",
+    "myFriend":"Buddy",
+    "welcome": "Welcome"
+
 }

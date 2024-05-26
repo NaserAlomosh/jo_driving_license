@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jo_driving_license/core/helper/get_device_type.dart';
 
-import '../../../core/widgets/general/custom_text.dart';
+import '../../../../core/widgets/general/custom_text.dart';
 
 class ScoreContainer extends StatelessWidget {
   const ScoreContainer({

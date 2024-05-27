@@ -67,7 +67,7 @@ class BottomNavBarAppState extends State<BottomNavBarApp> {
               },
               child: Icon(
                 Icons.menu,
-                size: 38.sp,
+                size: 34.r,
               ),
             );
           },

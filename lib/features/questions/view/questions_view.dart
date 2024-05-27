@@ -62,7 +62,6 @@ class QuestionsViewState extends State<QuestionsView> {
           child: BlocBuilder<QuistionsCubit, QuistionsState>(
             builder: (context, state) {
               final cubit = context.read<QuistionsCubit>();
-
               if (state is QuistionsLoading) {
                 return const LoadingQuestionsWidget();
               } else if (state is QuistionsError) {
@@ -116,7 +115,7 @@ class QuestionsViewState extends State<QuestionsView> {
     );
   }
 
-  _questionCounter(int quistionIndex, int totalQuestions) {
+  Widget _questionCounter(int quistionIndex, int totalQuestions) {
     return CustomText(
       text: '${tr('question')} ${quistionIndex + 1}/$totalQuestions',
       color: Theme.of(context).colorScheme.onBackground,

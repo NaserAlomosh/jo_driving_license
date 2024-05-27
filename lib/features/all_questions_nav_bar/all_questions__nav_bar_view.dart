@@ -4,11 +4,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jo_driving_license/core/constants/dimentions.dart';
 import 'package:jo_driving_license/core/helper/extensions.dart';
 import 'package:jo_driving_license/core/widgets/buttons/custom_button.dart';
-import '../../../../core/widgets/general/custom_text.dart';
-import '../widget/all_exam_questions_view.dart';
 
-class QuestionsView extends StatelessWidget {
-  const QuestionsView({super.key});
+import '../../core/widgets/general/custom_text.dart';
+import '../questions/view/questions_view.dart';
+
+class AllQuestionsNavBar extends StatelessWidget {
+  const AllQuestionsNavBar({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +33,7 @@ class QuestionsView extends StatelessWidget {
           CustomButton(
             title: tr('startNow'),
             onPressed: () {
-              context.push(const AllExamQuestionsView());
+              context.push(const QuestionsView());
             },
           ),
         ],

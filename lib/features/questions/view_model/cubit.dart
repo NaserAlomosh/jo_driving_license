@@ -11,10 +11,13 @@ part 'state.dart';
 class QuistionsCubit extends Cubit<QuistionsState> {
   QuistionsCubit() : super(QuistionsInitial());
   List<QuestionModel?> questions = [];
-  getQuistionsCubit(String quizId) async {
+  getQuistionsCubit(
+    String? quizId,
+    int? countRandomQuestions,
+  ) async {
     try {
       emit(QuistionsLoading());
-      questions = await getQuestions(quizId);
+      questions = await getQuestions(quizId, countRandomQuestions);
       emit(QuistionsSuccess());
     } on FirebaseException catch (e) {
       emit(QuistionsError(error: firebaseErrorHandler(e.code)));

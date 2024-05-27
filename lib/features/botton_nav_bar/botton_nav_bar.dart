@@ -7,9 +7,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
 import 'package:jo_driving_license/features/final_exam/view/final_exam_view.dart';
 import 'package:jo_driving_license/features/home/view/home_view.dart';
+
 import '../../core/constants/image_path.dart';
 import '../../core/helper/get_device_type.dart';
-import 'all_questions/view/all_questions_view.dart';
+import '../all_questions_nav_bar/all_questions__nav_bar_view.dart';
 import 'widgets/app_drawer.dart';
 
 class BottomNavBarApp extends StatefulWidget {
@@ -28,7 +29,7 @@ class BottomNavBarAppState extends State<BottomNavBarApp> {
   late int initialIndex;
   List<Widget> screens = [
     const HomeView(),
-    const QuestionsView(),
+    const AllQuestionsNavBar(),
     const FinalExamView(),
   ];
   @override

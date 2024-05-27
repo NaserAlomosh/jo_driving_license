@@ -3,20 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jo_driving_license/core/constants/dimentions.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
+import 'package:jo_driving_license/features/theme/theme_switch_widget.dart';
 
 import '../../../core/widgets/general/custom_switch_button.dart';
 
-class SettingsView extends StatefulWidget {
+class SettingsView extends StatelessWidget {
   const SettingsView({super.key});
 
   @override
-  State<SettingsView> createState() => _SettingsViewState();
-}
-
-class _SettingsViewState extends State<SettingsView> {
-  @override
   Widget build(BuildContext context) {
-    bool darkMode = false;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -46,7 +41,7 @@ class _SettingsViewState extends State<SettingsView> {
                       text: tr('darkMode'),
                       color: Theme.of(context).colorScheme.onBackground,
                     ),
-                    appearanceSwitch(),
+                    const CustomSwitchThemeWidget(),
                   ],
                 ),
               ),
@@ -70,4 +65,5 @@ class _SettingsViewState extends State<SettingsView> {
     );
   }
 }
+
 //

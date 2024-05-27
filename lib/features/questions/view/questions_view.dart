@@ -1,4 +1,5 @@
 import 'dart:developer';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,25 +14,27 @@ import 'package:jo_driving_license/core/widgets/general/custom_loading.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_network_image.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
 import 'package:jo_driving_license/features/questions/view/category_score_view.dart';
+
 import '../../../core/constants/dimentions.dart';
 import '../../../core/constants/image_path.dart';
 import '../view_model/cubit.dart';
 
-class QuistionsView extends StatefulWidget {
-  final String quizId;
-  final String categoryName;
-
-  const QuistionsView({
+class QuestionsView extends StatefulWidget {
+  final String? quizId;
+  final String? categoryName;
+  final int? countRandomQuestions;
+  const QuestionsView({
     super.key,
-    required this.quizId,
-    required this.categoryName,
+    this.quizId,
+    this.categoryName,
+    this.countRandomQuestions,
   });
 
   @override
-  QuistionsViewState createState() => QuistionsViewState();
+  QuestionsViewState createState() => QuestionsViewState();
 }
 
-class QuistionsViewState extends State<QuistionsView> {
+class QuestionsViewState extends State<QuestionsView> {
   final PageController _pageController = PageController();
   Map<int, Map<int, Color>> answerColors = {};
   List<bool> answersCorrectness = [];
@@ -40,12 +43,16 @@ class QuistionsViewState extends State<QuistionsView> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => QuistionsCubit()..getQuistionsCubit(widget.quizId),
+      create: (context) => QuistionsCubit()
+        ..getQuistionsCubit(
+          widget.quizId,
+          widget.countRandomQuestions,
+        ),
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           title: CustomText(
-            text: widget.categoryName,
+            text: widget.categoryName ?? tr('allQuestions'),
             fontSize: 24.sp,
             fontWeight: FontWeight.w700,
             color: Theme.of(context).colorScheme.onSecondary,
@@ -192,7 +199,11 @@ class QuistionsViewState extends State<QuistionsView> {
           fontSize: 20,
           onPressed: () {
             if (quistionIndex == cubit.questions.length - 1) {
-              _showResultsDialog(widget.categoryName);
+              if (answerSelected.contains(false)) {
+                _showIncompleteDialog();
+              } else {
+                _pushToResultsScreen(widget.categoryName ?? tr('allQuestions'));
+              }
             } else {
               _pageController.nextPage(
                 duration: const Duration(milliseconds: 300),
@@ -205,7 +216,7 @@ class QuistionsViewState extends State<QuistionsView> {
     );
   }
 
-  void _showResultsDialog(String categoryName) {
+  void _pushToResultsScreen(String categoryName) {
     final correctAnswers =
         answersCorrectness.where((correct) => correct).length;
     final incorrectAnswers = answersCorrectness.length - correctAnswers;
@@ -224,6 +235,26 @@ class QuistionsViewState extends State<QuistionsView> {
         isSuccess: scoreNumber >= 80 ? true : false,
         categoryName: categoryName,
       ),
+    );
+  }
+
+  void _showIncompleteDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(tr('unansweredQuestions')),
+          content: Text(tr('pleaseAnswerAllQuestions')),
+          actions: [
+            TextButton(
+              child: Text(tr('ok')),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 

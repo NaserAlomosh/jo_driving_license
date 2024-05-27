@@ -10,6 +10,7 @@ import 'package:jo_driving_license/core/helper/extensions.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
 import 'package:jo_driving_license/features/botton_nav_bar/botton_nav_bar.dart';
 import 'package:jo_driving_license/features/home/view_model/cubit.dart';
+
 import '../../../core/constants/image_path.dart';
 import '../../../core/helper/get_device_type.dart';
 import '../../../core/helper/spacing.dart';
@@ -41,7 +42,7 @@ class HomeView extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: GeneralConst.horizontalPadding),
       child: Stack(
         children: [
-          Container(
+          SizedBox(
             height: MediaQuery.of(context).size.width * 0.45,
             width: double.infinity,
             child: ClipRRect(
@@ -128,7 +129,7 @@ class HomeView extends StatelessWidget {
                           ? context
                               .pushReplacement(const BottomNavBarApp(index: 2))
                           : context.push(
-                              QuistionsView(
+                              QuestionsView(
                                 quizId: cubit.quizzes[index]?.id ?? '',
                                 categoryName: cubit.quizzes[index]?.name ?? '',
                               ),
@@ -179,20 +180,28 @@ class HomeView extends StatelessWidget {
       child: Stack(
         children: [
           Container(
-            width: 300.w,
+            width: checkDeviceIsTaplet(context)
+                ? MediaQuery.of(context).size.width * 0.5
+                : MediaQuery.of(context).size.width * 0.7,
             padding: EdgeInsets.only(bottom: 40.h),
             child: CircleAvatar(
               backgroundColor: Theme.of(context).colorScheme.primary,
-              radius: checkDeviceIsTaplet(context) ? 70.w : 60.w,
+              radius: MediaQuery.of(context).size.width * 0.125,
             ),
           ),
           (index % 2 == 0)
               ? Positioned(
-                  bottom: -5.h,
-                  left: 20,
+                  bottom: checkDeviceIsTaplet(context)
+                      ? MediaQuery.of(context).size.height * -0.007
+                      : MediaQuery.of(context).size.height * -0.002,
+                  left: checkDeviceIsTaplet(context)
+                      ? MediaQuery.of(context).size.height * 0.01
+                      : MediaQuery.of(context).size.height * 0.01,
                   child: SvgPicture.asset(
                     AppImage.currvedLineUp,
-                    height: 130.h,
+                    height: checkDeviceIsTaplet(context)
+                        ? MediaQuery.of(context).size.height * 0.18
+                        : MediaQuery.of(context).size.height * 0.15,
                     color: Theme.of(context)
                         .colorScheme
                         .secondary
@@ -264,15 +273,11 @@ class HomeView extends StatelessWidget {
                       ),
                     )
                   : Positioned(
-                      bottom: checkDeviceIsTaplet(context)
-                          ? MediaQuery.of(context).size.height * 0.001
-                          : MediaQuery.of(context).size.height * 0.01,
-                      right: MediaQuery.of(context).size.height * 0.03,
+                      bottom: 5.h,
+                      right: 20.w,
                       child: SvgPicture.asset(
                         AppImage.currvedLineDown,
-                        height: checkDeviceIsTaplet(context)
-                            ? MediaQuery.of(context).size.height * 0.18
-                            : MediaQuery.of(context).size.height * 0.15,
+                        height: 130.h,
                         color: Theme.of(context)
                             .colorScheme
                             .secondary

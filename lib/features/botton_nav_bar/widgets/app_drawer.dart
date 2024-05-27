@@ -38,7 +38,7 @@ class AppDrawer extends StatelessWidget {
                     context,
                     leadingIcon: Icons.settings,
                     tr('settings'),
-                    onTap: () => context.push(SettingsView()),
+                    onTap: () => context.push(const SettingsView()),
                   ),
 
                   _listTile(

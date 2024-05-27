@@ -10,10 +10,10 @@ import 'package:jo_driving_license/core/helper/spacing.dart';
 import 'package:jo_driving_license/core/models/question_model.dart';
 import 'package:jo_driving_license/core/widgets/buttons/custom_button.dart';
 import 'package:jo_driving_license/core/widgets/error_widget/error_widget.dart';
-import 'package:jo_driving_license/core/widgets/general/custom_loading.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_network_image.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
 import 'package:jo_driving_license/features/questions/view/category_score_view.dart';
+import 'package:jo_driving_license/features/questions/view/widgets/loading_questions_widget.dart';
 
 import '../../../core/constants/dimentions.dart';
 import '../../../core/constants/image_path.dart';
@@ -64,7 +64,7 @@ class QuestionsViewState extends State<QuestionsView> {
               final cubit = context.read<QuistionsCubit>();
 
               if (state is QuistionsLoading) {
-                return myLoadingIndicator(context);
+                return const LoadingQuestionsWidget();
               } else if (state is QuistionsError) {
                 return Center(child: CustomErrorWidget(msg: state.error));
               } else {

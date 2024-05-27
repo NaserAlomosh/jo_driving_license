@@ -186,7 +186,7 @@ class HomeView extends StatelessWidget {
             padding: EdgeInsets.only(bottom: 40.h),
             child: CircleAvatar(
               backgroundColor: Theme.of(context).colorScheme.primary,
-              radius: MediaQuery.of(context).size.width * 0.125,
+              radius: MediaQuery.of(context).size.width * 0.150,
             ),
           ),
           (index % 2 == 0)
@@ -241,13 +241,13 @@ class HomeView extends StatelessWidget {
                 padding: EdgeInsets.only(bottom: 40.h),
                 child: CircleAvatar(
                   backgroundColor: Theme.of(context).colorScheme.primary,
-                  radius: MediaQuery.of(context).size.width * 0.125,
+                  radius: MediaQuery.of(context).size.width * 0.150,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: words!
                         .map((word) => CustomText(
                               text: word,
-                              fontSize: 18.sp,
+                              fontSize: 17,
                             ))
                         .toList(),
                   ),

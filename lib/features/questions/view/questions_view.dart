@@ -175,7 +175,7 @@ class QuestionsViewState extends State<QuestionsView> {
               fontWeight: FontWeight.w500,
               color: answerColors[quistionIndex]?[answerIndex] ==
                       Theme.of(context).colorScheme.onError
-                  ? Theme.of(context).colorScheme.onPrimary
+                  ? Theme.of(context).colorScheme.onBackground
                   : Theme.of(context).colorScheme.onBackground,
             ),
           ),
@@ -262,7 +262,7 @@ class QuestionsViewState extends State<QuestionsView> {
         widthFactor: 1, // Fraction of the original width
         heightFactor: 0.7, // Fraction of the original height
         child: SizedBox(
-          height: 250.w,
+          height: MediaQuery.of(context).size.height * 0.23,
           width: 150.w,
           child: SvgPicture.asset(
             AppImage.policeManWait,

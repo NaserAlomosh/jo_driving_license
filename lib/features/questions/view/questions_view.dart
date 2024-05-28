@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,7 +13,6 @@ import 'package:jo_driving_license/core/widgets/general/custom_network_image.dar
 import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
 import 'package:jo_driving_license/features/questions/view/category_score_view.dart';
 import 'package:jo_driving_license/features/questions/view/widgets/loading_questions_widget.dart';
-
 import '../../../core/constants/dimentions.dart';
 import '../../../core/constants/image_path.dart';
 import '../view_model/cubit.dart';
@@ -55,7 +53,7 @@ class QuestionsViewState extends State<QuestionsView> {
             text: widget.categoryName ?? tr('allQuestions'),
             fontSize: 24.sp,
             fontWeight: FontWeight.w700,
-            color: Theme.of(context).colorScheme.onSecondary,
+            color: Theme.of(context).colorScheme.secondary,
           ),
         ),
         body: SafeArea(
@@ -132,7 +130,7 @@ class QuestionsViewState extends State<QuestionsView> {
       backgroundColor: Colors.grey[300],
       borderRadius: BorderRadius.circular(10),
       valueColor: AlwaysStoppedAnimation<Color>(
-        Theme.of(context).colorScheme.primary,
+        Theme.of(context).colorScheme.secondaryContainer,
       ),
     );
   }
@@ -143,7 +141,7 @@ class QuestionsViewState extends State<QuestionsView> {
       child: CustomText(
         text: question?.question ?? '',
         fontSize: 20,
-        color: Theme.of(context).colorScheme.onSecondary,
+        color: Theme.of(context).colorScheme.secondary,
       ),
     );
   }

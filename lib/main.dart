@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'core/helper/display_rotation_screen.dart';
 import 'driving_license.dart';
 import 'firebase_options.dart';
 
@@ -10,11 +11,11 @@ late SharedPreferences prefs;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await displayScreenRotation();
   await EasyLocalization.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-
   prefs = await SharedPreferences.getInstance();
 
   runApp(

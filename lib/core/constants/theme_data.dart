@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 ThemeData lightMode = ThemeData(
   brightness: Brightness.light,
   colorScheme: const ColorScheme.light(
-      background: Color.fromARGB(255, 247, 245, 248),
+      background: Color(0xFFF7F5F8),
       onBackground: Color(0xff6C5070),
       primary: Color(0xff6C5070),
       onPrimary: Color(0xFFFFFFFF),

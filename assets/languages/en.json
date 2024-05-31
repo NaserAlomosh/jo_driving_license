@@ -19,9 +19,9 @@
     "complete": "Complete",
     "youComplete": "you complete",
     "congratulations": "Congratulations!",
-    "continue":"Continue",
+    "continue": "Continue",
     "goForYourLicence": "go for your license.",
-    "neverGiveUp":"Never give up!",
+    "neverGiveUp": "Never give up!",
     "yourScore": "Your score",
     "wrongs": "Wrongs",
     "corrects": "Corrects",
@@ -29,30 +29,21 @@
     "supportQouteSuccess2": "Outstanding performance! Your dedication to improving each day is evident, and it's taking you closer to your goals. Stay focused and keep up the excellent work!",
     "supportQouteFail1": "Mistakes are proof that you are trying. Reflect on what went wrong and use it as a learning experience to improve.",
     "supportQouteFail2": "Great achievements are often born out of great setbacks. Use this experience to fuel your determination and keep going!",
-    "tryAgain":"Try again",
-    "and" :"and",
-
+    "tryAgain": "Try again",
+    "and": "and",
     "question": "Question",
-
     "email": "Email",
-
-    "finalExam":"Final Exam",
-
-    "darkMode":"Dark mode",
-    "settings":"Settings",
-    "allQuestions":"All questions",
-    "myFriend":"Buddy",
+    "finalExam": "Final Exam",
+    "darkMode": "Dark mode",
+    "settings": "Settings",
+    "allQuestions": "All questions",
+    "myFriend": "Buddy",
     "welcome": "Welcome",
-
-    "rememberTheFollowingInstructions":"Remember the following instructions:",
+    "rememberTheFollowingInstructions": "Remember the following instructions:",
     "timeOfExamIs60Minutes": "Time of exam is 60 minutes",
     "youCanGet6WrongAnswers": "You can get 6 wrong answers",
     "andNeverForgetWeBelieveInYou": "And never forget we believe in you",
-    "startNow":"Start now"
-
-
-
-
-
-
+    "startNow": "Start now",
+    "areYouReady": "Are You Ready?",
+    "youWillTestAllQuestions": "You will test all questions"
 }

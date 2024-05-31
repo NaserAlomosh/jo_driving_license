@@ -20,33 +20,31 @@ class SettingsView extends StatelessWidget {
           color: Theme.of(context).colorScheme.onBackground,
         ),
       ),
-      body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: GeneralConst.horizontalPadding,
-            vertical: GeneralConst.horizontalPadding,
-          ),
-          child: Column(
-            children: [
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: 15.w),
-                decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.surface,
-                    borderRadius: BorderRadius.circular(12)),
-                height: MediaQuery.of(context).size.width * 0.2,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    CustomText(
-                      text: tr('darkMode'),
-                      color: Theme.of(context).colorScheme.onBackground,
-                    ),
-                    const CustomSwitchThemeWidget(),
-                  ],
-                ),
+      body: Padding(
+        padding: EdgeInsets.symmetric(
+          horizontal: GeneralConst.horizontalPadding,
+          vertical: GeneralConst.horizontalPadding,
+        ),
+        child: Column(
+          children: [
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 15.w),
+              decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.surface,
+                  borderRadius: BorderRadius.circular(12)),
+              height: MediaQuery.of(context).size.width * 0.2,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  CustomText(
+                    text: tr('darkMode'),
+                    color: Theme.of(context).colorScheme.onBackground,
+                  ),
+                  const CustomSwitchThemeWidget(),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

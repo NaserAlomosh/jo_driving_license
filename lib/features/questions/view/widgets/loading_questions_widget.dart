@@ -23,7 +23,7 @@ class LoadingQuestionsWidget extends StatelessWidget {
           return Padding(
             padding: EdgeInsets.all(GeneralConst.horizontalPadding),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 linearIndicator(context),
@@ -53,7 +53,7 @@ class LoadingQuestionsWidget extends StatelessWidget {
                   alignment: Alignment.center,
                   child: Container(
                     width: 100.w,
-                    height: 100.h,
+                    height: 100.w,
                     decoration: BoxDecoration(
                       color: Colors.grey[300],
                       borderRadius: BorderRadius.circular(20),

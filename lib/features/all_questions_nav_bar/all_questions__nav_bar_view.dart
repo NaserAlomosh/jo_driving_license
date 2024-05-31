@@ -5,6 +5,7 @@ import 'package:jo_driving_license/core/constants/dimentions.dart';
 import 'package:jo_driving_license/core/helper/extensions.dart';
 import 'package:jo_driving_license/core/widgets/buttons/custom_button.dart';
 
+import '../../core/constants/image_path.dart';
 import '../../core/widgets/general/custom_text.dart';
 import '../questions/view/questions_view.dart';
 
@@ -19,19 +20,31 @@ class AllQuestionsNavBar extends StatelessWidget {
         vertical: GeneralConst.horizontalPadding,
       ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           CustomText(
-            text: tr('you will test all questions'),
-            fontSize: 20.sp,
+            text: tr('youWillTestAllQuestions'),
+            fontSize: 30.sp,
             color: Theme.of(context).colorScheme.onBackground,
           ),
           CustomText(
-            text: tr('are you ready'),
-            fontSize: 20.sp,
+            text: tr('areYouReady'),
+            fontSize: 30.sp,
             color: Theme.of(context).colorScheme.onBackground,
           ),
+          Spacer(),
+          Align(
+            alignment: Alignment.center,
+            child: Image.asset(
+              height: 300.h,
+              AppImage.allQuestionsExamBackground,
+              color: Theme.of(context).colorScheme.primary,
+            ),
+          ),
+          Spacer(),
           CustomButton(
             title: tr('startNow'),
+            fontSize: 20.sp,
             onPressed: () {
               context.push(const QuestionsView());
             },

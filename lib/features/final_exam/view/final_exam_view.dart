@@ -7,64 +7,66 @@ import 'package:jo_driving_license/core/widgets/buttons/custom_button.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
 import 'package:jo_driving_license/features/questions/view/questions_view.dart';
 
+import '../../../core/constants/image_path.dart';
+
 class FinalExamView extends StatelessWidget {
   const FinalExamView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: GeneralConst.horizontalPadding),
+      padding: EdgeInsets.symmetric(
+        horizontal: GeneralConst.horizontalPadding,
+        vertical: GeneralConst.horizontalPadding,
+      ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Spacer(flex: 2),
           CustomText(
             text: tr('areYouReadyForYourDrivingLicence'),
             fontSize: 30.sp,
             color: Theme.of(context).colorScheme.onBackground,
           ),
           SizedBox(height: 20.h),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                children: [
-                  CustomText(
-                    text: tr('rememberTheFollowingInstructions'),
-                    fontSize: 20.sp,
-                    color: Theme.of(context).colorScheme.onBackground,
-                  ),
-                ],
-              ),
-              CustomText(
-                text: tr('timeOfExamIs60Minutes'),
-                fontSize: 20.sp,
-                color: Theme.of(context).colorScheme.onBackground,
-              ),
-              CustomText(
-                text: tr('youCanGet6WrongAnswers'),
-                fontSize: 20.sp,
-                color: Theme.of(context).colorScheme.onBackground,
-              ),
-              CustomText(
-                text: tr('andNeverForgetWeBelieveInYou'),
-                fontSize: 20.sp,
-                color: Theme.of(context).colorScheme.onBackground,
-                fontWeight: FontWeight.w900,
-              ),
-            ],
+          CustomText(
+            text: tr('rememberTheFollowingInstructions'),
+            fontSize: 20.sp,
+            color: Theme.of(context).colorScheme.onBackground,
           ),
-          const Spacer(flex: 3),
-          Container(
-            padding: EdgeInsets.symmetric(vertical: 0.h),
-            child: CustomButton(
-              title: tr('startNow'),
-              onPressed: () {
-                context.push(const QuestionsView(countRandomQuestions: 5));
-              },
+          CustomText(
+            text: tr('timeOfExamIs60Minutes'),
+            fontSize: 20.sp,
+            color: Theme.of(context).colorScheme.onBackground,
+          ),
+          CustomText(
+            text: tr('youCanGet6WrongAnswers'),
+            fontSize: 20.sp,
+            color: Theme.of(context).colorScheme.onBackground,
+          ),
+          CustomText(
+            text: tr('andNeverForgetWeBelieveInYou'),
+            fontSize: 20.sp,
+            color: Theme.of(context).colorScheme.onBackground,
+            fontWeight: FontWeight.w900,
+          ),
+          const Spacer(),
+          Align(
+            alignment: Alignment.center,
+            child: Image.asset(
+              height: 300.h,
+              AppImage.finalExamBackground,
+              color: Theme.of(context).colorScheme.primary,
             ),
           ),
-          const Spacer(flex: 5),
+          const Spacer(),
+          CustomButton(
+            fontSize: 20.sp,
+            title: tr('startNow'),
+            onPressed: () {
+              context.push(const QuestionsView(countRandomQuestions: 5));
+            },
+          ),
         ],
       ),
     );

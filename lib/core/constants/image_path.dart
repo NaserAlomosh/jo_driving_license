@@ -29,4 +29,10 @@ class AppImage {
       'assets/images/svg/police_man_happy_face.svg';
   static const String carWithBackground =
       'assets/images/png/car_with_background.png';
+// All Questions Exam
+  static const String allQuestionsExamBackground =
+      'assets/images/png/all_questions_exam_background.png';
+  // Final Exam
+  static const String finalExamBackground =
+      'assets/images/png/final_exam_background.png';
 }

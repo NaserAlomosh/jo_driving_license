@@ -19,42 +19,44 @@ class ScoreContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 120.w,
-      height: 110.w,
-      padding: EdgeInsets.all(10.sp),
-      decoration: BoxDecoration(
-        color: colorContainer,
-        border: Border.all(color: colorContainer),
-        borderRadius: BorderRadius.circular(25),
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          CustomText(
-            text: tr(title),
-            color: Theme.of(context).colorScheme.onBackground,
-            fontSize: 18.sp,
-            fontWeight: FontWeight.w700,
-          ),
-          Container(
-            height: checkDeviceIsTaplet(context) ? 180 : 50.h,
-            width: double.infinity,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12),
-              color: Theme.of(context).colorScheme.background,
+    return Flexible(
+      child: Container(
+        width: 120.w,
+        height: 110.w,
+        padding: EdgeInsets.all(10.sp),
+        decoration: BoxDecoration(
+          color: colorContainer,
+          border: Border.all(color: colorContainer),
+          borderRadius: BorderRadius.circular(25),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            CustomText(
+              text: tr(title),
+              color: Theme.of(context).colorScheme.onBackground,
+              fontSize: 18.sp,
+              fontWeight: FontWeight.w700,
             ),
-            child: Center(
-              child: CustomText(
-                text: score,
-                textAlign: TextAlign.center,
-                fontSize: 24.sp,
-                fontWeight: FontWeight.w900,
-                color: Theme.of(context).colorScheme.onBackground,
+            Container(
+              height: checkDeviceIsTaplet(context) ? 180 : 50.h,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                color: Theme.of(context).colorScheme.background,
+              ),
+              child: Center(
+                child: CustomText(
+                  text: score,
+                  textAlign: TextAlign.center,
+                  fontSize: 24.sp,
+                  fontWeight: FontWeight.w900,
+                  color: Theme.of(context).colorScheme.onBackground,
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

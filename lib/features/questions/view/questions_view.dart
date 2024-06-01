@@ -1,4 +1,5 @@
 import 'dart:developer';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,9 +14,11 @@ import 'package:jo_driving_license/core/widgets/general/custom_network_image.dar
 import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
 import 'package:jo_driving_license/features/questions/view/category_score_view.dart';
 import 'package:jo_driving_license/features/questions/view/widgets/loading_questions_widget.dart';
+
 import '../../../core/constants/dimentions.dart';
 import '../../../core/constants/image_path.dart';
 import '../view_model/cubit.dart';
+import 'widgets/timer_widget.dart';
 
 class QuestionsView extends StatefulWidget {
   final String? quizId;
@@ -50,11 +53,20 @@ class QuestionsViewState extends State<QuestionsView> {
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           title: CustomText(
-            text: widget.categoryName ?? tr('allQuestions'),
+            text: widget.categoryName ??
+                (widget.countRandomQuestions == null
+                    ? tr('allQuestions')
+                    : tr('drivingLicenseExam')),
             fontSize: 24.sp,
             fontWeight: FontWeight.w700,
             color: Theme.of(context).colorScheme.secondary,
           ),
+          actions: [
+            widget.countRandomQuestions != null
+                ? TimerWidget()
+                : SizedBox.shrink(),
+            widthSpace(20),
+          ],
         ),
         body: SafeArea(
           child: BlocBuilder<QuistionsCubit, QuistionsState>(
@@ -190,12 +202,14 @@ class QuestionsViewState extends State<QuestionsView> {
       children: [
         policeImage(),
         CustomButton(
-          title: quistionIndex == cubit.questions.length - 1
+          title: quistionIndex == cubit.questions.length - 1 ||
+                  !answerSelected.contains(false)
               ? 'انهاء'
               : tr('next'),
           fontSize: 20,
           onPressed: () {
-            if (quistionIndex == cubit.questions.length - 1) {
+            if (quistionIndex == cubit.questions.length - 1 ||
+                !answerSelected.contains(false)) {
               if (answerSelected.contains(false)) {
                 _showIncompleteDialog();
               } else {
@@ -229,7 +243,7 @@ class QuestionsViewState extends State<QuestionsView> {
         correctsNumber: correctAnswers,
         wrongsNumber: incorrectAnswers,
         scoreNumber: scoreNumber.toString(),
-        isSuccess: scoreNumber >= 80 ? true : false,
+        isSuccess: scoreNumber >= 50 ? true : false,
         categoryName: categoryName,
       ),
     );
@@ -242,9 +256,13 @@ class QuestionsViewState extends State<QuestionsView> {
         return AlertDialog(
           title: Text(tr('unansweredQuestions')),
           content: Text(tr('pleaseAnswerAllQuestions')),
+          actionsAlignment: MainAxisAlignment.start,
           actions: [
             TextButton(
-              child: Text(tr('ok')),
+              child: CustomText(
+                text: tr('ok'),
+                color: Theme.of(context).colorScheme.primary,
+              ),
               onPressed: () {
                 Navigator.of(context).pop();
               },

@@ -19,37 +19,47 @@ class AllQuestionsNavBar extends StatelessWidget {
         horizontal: GeneralConst.horizontalPadding,
         vertical: GeneralConst.horizontalPadding,
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          CustomText(
-            text: tr('youWillTestAllQuestions'),
-            fontSize: 30.sp,
-            color: Theme.of(context).colorScheme.onBackground,
-          ),
-          CustomText(
-            text: tr('areYouReady'),
-            fontSize: 30.sp,
-            color: Theme.of(context).colorScheme.onBackground,
-          ),
-          Spacer(),
-          Align(
-            alignment: Alignment.center,
-            child: Image.asset(
-              height: 300.h,
-              AppImage.allQuestionsExamBackground,
-              color: Theme.of(context).colorScheme.primary,
+      child: LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints) =>
+            SingleChildScrollView(
+          child: ConstrainedBox(
+            constraints: BoxConstraints(minHeight: constraints.maxHeight),
+            child: IntrinsicHeight(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  CustomText(
+                    text: tr('youWillTestAllQuestions'),
+                    fontSize: 26,
+                    color: Theme.of(context).colorScheme.onBackground,
+                  ),
+                  CustomText(
+                    text: tr('areYouReady'),
+                    fontSize: 26,
+                    color: Theme.of(context).colorScheme.onBackground,
+                  ),
+                  Spacer(),
+                  Align(
+                    alignment: Alignment.center,
+                    child: Image.asset(
+                      height: 300.h,
+                      AppImage.allQuestionsExamBackground,
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
+                  ),
+                  Spacer(),
+                  CustomButton(
+                    title: tr('startNow'),
+                    fontSize: 20.sp,
+                    onPressed: () {
+                      context.push(const QuestionsView());
+                    },
+                  ),
+                ],
+              ),
             ),
           ),
-          Spacer(),
-          CustomButton(
-            title: tr('startNow'),
-            fontSize: 20.sp,
-            onPressed: () {
-              context.push(const QuestionsView());
-            },
-          ),
-        ],
+        ),
       ),
     );
   }

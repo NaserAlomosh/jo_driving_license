@@ -60,42 +60,47 @@ class HomeView extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Column(
-                      children: [
-                        CustomText(
-                          height: 1.5.h,
-                          text: tr('putYourSeatBelt'),
-                          fontWeight: FontWeight.w900,
-                          fontSize: 18.sp,
-                        ),
-                        CustomText(
-                          text: tr('areYouReadyForYourDrivingLicence'),
-                          fontSize: 16.sp,
-                          height: 2.h,
-                          fontWeight: FontWeight.w100,
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.width * 0.1,
-                      width: MediaQuery.of(context).size.width * 0.3,
-                      child: CustomButton(
-                        borderRadius: 50,
-                        background: Theme.of(context).colorScheme.tertiary,
-                        elevation: 10,
-                        title: tr('finalExam'),
-                        fontSize: 14.sp,
-                        textColor: Theme.of(context).colorScheme.primary,
-                        onPressed: () {
-                          context
-                              .pushReplacement(const BottomNavBarApp(index: 2));
-                        },
+                Flexible(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      heightSpace(20),
+                      CustomText(
+                        height: 1.5.h,
+                        text: tr('putYourSeatBelt'),
+                        fontWeight: FontWeight.w900,
+                        fontSize: 18.sp,
+                        textOverflow: TextOverflow.ellipsis,
                       ),
-                    )
-                  ],
+                      CustomText(
+                        text: tr('areYouReadyForYourDrivingLicence'),
+                        fontSize: 16.sp,
+                        height: 2.h,
+                        fontWeight: FontWeight.w200,
+                      ),
+                      Spacer(),
+                      Align(
+                        alignment: Alignment.bottomLeft,
+                        child: SizedBox(
+                          height: MediaQuery.of(context).size.width * 0.1,
+                          width: MediaQuery.of(context).size.width * 0.3,
+                          child: CustomButton(
+                            borderRadius: 50,
+                            background: Theme.of(context).colorScheme.tertiary,
+                            elevation: 10,
+                            title: tr('finalExam'),
+                            fontSize: 14.sp,
+                            textColor: Theme.of(context).colorScheme.primary,
+                            onPressed: () {
+                              context.pushReplacement(
+                                  const BottomNavBarApp(index: 2));
+                            },
+                          ),
+                        ),
+                      ),
+                      heightSpace(20),
+                    ],
+                  ),
                 ),
               ],
             ),

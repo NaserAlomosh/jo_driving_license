@@ -1,4 +1,5 @@
 {
+    "language": "English",
     "onBoardingTitle1": "Start your journey to safer driving!",
     "onBoardingTitle2": "Drive safely with our expert tips!",
     "onBoardingTitle3": "Follow traffic laws!",
@@ -45,5 +46,12 @@
     "andNeverForgetWeBelieveInYou": "And never forget we believe in you",
     "startNow": "Start now",
     "areYouReady": "Are You Ready?",
-    "youWillTestAllQuestions": "You will test all questions"
+    "youWillTestAllQuestions": "You will test all questions",
+    "drivingLicenseExam": "Driving license exam",
+    "pleaseAnswerAllQuestions": "Please answer all questions",
+    "unansweredQuestions": "Unanswered questions",
+    "ok": "Ok",
+    "timeUp": "This attempt has just ended. Don't forget, with the attempt you will be better. I trust you",
+    "countinue": "Continue",
+    "exit": "Exit"
 }

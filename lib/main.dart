@@ -9,7 +9,7 @@ import 'driving_license.dart';
 import 'firebase_options.dart';
 
 late SharedPreferences prefs;
-
+bool? isFirstEnter;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await displayScreenRotation();
@@ -17,10 +17,11 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
 
   prefs = await SharedPreferences.getInstance();
-
+  isFirstEnter = prefs.getBool('isFirstEnter');
   runApp(
     EasyLocalization(
       path: 'assets/languages',

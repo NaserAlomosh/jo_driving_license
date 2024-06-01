@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jo_driving_license/core/firebase/auth_error_handler.dart';
 import 'package:jo_driving_license/features/home/network/get_quizzes_name.dart';
+import 'package:jo_driving_license/main.dart';
 
 import '../../../core/models/quiz_model.dart';
 
@@ -14,6 +15,7 @@ class HomeCubit extends Cubit<HomeState> {
   HomeCubit() : super(HomeInitial());
   List<QuizModel?> quizzes = [];
   Future<void> getQuizzezNameCubit() async {
+    prefs.setBool('isFirstEnter', true);
     try {
       emit(HomeLoading());
       quizzes = await getQuizzezName();

@@ -3,14 +3,36 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:jo_driving_license/core/helper/extensions.dart';
+import 'package:jo_driving_license/core/helper/spacing.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
+import 'package:jo_driving_license/core/widgets/text_fields/custom_text_form_field.dart';
 import 'package:jo_driving_license/features/botton_nav_bar/botton_nav_bar.dart';
 
 import '../../../core/constants/image_path.dart';
+import '../../../main.dart';
 import '../../settings/view/settings_view.dart';
 
-class AppDrawer extends StatelessWidget {
+class AppDrawer extends StatefulWidget {
   const AppDrawer({super.key});
+
+  @override
+  State<AppDrawer> createState() => _AppDrawerState();
+}
+
+class _AppDrawerState extends State<AppDrawer> {
+  TextEditingController usernameController = TextEditingController();
+  FocusNode focusNode = FocusNode();
+  @override
+  void initState() {
+    super.initState();
+    usernameController.text = prefs.getString('username') ?? 'gest';
+  }
+
+  @override
+  void dispose() {
+    usernameController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +62,6 @@ class AppDrawer extends StatelessWidget {
                     tr('settings'),
                     onTap: () => context.push(const SettingsView()),
                   ),
-
                   _listTile(
                     context,
                     leadingIcon: Icons.quiz,
@@ -48,7 +69,6 @@ class AppDrawer extends StatelessWidget {
                     onTap: () => context
                         .pushReplacement(const BottomNavBarApp(index: 1)),
                   ),
-
                   _listTile(
                     context,
                     leadingIcon: Icons.emoji_events,
@@ -56,23 +76,6 @@ class AppDrawer extends StatelessWidget {
                     onTap: () => context
                         .pushReplacement(const BottomNavBarApp(index: 2)),
                   ),
-                  // _listTile(
-                  //   context,
-                  //   leadingIcon: Icons.search_sharp,
-                  //   tr('search'),
-                  // ),
-                  //isPortraitScreen(context) ? heightSpace(450) : heightSpace(100),
-
-                  // const Spacer(),
-                  // Padding(
-                  //   padding: EdgeInsets.only(bottom: 30.h),
-                  //   child: _listTile(
-                  //     context,
-                  //     tr('logout'),
-                  //     leadingIcon: Icons.logout,
-                  //     trailingIcon: const SizedBox(),
-                  //   ),
-                  // ),
                 ],
               ),
             ),
@@ -89,8 +92,37 @@ class AppDrawer extends StatelessWidget {
       accountName: CustomText(
         text: userName,
       ),
-      accountEmail: const CustomText(
-        text: 'example@gmail.com ',
+      accountEmail: Row(
+        children: [
+          InkWell(
+            onTap: () => focusNode.requestFocus(),
+            child: Icon(
+              Icons.mode_edit,
+              color: Colors.white,
+            ),
+          ),
+          widthSpace(8),
+          Flexible(
+            child: CustomTextFormField(
+                focusNode: focusNode,
+                controller: usernameController,
+                textStyle: TextStyle(color: Colors.white),
+                backgroundColor: Colors.transparent,
+                suffixIconColor: Colors.white,
+                borderSide: BorderSide(color: Colors.white),
+                focusedBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Colors.white),
+                ),
+                enabledBorder: InputBorder.none,
+                onChanged: (p0) {
+                  prefs.setString(
+                    'username',
+                    p0 ?? 'Gest',
+                  );
+                }),
+          ),
+          widthSpace(34),
+        ],
       ),
       currentAccountPicture: CircleAvatar(
         child: SvgPicture.asset(

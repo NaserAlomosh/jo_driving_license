@@ -45,5 +45,12 @@
         "andNeverForgetWeBelieveInYou": "ولا تنسَ أبدًا، إنت قدها!",
         "startNow": "ابدأ الآن",
         "areYouReady": "هل انت جاهز يا بطل؟",
-        "youWillTestAllQuestions": "سيتم الاختبار على جميع الأسئلة"
+        "youWillTestAllQuestions": "سيتم الاختبار على جميع الأسئلة",
+        "drivingLicenseExam": "امتحان رخصة السياقة",
+        "pleaseAnswerAllQuestions": "يرجى الاجابة على جميع الأسئلة",
+        "unansweredQuestions": "لم يتم الاجابة على جميع الأسئلة",
+        "ok": "حسنا",
+        "timeUp": "انتهت هذه المحاوله فقط، لا تنسى مع الاصرار ستكون افضل، انا اثق بك",
+        "countinue": "استمر",
+        "exit": "الخروج من الاختبار"
 }

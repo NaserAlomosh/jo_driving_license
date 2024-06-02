@@ -88,31 +88,45 @@ class QuestionsViewState extends State<QuestionsView> {
                     }
                     return Padding(
                       padding: EdgeInsets.all(GeneralConst.horizontalPadding),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          linearIndicator(
-                            quistionIndex,
-                            cubit.questions.length,
+                      child: LayoutBuilder(
+                        builder: (BuildContext context,
+                                BoxConstraints constraints) =>
+                            SingleChildScrollView(
+                          child: ConstrainedBox(
+                            constraints: BoxConstraints(
+                                minHeight: constraints.maxHeight),
+                            child: IntrinsicHeight(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  linearIndicator(
+                                    quistionIndex,
+                                    cubit.questions.length,
+                                  ),
+                                  heightSpace(15),
+                                  _questionCounter(
+                                    quistionIndex,
+                                    cubit.questions.length,
+                                  ),
+                                  heightSpace(15),
+                                  _getQuestion(question),
+                                  heightSpace(8),
+                                  question?.image == null
+                                      ? const SizedBox.shrink()
+                                      : CustomNetworkImage(
+                                          imageUrl: question?.image ?? '',
+                                        ),
+                                  heightSpace(8),
+                                  _getListAnswers(
+                                      cubit, quistionIndex, question),
+                                  Spacer(),
+                                  _getNextButton(cubit, quistionIndex),
+                                ],
+                              ),
+                            ),
                           ),
-                          heightSpace(15),
-                          _questionCounter(
-                            quistionIndex,
-                            cubit.questions.length,
-                          ),
-                          heightSpace(15),
-                          _getQuestion(question),
-                          heightSpace(8),
-                          question?.image == null
-                              ? const SizedBox.shrink()
-                              : CustomNetworkImage(
-                                  imageUrl: question?.image ?? '',
-                                ),
-                          heightSpace(8),
-                          _getListAnswers(quistionIndex, question),
-                          _getNextButton(cubit, quistionIndex),
-                        ],
+                        ),
                       ),
                     );
                   },
@@ -158,40 +172,44 @@ class QuestionsViewState extends State<QuestionsView> {
     );
   }
 
-  Widget _getListAnswers(int quistionIndex, QuestionModel? question) {
-    return Expanded(
-      child: ListView.separated(
-        separatorBuilder: (BuildContext context, int index) {
-          return SizedBox(height: 15.h);
+  Widget _getListAnswers(
+      QuistionsCubit cubit, int quistionIndex, QuestionModel? question) {
+    return Column(
+      children: List.generate(
+        cubit.questions[quistionIndex]!.answers.length,
+        (answerIndex) {
+          return GestureDetector(
+            onTap: () {
+              if (!answerSelected[answerIndex]) {
+                setState(() {
+                  _onClickAnswer(quistionIndex, answerIndex, question);
+                });
+              }
+            },
+            child: Padding(
+              padding: EdgeInsets.symmetric(vertical: 5.h),
+              child: Container(
+                padding: EdgeInsets.symmetric(vertical: 14.h, horizontal: 15.w),
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: answerColors[quistionIndex]?[answerIndex] ??
+                      Theme.of(context).colorScheme.tertiaryContainer,
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+                child: CustomText(
+                  textAlign: TextAlign.center,
+                  text: question?.answers[answerIndex].answer ?? '',
+                  fontSize: 20,
+                  fontWeight: FontWeight.w500,
+                  color: answerColors[quistionIndex]?[answerIndex] ==
+                          Theme.of(context).colorScheme.onError
+                      ? Theme.of(context).colorScheme.onBackground
+                      : Theme.of(context).colorScheme.onBackground,
+                ),
+              ),
+            ),
+          );
         },
-        itemCount: question?.answers.length ?? 0,
-        itemBuilder: (context, answerIndex) => GestureDetector(
-          onTap: () {
-            if (!answerSelected[quistionIndex]) {
-              setState(() {
-                _onClickAnswer(quistionIndex, answerIndex, question);
-              });
-            }
-          },
-          child: Container(
-            padding: EdgeInsets.symmetric(vertical: 15.h),
-            decoration: BoxDecoration(
-              color: answerColors[quistionIndex]?[answerIndex] ??
-                  Theme.of(context).colorScheme.tertiaryContainer,
-              borderRadius: BorderRadius.circular(8.0),
-            ),
-            child: CustomText(
-              textAlign: TextAlign.center,
-              text: question?.answers[answerIndex].answer ?? '',
-              fontSize: 20,
-              fontWeight: FontWeight.w500,
-              color: answerColors[quistionIndex]?[answerIndex] ==
-                      Theme.of(context).colorScheme.onError
-                  ? Theme.of(context).colorScheme.onBackground
-                  : Theme.of(context).colorScheme.onBackground,
-            ),
-          ),
-        ),
       ),
     );
   }

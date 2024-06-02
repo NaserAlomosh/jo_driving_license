@@ -24,6 +24,7 @@ class QuestionsView extends StatefulWidget {
   final String? quizId;
   final String? categoryName;
   final int? countRandomQuestions;
+
   const QuestionsView({
     super.key,
     this.quizId,
@@ -39,7 +40,7 @@ class QuestionsViewState extends State<QuestionsView> {
   final PageController _pageController = PageController();
   Map<int, Map<int, Color>> answerColors = {};
   List<bool> answersCorrectness = [];
-  List<bool> answerSelected = []; // Track if an answer has been selected
+  List<bool> answerSelected = [];
 
   @override
   Widget build(BuildContext context) {
@@ -83,9 +84,14 @@ class QuestionsViewState extends State<QuestionsView> {
                   itemBuilder: (context, quistionIndex) {
                     log(cubit.questions[quistionIndex]!.image.toString());
                     final question = cubit.questions[quistionIndex];
+
                     if (answerSelected.length <= quistionIndex) {
-                      answerSelected.add(false); // Initialize selection state
+                      answerSelected.add(false);
                     }
+                    if (answersCorrectness.length <= quistionIndex) {
+                      answersCorrectness.add(false);
+                    }
+
                     return Padding(
                       padding: EdgeInsets.all(GeneralConst.horizontalPadding),
                       child: LayoutBuilder(
@@ -94,7 +100,8 @@ class QuestionsViewState extends State<QuestionsView> {
                             SingleChildScrollView(
                           child: ConstrainedBox(
                             constraints: BoxConstraints(
-                                minHeight: constraints.maxHeight),
+                              minHeight: constraints.maxHeight,
+                            ),
                             child: IntrinsicHeight(
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -180,7 +187,7 @@ class QuestionsViewState extends State<QuestionsView> {
         (answerIndex) {
           return GestureDetector(
             onTap: () {
-              if (!answerSelected[answerIndex]) {
+              if (!answerSelected[quistionIndex]) {
                 setState(() {
                   _onClickAnswer(quistionIndex, answerIndex, question);
                 });
@@ -251,10 +258,7 @@ class QuestionsViewState extends State<QuestionsView> {
     final incorrectAnswers = answersCorrectness.length - correctAnswers;
     int totalQuestions = correctAnswers + incorrectAnswers;
 
-    // Calculate the score percentage
     double scorePercentage = (correctAnswers / totalQuestions) * 100;
-
-    // Convert the score percentage to an integer
     int scoreNumber = scorePercentage.toInt();
     context.push(
       CategoryScoreView(
@@ -294,9 +298,9 @@ class QuestionsViewState extends State<QuestionsView> {
   ClipRRect policeImage() {
     return ClipRRect(
       child: Align(
-        alignment: Alignment.topLeft, // Adjust alignment as needed
-        widthFactor: 1, // Fraction of the original width
-        heightFactor: 0.7, // Fraction of the original height
+        alignment: Alignment.topLeft,
+        widthFactor: 1,
+        heightFactor: 0.7,
         child: SizedBox(
           height: MediaQuery.of(context).size.height * 0.23,
           width: 150.w,
@@ -308,7 +312,8 @@ class QuestionsViewState extends State<QuestionsView> {
     );
   }
 
-  _onClickAnswer(int quistionIndex, int answersIndex, QuestionModel? question) {
+  void _onClickAnswer(
+      int quistionIndex, int answersIndex, QuestionModel? question) {
     answerColors[quistionIndex] ??= {};
     final correct = question?.answers[answersIndex].correct ?? false;
     answerColors[quistionIndex]![answersIndex] = correct
@@ -322,14 +327,7 @@ class QuestionsViewState extends State<QuestionsView> {
           : Theme.of(context).colorScheme.error;
     }
 
-    // Store the correctness of the user's answer
-    if (answersCorrectness.length > quistionIndex) {
-      answersCorrectness[quistionIndex] = correct;
-    } else {
-      answersCorrectness.add(correct);
-    }
-
-    // Mark this question as answered
+    answersCorrectness[quistionIndex] = correct;
     answerSelected[quistionIndex] = true;
   }
 

@@ -10,6 +10,7 @@ import 'package:jo_driving_license/core/widgets/buttons/custom_button.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
 import 'package:jo_driving_license/features/botton_nav_bar/botton_nav_bar.dart';
 
+import '../../../main.dart';
 import '../../final_exam/view/widget/score_container.dart';
 
 class CategoryScoreView extends StatelessWidget {
@@ -38,25 +39,36 @@ class CategoryScoreView extends StatelessWidget {
       body: Padding(
         padding: EdgeInsets.symmetric(
             horizontal: GeneralConst.horizontalPadding, vertical: 0.h),
-        child: SafeArea(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            // crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              ribbon(isSuccess),
-              stars(context, isSuccess),
-              heightSpace(30),
-              _score(
-                context,
-                correctsNumber: correctsNumber,
-                wrongsNumber: wrongsNumber,
-                score: scoreNumber,
+        child: LayoutBuilder(
+          builder: (BuildContext context, BoxConstraints constraints) =>
+              SingleChildScrollView(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(
+                minHeight: constraints.maxHeight,
               ),
-              supportQoute(isSuccess, context),
-              const Spacer(),
-              continueButton(context),
-              heightSpace(30),
-            ],
+              child: IntrinsicHeight(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  // crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    ribbon(isSuccess),
+                    stars(context, isSuccess),
+                    heightSpace(30),
+                    _score(
+                      context,
+                      correctsNumber: correctsNumber,
+                      wrongsNumber: wrongsNumber,
+                      score: scoreNumber,
+                    ),
+                    supportQoute(isSuccess, context),
+                    const Spacer(),
+                    heightSpace(10),
+                    continueButton(context),
+                    heightSpace(30),
+                  ],
+                ),
+              ),
+            ),
           ),
         ),
       ),
@@ -125,8 +137,8 @@ class CategoryScoreView extends StatelessWidget {
         children: [
           CustomText(
             text: isSuccess
-                ? 'Naser, ${tr('youComplete')} $categoryName'
-                : 'Naser, ${tr('neverGiveUp')}',
+                ? '${prefs.getString('username') ?? 'gest'}, ${tr('youComplete')} $categoryName'
+                : '${prefs.getString('username') ?? 'gest'}, ${tr('neverGiveUp')}',
             fontSize: 20,
             color: Theme.of(context).colorScheme.onBackground,
             fontWeight: FontWeight.w700,
@@ -138,12 +150,14 @@ class CategoryScoreView extends StatelessWidget {
                 ? Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Align(
-                        alignment: Alignment.bottomLeft,
-                        child: Icon(
-                          Icons.star,
-                          size: 65,
-                          color: Theme.of(context).colorScheme.tertiary,
+                      Flexible(
+                        child: Align(
+                          alignment: Alignment.bottomLeft,
+                          child: Icon(
+                            Icons.star,
+                            size: 65,
+                            color: Theme.of(context).colorScheme.tertiary,
+                          ),
                         ),
                       ),
                       Align(
@@ -154,19 +168,23 @@ class CategoryScoreView extends StatelessWidget {
                           color: Theme.of(context).colorScheme.tertiary,
                         ),
                       ),
-                      Align(
-                        alignment: Alignment.bottomLeft,
-                        child: Icon(
-                          Icons.star,
-                          size: 65,
-                          color: Theme.of(context).colorScheme.tertiary,
+                      Flexible(
+                        child: Align(
+                          alignment: Alignment.bottomLeft,
+                          child: Icon(
+                            Icons.star,
+                            size: 65,
+                            color: Theme.of(context).colorScheme.tertiary,
+                          ),
                         ),
                       ),
                     ],
                   )
-                : SvgPicture.asset(
-                    AppImage.policeManRun,
-                    height: 220.h,
+                : Flexible(
+                    child: SvgPicture.asset(
+                      AppImage.policeManRun,
+                      height: 220.h,
+                    ),
                   ),
           ),
         ],

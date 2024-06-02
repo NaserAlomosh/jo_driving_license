@@ -8,6 +8,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:jo_driving_license/core/constants/dimentions.dart';
 import 'package:jo_driving_license/core/helper/extensions.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
+import 'package:jo_driving_license/core/widgets/refresh/custom_refresh_widget.dart';
 import 'package:jo_driving_license/features/botton_nav_bar/botton_nav_bar.dart';
 import 'package:jo_driving_license/features/home/view_model/cubit.dart';
 
@@ -120,32 +121,37 @@ class HomeView extends StatelessWidget {
           } else if (state is HomeError) {
             return CustomErrorWidget(msg: state.error);
           } else {
-            return ListView.separated(
-              itemCount: cubit.quizzes.length,
-              separatorBuilder: (context, index) => heightSpace(0),
-              itemBuilder: (context, index) {
-                return Align(
-                  alignment: (index % 2 == 0)
-                      ? Alignment.centerRight
-                      : Alignment.centerLeft,
-                  child: GestureDetector(
-                    onTap: () {
-                      index == cubit.quizzes.length - 1
-                          ? context
-                              .pushReplacement(const BottomNavBarApp(index: 2))
-                          : context.push(
-                              QuestionsView(
-                                quizId: cubit.quizzes[index]?.id ?? '',
-                                categoryName: cubit.quizzes[index]?.name ?? '',
-                              ),
-                            );
-                    },
-                    child: index == cubit.quizzes.length - 1
-                        ? finalExam(context)
-                        : categoryQuestions(context, index, cubit),
-                  ),
-                );
-              },
+            return myRefreshIndicator(
+              context,
+              onRefresh: () async => cubit.getQuizzezNameCubit(),
+              child: ListView.separated(
+                itemCount: cubit.quizzes.length,
+                separatorBuilder: (context, index) => heightSpace(0),
+                itemBuilder: (context, index) {
+                  return Align(
+                    alignment: (index % 2 == 0)
+                        ? Alignment.centerRight
+                        : Alignment.centerLeft,
+                    child: GestureDetector(
+                      onTap: () {
+                        index == cubit.quizzes.length - 1
+                            ? context.pushReplacement(
+                                const BottomNavBarApp(index: 2))
+                            : context.push(
+                                QuestionsView(
+                                  quizId: cubit.quizzes[index]?.id ?? '',
+                                  categoryName:
+                                      cubit.quizzes[index]?.name ?? '',
+                                ),
+                              );
+                      },
+                      child: index == cubit.quizzes.length - 1
+                          ? finalExam(context)
+                          : categoryQuestions(context, index, cubit),
+                    ),
+                  );
+                },
+              ),
             );
           }
         },

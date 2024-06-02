@@ -8,6 +8,7 @@ import 'package:jo_driving_license/core/helper/extensions.dart';
 import 'package:jo_driving_license/core/helper/get_device_type.dart';
 import 'package:jo_driving_license/core/widgets/buttons/custom_button.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
+import 'package:jo_driving_license/main.dart';
 
 import '../../botton_nav_bar/botton_nav_bar.dart';
 import 'widget/score_container.dart';
@@ -93,8 +94,8 @@ class FinalExamScoreView extends StatelessWidget {
         ),
         CustomText(
           text: isSuccess
-              ? 'Naser, ${tr('goForYourLicence')}'
-              : 'Naser, ${tr('tryAgain.')} ${tr('and')} ${tr('goForYourLicence')}',
+              ? '${prefs.getString('username') ?? 'gest'}, ${tr('goForYourLicence')}'
+              : '${prefs.getString('username') ?? 'gest'}, ${tr('tryAgain.')} ${tr('and')} ${tr('goForYourLicence')}',
           fontSize: 20.sp,
           textAlign: TextAlign.center,
           color: Theme.of(context).colorScheme.onBackground,

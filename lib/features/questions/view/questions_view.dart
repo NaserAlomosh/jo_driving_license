@@ -227,9 +227,9 @@ class QuestionsViewState extends State<QuestionsView> {
       children: [
         policeImage(),
         CustomButton(
-          title: quistionIndex == cubit.questions.length - 1 ||
-                  !answerSelected.contains(false)
-              ? 'انهاء'
+          title: (quistionIndex == cubit.questions.length - 1 ||
+                  !answerSelected.contains(false))
+              ? tr('finish')
               : tr('next'),
           fontSize: 20,
           onPressed: () {

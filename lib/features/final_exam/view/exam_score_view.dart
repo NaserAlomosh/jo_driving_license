@@ -94,8 +94,8 @@ class FinalExamScoreView extends StatelessWidget {
         ),
         CustomText(
           text: isSuccess
-              ? '${prefs.getString('username') ?? 'gest'}, ${tr('goForYourLicence')}'
-              : '${prefs.getString('username') ?? 'gest'}, ${tr('tryAgain.')} ${tr('and')} ${tr('goForYourLicence')}',
+              ? '${(prefs.getString('username') == null || prefs.getString('username')!.isNotEmpty) ? prefs.getString('username') : tr('guest')}, ${tr('goForYourLicence')}'
+              : '${(prefs.getString('username') == null || prefs.getString('username')!.isNotEmpty) ? prefs.getString('username') : tr('guest')}, ${tr('tryAgain.')} ${tr('and')} ${tr('goForYourLicence')}',
           fontSize: 20.sp,
           textAlign: TextAlign.center,
           color: Theme.of(context).colorScheme.onBackground,

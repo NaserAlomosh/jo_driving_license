@@ -53,5 +53,7 @@
     "ok": "Ok",
     "timeUp": "This attempt has just ended. Don't forget, with the attempt you will be better. I trust you",
     "countinue": "Continue",
-    "exit": "Exit"
+    "exit": "Exit",
+    "guest": "My guest friend",
+    "finish": "Finish"
 }

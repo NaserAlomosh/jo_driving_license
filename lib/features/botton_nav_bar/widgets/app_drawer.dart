@@ -25,7 +25,7 @@ class _AppDrawerState extends State<AppDrawer> {
   @override
   void initState() {
     super.initState();
-    usernameController.text = prefs.getString('username') ?? 'gest';
+    usernameController.text = prefs.getString('username') ?? tr('guest');
   }
 
   @override
@@ -117,7 +117,7 @@ class _AppDrawerState extends State<AppDrawer> {
                 onChanged: (p0) {
                   prefs.setString(
                     'username',
-                    p0 ?? 'Gest',
+                    p0 ?? 'guest',
                   );
                 }),
           ),

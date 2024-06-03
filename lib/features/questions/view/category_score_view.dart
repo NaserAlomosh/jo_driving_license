@@ -137,8 +137,8 @@ class CategoryScoreView extends StatelessWidget {
         children: [
           CustomText(
             text: isSuccess
-                ? '${prefs.getString('username') ?? 'gest'}, ${tr('youComplete')} $categoryName'
-                : '${prefs.getString('username') ?? 'gest'}, ${tr('neverGiveUp')}',
+                ? '${(prefs.getString('username') == null || prefs.getString('username')!.isNotEmpty) ? prefs.getString('username') : tr('guest')}, ${tr('youComplete')} $categoryName'
+                : '${(prefs.getString('username') == null || prefs.getString('username')!.isNotEmpty) ? prefs.getString('username') : tr('guest')}, ${tr('neverGiveUp')}',
             fontSize: 20,
             color: Theme.of(context).colorScheme.onBackground,
             fontWeight: FontWeight.w700,

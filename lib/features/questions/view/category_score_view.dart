@@ -82,8 +82,10 @@ class CategoryScoreView extends StatelessWidget {
         children: [
           SvgPicture.asset(
             AppImage.greenRibbon,
-            // ignore: deprecated_member_use
-            color: isSuccess ? Colors.green.shade300 : Colors.blueGrey.shade300,
+            colorFilter: ColorFilter.mode(
+              isSuccess ? Colors.green.shade300 : Colors.blueGrey.shade300,
+              BlendMode.srcIn,
+            ),
           ),
           Align(
             alignment: const Alignment(0, -0.2),
@@ -112,13 +114,12 @@ class CategoryScoreView extends StatelessWidget {
         ScoreContainer(
           title: 'corrects',
           score: '$correctsNumber',
-          colorContainer:
-              Theme.of(context).colorScheme.onError.withOpacity(0.2),
+          colorContainer: Theme.of(context).colorScheme.scrim.withOpacity(0.4),
         ),
         ScoreContainer(
           title: 'wrongs',
           score: '$wrongsNumber',
-          colorContainer: Theme.of(context).colorScheme.error.withOpacity(0.3),
+          colorContainer: Theme.of(context).colorScheme.error.withOpacity(0.4),
         ),
         ScoreContainer(
           title: 'yourScore',

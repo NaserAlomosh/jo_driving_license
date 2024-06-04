@@ -228,13 +228,15 @@ class QuestionsViewState extends State<QuestionsView> {
         policeImage(),
         CustomButton(
           title: (quistionIndex == cubit.questions.length - 1 ||
-                  !answerSelected.contains(false))
+                  answerSelected.where((selected) => selected).length ==
+                      cubit.questions.length)
               ? tr('finish')
               : tr('next'),
           fontSize: 20,
           onPressed: () {
             if (quistionIndex == cubit.questions.length - 1 ||
-                !answerSelected.contains(false)) {
+                answerSelected.where((selected) => selected).length ==
+                    cubit.questions.length) {
               if (answerSelected.contains(false)) {
                 _showIncompleteDialog();
               } else {
@@ -265,7 +267,7 @@ class QuestionsViewState extends State<QuestionsView> {
         correctsNumber: correctAnswers,
         wrongsNumber: incorrectAnswers,
         scoreNumber: scoreNumber.toString(),
-        isSuccess: scoreNumber >= 50 ? true : false,
+        isSuccess: incorrectAnswers <= 6 ? true : false,
         categoryName: categoryName,
       ),
     );

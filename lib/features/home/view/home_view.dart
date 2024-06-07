@@ -18,6 +18,7 @@ import '../../../core/helper/spacing.dart';
 import '../../../core/widgets/animated/animated_widgets/animation_opacity_color_widget.dart';
 import '../../../core/widgets/buttons/custom_button.dart';
 import '../../../core/widgets/error_widget/error_widget.dart';
+import '../../add_ads_helper.dart';
 import '../../questions/view/questions_view.dart';
 
 class HomeView extends StatelessWidget {
@@ -134,6 +135,9 @@ class HomeView extends StatelessWidget {
                         : Alignment.centerLeft,
                     child: GestureDetector(
                       onTap: () {
+                        AdmobHelper().createInterad();
+                        AdmobHelper().showInterad();
+
                         index == cubit.quizzes.length - 1
                             ? context.pushReplacement(
                                 const BottomNavBarApp(index: 2))

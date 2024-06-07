@@ -70,6 +70,7 @@ dependencies:
   smooth_page_indicator: ^1.1.0
   easy_localization: ^3.0.2
   circular_countdown_timer: ^0.2.3
+  google_mobile_ads: ^5.1.0
 
   
 

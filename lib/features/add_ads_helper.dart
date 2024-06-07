@@ -7,10 +7,6 @@ class AdmobHelper {
   int num_of_attempt_load = 0;
 
   static initialize() {
-    if (MobileAds.instance == null) {
-      MobileAds.instance.initialize();
-    }
-
     AdmobHelper admobHelper =
         AdmobHelper(); // Create an instance of AdmobHelper
     admobHelper.createInterad(); // Call instance method using the instance

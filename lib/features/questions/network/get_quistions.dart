@@ -65,21 +65,36 @@ Future<List<QuestionModel>> _getAllQuestionsFromAllCategories() async {
 }
 
 Future<List<QuestionModel?>> _getRandomQuestions(
-  int countRandomQuestions,
-) async {
+    int questionsPerCategory) async {
   final random = Random();
   List<QuestionModel?> randomQuestions = [];
-  Set<int> selectedIndexes = {};
   List<QuestionModel?> questions = await _getAllQuestionsFromAllCategories();
-  while (selectedIndexes.length < countRandomQuestions &&
-      selectedIndexes.length < questions.length) {
-    int randomIndex = random.nextInt(questions.length);
-    selectedIndexes.add(randomIndex);
+
+  // Group questions by category
+  Map<String, List<QuestionModel?>> categorizedQuestions = {};
+  for (var question in questions) {
+    if (question != null) {
+      if (!categorizedQuestions.containsKey(question.categoryId ?? '')) {
+        categorizedQuestions[question.categoryId ?? ''] = [];
+      }
+      categorizedQuestions[question.categoryId ?? '']!.add(question);
+    }
   }
 
-  for (int index in selectedIndexes) {
-    randomQuestions.add(questions[index]);
-  }
+  // Select 6 random questions from each category
+  categorizedQuestions.forEach((category, questionsInCategory) {
+    if (questionsInCategory.length <= questionsPerCategory) {
+      randomQuestions.addAll(questionsInCategory);
+    } else {
+      Set<int> selectedIndexes = {};
+      while (selectedIndexes.length < questionsPerCategory) {
+        selectedIndexes.add(random.nextInt(questionsInCategory.length));
+      }
+      selectedIndexes.forEach((index) {
+        randomQuestions.add(questionsInCategory[index]);
+      });
+    }
+  });
 
   return randomQuestions;
 }

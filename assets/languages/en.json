@@ -55,5 +55,11 @@
     "countinue": "Continue",
     "exit": "Exit",
     "guest": "My guest friend",
-    "finish": "Finish"
+    "finish": "Finish",
+    "exitApp": "Exit App",
+    "areYouSureYouWantToExitTheApp": "Are you sure you want to exit the app?",
+    "no": "No",
+    "yes": "Yes",
+    "areYouSureYouWantToExitTheQuiz": "Are you sure you want to exit the quiz?",
+    "exitQuiz": "Exit Quiz"
 }

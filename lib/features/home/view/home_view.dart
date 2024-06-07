@@ -126,7 +126,7 @@ class HomeView extends StatelessWidget {
               onRefresh: () async => cubit.getQuizzezNameCubit(),
               child: ListView.separated(
                 itemCount: cubit.quizzes.length,
-                separatorBuilder: (context, index) => heightSpace(0),
+                separatorBuilder: (context, index) => SizedBox.shrink(),
                 itemBuilder: (context, index) {
                   return Align(
                     alignment: (index % 2 == 0)
@@ -160,26 +160,25 @@ class HomeView extends StatelessWidget {
   }
 
   Widget _getLoadingListQuizzes() {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 0.w),
-      child: BlocBuilder<HomeCubit, HomeState>(
-        builder: (context, state) {
-          return ListView.separated(
-            itemCount: 6,
-            separatorBuilder: (context, index) => heightSpace(0.h),
-            itemBuilder: (context, index) {
-              return Align(
-                alignment: (index % 2 == 0)
-                    ? Alignment.centerRight
-                    : Alignment.centerLeft,
-                child: index == 7 - 1
-                    ? finalExam(context)
-                    : AnimationColorWidget(child: loading(context, index)),
-              );
-            },
-          );
-        },
-      ),
+    return BlocBuilder<HomeCubit, HomeState>(
+      builder: (context, state) {
+        return ListView.separated(
+          itemCount: 4,
+          separatorBuilder: (context, index) => SizedBox.shrink(),
+          itemBuilder: (context, index) {
+            return Align(
+              alignment: (index % 2 == 0)
+                  ? Alignment.centerRight
+                  : Alignment.centerLeft,
+              child: index == 7 - 1
+                  ? finalExam(context)
+                  : AnimationColorWidget(
+                      child: loading(context, index),
+                    ),
+            );
+          },
+        );
+      },
     );
   }
 
@@ -197,7 +196,7 @@ class HomeView extends StatelessWidget {
             padding: EdgeInsets.only(bottom: 40.h),
             child: CircleAvatar(
               backgroundColor: Theme.of(context).colorScheme.primary,
-              radius: MediaQuery.of(context).size.width * 0.150,
+              radius: 70.sp,
             ),
           ),
           (index % 2 == 0)
@@ -252,13 +251,13 @@ class HomeView extends StatelessWidget {
                 padding: EdgeInsets.only(bottom: 40.h),
                 child: CircleAvatar(
                   backgroundColor: Theme.of(context).colorScheme.primary,
-                  radius: MediaQuery.of(context).size.width * 0.150,
+                  radius: 70.sp,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: words!
                         .map((word) => CustomText(
                               text: word,
-                              fontSize: 17,
+                              fontSize: 17.sp,
                             ))
                         .toList(),
                   ),

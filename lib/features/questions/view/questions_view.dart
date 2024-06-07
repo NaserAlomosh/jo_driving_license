@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -10,13 +11,13 @@ import 'package:jo_driving_license/core/helper/spacing.dart';
 import 'package:jo_driving_license/core/models/question_model.dart';
 import 'package:jo_driving_license/core/widgets/buttons/custom_button.dart';
 import 'package:jo_driving_license/core/widgets/error_widget/error_widget.dart';
-import 'package:jo_driving_license/core/widgets/general/custom_network_image.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
 import 'package:jo_driving_license/features/questions/view/category_score_view.dart';
 import 'package:jo_driving_license/features/questions/view/widgets/loading_questions_widget.dart';
 
 import '../../../core/constants/dimentions.dart';
 import '../../../core/constants/image_path.dart';
+import '../../../core/widgets/general/custom_network_image.dart';
 import '../view_model/cubit.dart';
 import 'widgets/timer_widget.dart';
 
@@ -37,10 +38,30 @@ class QuestionsView extends StatefulWidget {
 }
 
 class QuestionsViewState extends State<QuestionsView> {
-  final PageController _pageController = PageController();
+  PageController _pageController = PageController();
   Map<int, Map<int, Color>> answerColors = {};
   List<bool> answersCorrectness = [];
   List<bool> answerSelected = [];
+  ScrollController _listController = ScrollController();
+  bool isNavigating = false;
+  int? currentIndex = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _pageController = PageController(initialPage: currentIndex ?? 0);
+    _pageController.addListener(_pageChangeListener);
+  }
+
+  // Listener for page changes
+  void _pageChangeListener() {
+    setState(() {
+      currentIndex = _pageController.page!.round();
+      _listController.jumpTo(
+        (_pageController.page ?? 0) * 30.w,
+      );
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,98 +71,108 @@ class QuestionsViewState extends State<QuestionsView> {
           widget.quizId,
           widget.countRandomQuestions,
         ),
-      child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          title: CustomText(
-            text: widget.categoryName ??
-                (widget.countRandomQuestions == null
-                    ? tr('allQuestions')
-                    : tr('drivingLicenseExam')),
-            fontSize: 24.sp,
-            fontWeight: FontWeight.w700,
-            color: Theme.of(context).colorScheme.secondary,
-          ),
-          actions: [
-            widget.countRandomQuestions != null
-                ? TimerWidget()
-                : SizedBox.shrink(),
-            widthSpace(20),
-          ],
-        ),
-        body: SafeArea(
-          child: BlocBuilder<QuistionsCubit, QuistionsState>(
-            builder: (context, state) {
-              final cubit = context.read<QuistionsCubit>();
-              if (state is QuistionsLoading) {
-                return const LoadingQuestionsWidget();
-              } else if (state is QuistionsError) {
-                return Center(child: CustomErrorWidget(msg: state.error));
-              } else {
-                return PageView.builder(
-                  controller: _pageController,
-                  itemCount: cubit.questions.length,
-                  itemBuilder: (context, quistionIndex) {
-                    log(cubit.questions[quistionIndex]!.image.toString());
-                    final question = cubit.questions[quistionIndex];
-
-                    if (answerSelected.length <= quistionIndex) {
-                      answerSelected.add(false);
-                    }
-                    if (answersCorrectness.length <= quistionIndex) {
-                      answersCorrectness.add(false);
-                    }
-
-                    return Padding(
-                      padding: EdgeInsets.all(GeneralConst.horizontalPadding),
-                      child: LayoutBuilder(
-                        builder: (BuildContext context,
-                                BoxConstraints constraints) =>
-                            SingleChildScrollView(
-                          child: ConstrainedBox(
-                            constraints: BoxConstraints(
-                              minHeight: constraints.maxHeight,
-                            ),
-                            child: IntrinsicHeight(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  linearIndicator(
-                                    quistionIndex,
-                                    cubit.questions.length,
-                                  ),
-                                  heightSpace(15),
-                                  _questionCounter(
-                                    quistionIndex,
-                                    cubit.questions.length,
-                                  ),
-                                  heightSpace(15),
-                                  _getQuestion(question),
-                                  heightSpace(8),
-                                  question?.image == null
-                                      ? const SizedBox.shrink()
-                                      : CustomNetworkImage(
-                                          imageUrl: question?.image ?? '',
-                                        ),
-                                  heightSpace(8),
-                                  _getListAnswers(
-                                      cubit, quistionIndex, question),
-                                  Spacer(),
-                                  _getNextButton(cubit, quistionIndex),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
+      child: PopScope(
+        canPop: false,
+        onPopInvoked: (_) async => await questionBackShowDiloge(context),
+        child: Scaffold(
+          appBar: _getAppBar(),
+          body: SafeArea(
+            child: BlocBuilder<QuistionsCubit, QuistionsState>(
+              builder: (context, state) {
+                final cubit = context.read<QuistionsCubit>();
+                if (state is QuistionsLoading) {
+                  return const LoadingQuestionsWidget();
+                } else if (state is QuistionsError) {
+                  return Center(child: CustomErrorWidget(msg: state.error));
+                } else {
+                  return Column(
+                    children: [
+                      _countOfQuestions(
+                        cubit.questions.length,
+                        currentIndex ?? 0,
                       ),
-                    );
-                  },
-                );
-              }
-            },
+                      _getPageView(cubit),
+                    ],
+                  );
+                }
+              },
+            ),
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _getPageView(QuistionsCubit cubit) {
+    return Expanded(
+      child: PageView.builder(
+        controller: _pageController,
+        itemCount: cubit.questions.length,
+        itemBuilder: (context, quistionIndex) {
+          final question = cubit.questions[quistionIndex];
+          if (answerSelected.length <= quistionIndex) {
+            answerSelected.add(false);
+          }
+          if (answersCorrectness.length <= quistionIndex) {
+            answersCorrectness.add(false);
+          }
+          return Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: GeneralConst.horizontalPadding,
+            ),
+            child: LayoutBuilder(
+              builder: (
+                BuildContext context,
+                BoxConstraints constraints,
+              ) =>
+                  SingleChildScrollView(
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(
+                    minHeight: constraints.maxHeight,
+                  ),
+                  child: IntrinsicHeight(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        heightSpace(10),
+                        linearIndicator(
+                          quistionIndex,
+                          cubit.questions.length,
+                        ),
+                        heightSpace(15),
+                        _questionCounter(
+                          quistionIndex,
+                          cubit.questions.length,
+                        ),
+                        heightSpace(15),
+                        _getQuestion(question),
+                        heightSpace(8),
+                        question?.image == null
+                            ? const SizedBox.shrink()
+                            : CustomNetworkImage(
+                                imageUrl: question?.image ?? '',
+                              ),
+                        heightSpace(8),
+                        _getListAnswers(
+                          cubit,
+                          quistionIndex,
+                          question,
+                        ),
+                        Spacer(),
+                        _getNextButton(
+                          cubit,
+                          quistionIndex,
+                        ),
+                        heightSpace(15),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          );
+        },
       ),
     );
   }
@@ -254,14 +285,14 @@ class QuestionsViewState extends State<QuestionsView> {
     );
   }
 
-  void _pushToResultsScreen(String categoryName) {
+  void _pushToResultsScreen(String categoryName) async {
     final correctAnswers =
-        answersCorrectness.where((correct) => correct).length;
-    final incorrectAnswers = answersCorrectness.length - correctAnswers;
+        await answersCorrectness.where((correct) => correct).length;
+    final incorrectAnswers = await answersCorrectness.length - correctAnswers;
     int totalQuestions = correctAnswers + incorrectAnswers;
 
-    double scorePercentage = (correctAnswers / totalQuestions) * 100;
-    int scoreNumber = scorePercentage.toInt();
+    double scorePercentage = await (correctAnswers / totalQuestions) * 100;
+    int scoreNumber = await scorePercentage.toInt();
     context.push(
       CategoryScoreView(
         correctsNumber: correctAnswers,
@@ -317,6 +348,7 @@ class QuestionsViewState extends State<QuestionsView> {
   void _onClickAnswer(
       int quistionIndex, int answersIndex, QuestionModel? question) {
     answerColors[quistionIndex] ??= {};
+    log('message');
     final correct = question?.answers[answersIndex].correct ?? false;
     answerColors[quistionIndex]![answersIndex] = correct
         ? Theme.of(context).colorScheme.onError
@@ -333,8 +365,153 @@ class QuestionsViewState extends State<QuestionsView> {
     answerSelected[quistionIndex] = true;
   }
 
+  Future questionBackShowDiloge(BuildContext context) async {
+    if (isNavigating) return;
+    isNavigating = true;
+
+    await showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          backgroundColor: Theme.of(context).colorScheme.onSecondary,
+          title: CustomText(
+            text: tr('exitQuiz'),
+            color: Theme.of(context).colorScheme.onPrimary,
+          ),
+          content: CustomText(
+            text: tr('areYouSureYouWantToExitTheQuiz'),
+            color: Theme.of(context).colorScheme.onPrimary,
+          ),
+          actionsAlignment: MainAxisAlignment.start,
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+                isNavigating = false;
+              },
+              child: CustomText(
+                text: tr('no'),
+                color: Theme.of(context).colorScheme.onPrimary,
+              ),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(); // Pop the dialog
+                Navigator.of(context).pop(); // Pop the quiz screen
+              },
+              child: CustomText(
+                text: tr('yes'),
+                color: Theme.of(context).colorScheme.onPrimary,
+              ),
+            ),
+          ],
+        );
+      },
+    );
+
+    isNavigating = false;
+  }
+
+  Widget _countOfQuestions(int countOfQuestions, int quistionIndex) {
+    return Padding(
+      padding: EdgeInsets.symmetric(
+        horizontal: GeneralConst.horizontalPadding,
+        vertical: 6.h,
+      ),
+      child: SizedBox(
+        height: 40.w,
+        width: double.infinity,
+        child: GridView.builder(
+          itemCount: countOfQuestions,
+          controller: _listController,
+          scrollDirection: Axis.horizontal,
+          itemBuilder: (context, index) => Padding(
+            padding: EdgeInsets.symmetric(horizontal: 2.0),
+            child: GestureDetector(
+              onTap: () async {
+                await _pageController.animateToPage(
+                  index,
+                  duration: const Duration(milliseconds: 200),
+                  curve: Curves.ease,
+                );
+                currentIndex = index;
+              },
+              child: Container(
+                width: 40.w,
+                height: 40,
+                color: quistionIndex == index
+                    ? Theme.of(context)
+                        .colorScheme
+                        .secondaryContainer
+                        .withOpacity(0.8)
+                    : Colors.grey,
+                child: Stack(
+                  children: [
+                    Center(
+                      child: CustomText(
+                        text: '${index + 1}',
+                      ),
+                    ),
+                    _getDoneIcon(index, quistionIndex),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 1,
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _getDoneIcon(int index, int quistionIndex) {
+    if (answerSelected.isEmpty || index >= answerSelected.length) {
+      return SizedBox.shrink();
+    } else {
+      bool isAnswered = answerSelected[index];
+      return isAnswered
+          ? Center(
+              child: Icon(
+                Icons.done,
+                color: Theme.of(context).colorScheme.secondaryContainer,
+              ),
+            )
+          : SizedBox.shrink();
+    }
+  }
+
+  PreferredSizeWidget _getAppBar() {
+    return AppBar(
+      backgroundColor: Colors.transparent,
+      leading: GestureDetector(
+        onTap: () async => await questionBackShowDiloge(context),
+        child: Icon(
+          Platform.isAndroid ? Icons.arrow_back : Icons.arrow_back_ios,
+          size: 20.sp,
+        ),
+      ),
+      title: CustomText(
+        text: widget.categoryName ??
+            (widget.countRandomQuestions == null
+                ? tr('allQuestions')
+                : tr('drivingLicenseExam')),
+        fontSize: 18.sp,
+        fontWeight: FontWeight.w700,
+        color: Theme.of(context).colorScheme.secondary,
+      ),
+      actions: [
+        widget.countRandomQuestions != null ? TimerWidget() : SizedBox.shrink(),
+        widthSpace(20),
+      ],
+    );
+  }
+
   @override
   void dispose() {
+    _pageController.removeListener(_pageChangeListener);
+    _listController.dispose();
     _pageController.dispose();
     super.dispose();
   }

@@ -45,11 +45,11 @@ class FinalExamView extends StatelessWidget {
                     fontSize: 20.sp,
                     color: Theme.of(context).colorScheme.onBackground,
                   ),
-                  // CustomText(
-                  //   text: tr('youCanGet6WrongAnswers'),
-                  //   fontSize: 20.sp,
-                  //   color: Theme.of(context).colorScheme.onBackground,
-                  // ),
+                  CustomText(
+                    text: tr('youCanGet6WrongAnswers'),
+                    fontSize: 20.sp,
+                    color: Theme.of(context).colorScheme.onBackground,
+                  ),
                   Divider(),
                   CustomText(
                     text: tr('andNeverForgetWeBelieveInYou'),

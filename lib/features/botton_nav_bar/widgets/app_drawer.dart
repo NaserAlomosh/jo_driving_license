@@ -58,12 +58,6 @@ class _AppDrawerState extends State<AppDrawer> {
                   ),
                   _listTile(
                     context,
-                    leadingIcon: Icons.settings,
-                    tr('settings'),
-                    onTap: () => context.push(const SettingsView()),
-                  ),
-                  _listTile(
-                    context,
                     leadingIcon: Icons.quiz,
                     tr('allQuestions'),
                     onTap: () => context
@@ -75,6 +69,12 @@ class _AppDrawerState extends State<AppDrawer> {
                     tr('finalExam'),
                     onTap: () => context
                         .pushReplacement(const BottomNavBarApp(index: 2)),
+                  ),
+                  _listTile(
+                    context,
+                    leadingIcon: Icons.settings,
+                    tr('settings'),
+                    onTap: () => context.push(const SettingsView()),
                   ),
                 ],
               ),
@@ -88,7 +88,15 @@ class _AppDrawerState extends State<AppDrawer> {
   Widget _getHeaders(BuildContext context) {
     String userName = '${tr('welcome')} ${tr('myFriend')}';
     return UserAccountsDrawerHeader(
+      currentAccountPicture: Padding(
+        padding: EdgeInsets.only(bottom: 12.h),
+        child: SvgPicture.asset(
+          AppImage.policeManHappyHead,
+          fit: BoxFit.contain,
+        ),
+      ),
       currentAccountPictureSize: const Size.square(70),
+      margin: EdgeInsets.all(4.w),
       accountName: CustomText(
         text: userName,
       ),
@@ -123,13 +131,6 @@ class _AppDrawerState extends State<AppDrawer> {
           ),
           widthSpace(34),
         ],
-      ),
-      currentAccountPicture: CircleAvatar(
-        child: SvgPicture.asset(
-          AppImage.policeManHappyHead,
-          fit: BoxFit.contain,
-        ),
-        // backgroundColor: Color.fromARGB(255, 0, 44, 79),
       ),
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.primary,

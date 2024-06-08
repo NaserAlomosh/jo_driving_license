@@ -7,9 +7,9 @@ import 'package:jo_driving_license/core/helper/spacing.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
 import 'package:jo_driving_license/core/widgets/text_fields/custom_text_form_field.dart';
 import 'package:jo_driving_license/features/botton_nav_bar/botton_nav_bar.dart';
-import 'package:jo_driving_license/features/questions/view/widgets/get_ads.dart';
 
 import '../../../core/constants/image_path.dart';
+import '../../../core/widgets/ad_mob_google_paly/banner_ad_mob_widget.dart';
 import '../../../main.dart';
 import '../../settings/view/settings_view.dart';
 
@@ -78,7 +78,7 @@ class _AppDrawerState extends State<AppDrawer> {
                     onTap: () => context.push(const SettingsView()),
                   ),
                   Spacer(),
-                  GetAdsWidget(),
+                  AdMobBannerWidget(),
                 ],
               ),
             ),

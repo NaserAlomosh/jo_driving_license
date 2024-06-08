@@ -12,13 +12,13 @@ import 'package:jo_driving_license/core/widgets/refresh/custom_refresh_widget.da
 import 'package:jo_driving_license/features/botton_nav_bar/botton_nav_bar.dart';
 import 'package:jo_driving_license/features/home/view_model/cubit.dart';
 
+import '../../../add_ads_helper.dart';
 import '../../../core/constants/image_path.dart';
 import '../../../core/helper/get_device_type.dart';
 import '../../../core/helper/spacing.dart';
 import '../../../core/widgets/animated/animated_widgets/animation_opacity_color_widget.dart';
 import '../../../core/widgets/buttons/custom_button.dart';
 import '../../../core/widgets/error_widget/error_widget.dart';
-import '../../add_ads_helper.dart';
 import '../../questions/view/questions_view.dart';
 
 class HomeView extends StatelessWidget {
@@ -135,8 +135,7 @@ class HomeView extends StatelessWidget {
                         : Alignment.centerLeft,
                     child: GestureDetector(
                       onTap: () {
-                        AdmobHelper().createInterad();
-                        AdmobHelper().showInterad();
+                        ADState().loadAd();
 
                         index == cubit.quizzes.length - 1
                             ? context.pushReplacement(

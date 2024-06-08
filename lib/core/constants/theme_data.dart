@@ -10,8 +10,8 @@ ThemeData lightMode = ThemeData(
       secondary: Color(0xff6C5070),
       onSecondary: Color(0xff6C5070),
       surface: Color.fromARGB(255, 238, 229, 245),
-      error: Color.fromARGB(255, 214, 130, 130),
-      onError: Color(0xff94B3FD),
+      error: Color.fromARGB(255, 221, 143, 143),
+      onError: Color(0xff96E9C6),
       // primaryContainer: Color(0xff01DC82),
       outline: Color.fromARGB(255, 194, 180, 196),
       //used in some conditions

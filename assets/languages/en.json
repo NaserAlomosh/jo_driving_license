@@ -45,5 +45,10 @@
     "andNeverForgetWeBelieveInYou": "And never forget we believe in you",
     "startNow": "Start now",
     "areYouReady": "Are You Ready?",
-    "youWillTestAllQuestions": "You will test all questions"
+    "youWillTestAllQuestions": "You will test all questions",
+    "unansweredQuestions":"Unanswered Questions!",
+    "pleaseAnswerAllQuestions":"Please answer all questions.",
+    "ok": "Ok"
+
+
 }

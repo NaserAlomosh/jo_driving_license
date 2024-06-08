@@ -75,7 +75,10 @@ class QuestionsViewState extends State<QuestionsView> {
                       answerSelected.add(false); // Initialize selection state
                     }
                     return Padding(
-                      padding: EdgeInsets.all(GeneralConst.horizontalPadding),
+                      padding: EdgeInsets.symmetric(
+                        horizontal: GeneralConst.horizontalPadding,
+                        vertical: 10.w,
+                      ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -97,7 +100,6 @@ class QuestionsViewState extends State<QuestionsView> {
                               : CustomNetworkImage(
                                   imageUrl: question?.image ?? '',
                                 ),
-                          heightSpace(8),
                           _getListAnswers(quistionIndex, question),
                           _getNextButton(cubit, quistionIndex),
                         ],
@@ -120,18 +122,22 @@ class QuestionsViewState extends State<QuestionsView> {
     );
   }
 
-  LinearProgressIndicator linearIndicator(
+  linearIndicator(
     int quistionIndex,
     int totalQuestions,
   ) {
-    return LinearProgressIndicator(
-      value: (quistionIndex + 1) / totalQuestions,
-      minHeight: 12,
-      backgroundColor: Colors.grey[300],
-      borderRadius: BorderRadius.circular(10),
-      valueColor: AlwaysStoppedAnimation<Color>(
-        Theme.of(context).colorScheme.secondaryContainer,
-      ),
+    return Column(
+      children: [
+        LinearProgressIndicator(
+          value: (quistionIndex + 1) / totalQuestions,
+          minHeight: 10,
+          backgroundColor: Colors.grey[300],
+          borderRadius: BorderRadius.circular(10),
+          valueColor: AlwaysStoppedAnimation<Color>(
+            Theme.of(context).colorScheme.secondaryContainer,
+          ),
+        ),
+      ],
     );
   }
 
@@ -243,11 +249,14 @@ class QuestionsViewState extends State<QuestionsView> {
           title: Text(tr('unansweredQuestions')),
           content: Text(tr('pleaseAnswerAllQuestions')),
           actions: [
-            TextButton(
-              child: Text(tr('ok')),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
+            Center(
+              child: CustomButton(
+                width: MediaQuery.of(context).size.height * 0.23,
+                title: tr('ok'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
             ),
           ],
         );
@@ -255,20 +264,25 @@ class QuestionsViewState extends State<QuestionsView> {
     );
   }
 
-  ClipRRect policeImage() {
-    return ClipRRect(
-      child: Align(
-        alignment: Alignment.topLeft, // Adjust alignment as needed
-        widthFactor: 1, // Fraction of the original width
-        heightFactor: 0.7, // Fraction of the original height
-        child: SizedBox(
-          height: MediaQuery.of(context).size.height * 0.23,
-          width: 150.w,
-          child: SvgPicture.asset(
-            AppImage.policeManWait,
+  policeImage() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        ClipRRect(
+          child: Align(
+            alignment: Alignment.topLeft, // Adjust alignment as needed
+            widthFactor: 1, // Fraction of the original width
+            heightFactor: 0.67, // Fraction of the original height
+            child: SizedBox(
+              height: MediaQuery.of(context).size.height * 0.18,
+              width: 150.w,
+              child: SvgPicture.asset(
+                AppImage.policeManWait,
+              ),
+            ),
           ),
         ),
-      ),
+      ],
     );
   }
 

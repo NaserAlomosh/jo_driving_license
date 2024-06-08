@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:jo_driving_license/main.dart';
 
 import 'core/constants/theme_data.dart';
 import 'core/helper/design_size_responsive.dart';
+import 'features/botton_nav_bar/botton_nav_bar.dart';
 import 'features/on_boarding/intro_view.dart';
 import 'features/theme/theme_cubit.dart';
 
@@ -32,7 +34,9 @@ class DrivingLicenseApp extends StatelessWidget {
                 darkTheme: darkMode,
                 themeMode: themeMode, // Apply the themeMode here
                 debugShowCheckedModeBanner: false,
-                home: const IntroScreen(),
+                home: isFirstEnter == null
+                    ? const IntroScreen()
+                    : const BottomNavBarApp(),
               );
             },
           );

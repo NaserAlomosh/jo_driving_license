@@ -7,16 +7,17 @@ Widget myRefreshIndicator(
   BuildContext context, {
   required Future<void> Function() onRefresh,
   required Widget child,
+  double? topPadding,
 }) {
   return Padding(
-    padding: EdgeInsets.only(top: 10.h),
+    padding: EdgeInsets.only(top: topPadding ?? 0),
     child: RefreshIndicator(
       onRefresh: onRefresh,
       color: Theme.of(context).colorScheme.primary,
       // Conditional rendering for platform-specific refresh indicator icon
-      displacement: Platform.isIOS ? 0 : 40,
+      displacement: Platform.isIOS ? 0 : 40.sp,
       // Set the size of the refresh indicator
-      strokeWidth: Platform.isIOS ? 2 : 3,
+      strokeWidth: Platform.isIOS ? 2.sp : 3.sp,
       // Set the color of the refresh indicator
       // Set the background color of the refresh indicator
       notificationPredicate: (notification) {

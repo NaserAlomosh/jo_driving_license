@@ -6,21 +6,25 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'core/helper/display_rotation_screen.dart';
 import 'driving_license.dart';
+import 'features/add_ads_helper.dart';
 import 'firebase_options.dart';
 
 late SharedPreferences prefs;
-
+bool? isFirstEnter;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  AdmobHelper.initialize();
+
   await displayScreenRotation();
   await EasyLocalization.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
 
   prefs = await SharedPreferences.getInstance();
-
+  isFirstEnter = prefs.getBool('isFirstEnter');
   runApp(
     EasyLocalization(
       path: 'assets/languages',

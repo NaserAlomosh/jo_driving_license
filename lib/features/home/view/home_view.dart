@@ -12,7 +12,6 @@ import 'package:jo_driving_license/core/widgets/refresh/custom_refresh_widget.da
 import 'package:jo_driving_license/features/botton_nav_bar/botton_nav_bar.dart';
 import 'package:jo_driving_license/features/home/view_model/cubit.dart';
 
-import '../../../add_ads_helper.dart';
 import '../../../core/constants/image_path.dart';
 import '../../../core/helper/get_device_type.dart';
 import '../../../core/helper/spacing.dart';
@@ -135,7 +134,7 @@ class HomeView extends StatelessWidget {
                         : Alignment.centerLeft,
                     child: GestureDetector(
                       onTap: () {
-                        ADState().loadAd();
+                        //   ADState().loadAd();
                         index == cubit.quizzes.length - 1
                             ? context.pushReplacement(
                                 const BottomNavBarApp(index: 2))

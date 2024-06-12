@@ -181,11 +181,9 @@ class CategoryScoreView extends StatelessWidget {
                       ),
                     ],
                   )
-                : Flexible(
-                    child: SvgPicture.asset(
-                      AppImage.policeManRun,
-                      height: 220.h,
-                    ),
+                : Image.asset(
+                    AppImage.policeManSad,
+                    height: 220.h,
                   ),
           ),
         ],

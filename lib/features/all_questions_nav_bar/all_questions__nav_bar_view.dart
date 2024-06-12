@@ -6,6 +6,7 @@ import 'package:jo_driving_license/core/helper/extensions.dart';
 import 'package:jo_driving_license/core/widgets/buttons/custom_button.dart';
 
 import '../../core/constants/image_path.dart';
+import '../../core/widgets/ad_mob_google_paly/banner_ad_mob_widget.dart';
 import '../../core/widgets/general/custom_text.dart';
 import '../questions/view/questions_view.dart';
 
@@ -28,6 +29,7 @@ class AllQuestionsNavBar extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  AdMobBannerWidget(),
                   CustomText(
                     text: tr('youWillTestAllQuestions'),
                     fontSize: 26,

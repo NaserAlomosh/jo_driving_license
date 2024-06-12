@@ -11,7 +11,6 @@ import '../../../core/constants/image_path.dart';
 
 class FinalExamView extends StatelessWidget {
   const FinalExamView({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Padding(

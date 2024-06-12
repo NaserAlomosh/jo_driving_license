@@ -60,6 +60,7 @@ class CustomButton extends StatelessWidget {
           fontSize: fontSize,
           textAlign: TextAlign.center,
           fontWeight: fontWeight ?? FontWeight.bold,
+          textOverflow: TextOverflow.ellipsis,
         ),
       ),
     );

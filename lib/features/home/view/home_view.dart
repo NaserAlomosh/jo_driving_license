@@ -136,7 +136,6 @@ class HomeView extends StatelessWidget {
                     child: GestureDetector(
                       onTap: () {
                         ADState().loadAd();
-
                         index == cubit.quizzes.length - 1
                             ? context.pushReplacement(
                                 const BottomNavBarApp(index: 2))
@@ -258,9 +257,11 @@ class HomeView extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: words!
-                        .map((word) => CustomText(
-                              text: word,
-                              fontSize: 17.sp,
+                        .map((word) => Flexible(
+                              child: CustomText(
+                                text: word,
+                                fontSize: 17.sp,
+                              ),
                             ))
                         .toList(),
                   ),

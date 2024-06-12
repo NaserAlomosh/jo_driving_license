@@ -171,6 +171,9 @@ class _QuestionsBodyState extends State<QuestionsBody> {
                             ? const SizedBox.shrink()
                             : CustomNetworkImage(
                                 imageUrl: question?.image ?? '',
+                                height: 130.w,
+                                width: 200.w,
+                                fit: BoxFit.contain,
                               ),
                         heightSpace(8),
                         _getListAnswers(
@@ -383,7 +386,6 @@ class _QuestionsBodyState extends State<QuestionsBody> {
     answerSelected[quistionIndex] = true;
   }
 
-  
   Widget _getDoneIcon(int index, int quistionIndex) {
     if (answerSelected.isEmpty || index >= answerSelected.length) {
       return SizedBox.shrink();

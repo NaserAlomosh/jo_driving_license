@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "649731342605",
-    "project_id": "jo-driving-license",
-    "storage_bucket": "jo-driving-license.appspot.com"
+    "project_number": "252207067230",
+    "project_id": "soy-analog-425115-b3",
+    "storage_bucket": "soy-analog-425115-b3.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:649731342605:android:12686051907ca693a77044",
+        "mobilesdk_app_id": "1:252207067230:android:1561d4748a6fc5177684cf",
         "android_client_info": {
           "package_name": "com.KSA.driving_license"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCDu19iBnualSeByd7G8fmupY_bJ6zCl_Q"
+          "current_key": "AIzaSyAJ7VBYcxODOt6rq99MRtDLeAqoXcPE2AQ"
         }
       ],
       "services": {

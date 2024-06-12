@@ -50,19 +50,19 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCDu19iBnualSeByd7G8fmupY_bJ6zCl_Q',
-    appId: '1:649731342605:android:12686051907ca693a77044',
-    messagingSenderId: '649731342605',
-    projectId: 'jo-driving-license',
-    storageBucket: 'jo-driving-license.appspot.com',
+    apiKey: 'AIzaSyAJ7VBYcxODOt6rq99MRtDLeAqoXcPE2AQ',
+    appId: '1:252207067230:android:1561d4748a6fc5177684cf',
+    messagingSenderId: '252207067230',
+    projectId: 'soy-analog-425115-b3',
+    storageBucket: 'soy-analog-425115-b3.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyBtcfKk3EG0zZCdAuy7ciBS3N50Cr8rpFA',
-    appId: '1:649731342605:ios:163858b6404ddd5aa77044',
-    messagingSenderId: '649731342605',
-    projectId: 'jo-driving-license',
-    storageBucket: 'jo-driving-license.appspot.com',
+    apiKey: 'AIzaSyBtsQnDIc-Bt8Yy7eb20GRzn6-GJxFXPz4',
+    appId: '1:252207067230:ios:b87f1f162901f8817684cf',
+    messagingSenderId: '252207067230',
+    projectId: 'soy-analog-425115-b3',
+    storageBucket: 'soy-analog-425115-b3.appspot.com',
     iosBundleId: 'com.example.joDrivingLicense',
   );
 }

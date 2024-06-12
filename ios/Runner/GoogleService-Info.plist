@@ -3,17 +3,17 @@
 <plist version="1.0">
 <dict>
 	<key>API_KEY</key>
-	<string>AIzaSyBtcfKk3EG0zZCdAuy7ciBS3N50Cr8rpFA</string>
+	<string>AIzaSyBtsQnDIc-Bt8Yy7eb20GRzn6-GJxFXPz4</string>
 	<key>GCM_SENDER_ID</key>
-	<string>649731342605</string>
+	<string>252207067230</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.example.joDrivingLicense</string>
 	<key>PROJECT_ID</key>
-	<string>jo-driving-license</string>
+	<string>soy-analog-425115-b3</string>
 	<key>STORAGE_BUCKET</key>
-	<string>jo-driving-license.appspot.com</string>
+	<string>soy-analog-425115-b3.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -25,6 +25,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:649731342605:ios:163858b6404ddd5aa77044</string>
+	<string>1:252207067230:ios:b87f1f162901f8817684cf</string>
 </dict>
 </plist>

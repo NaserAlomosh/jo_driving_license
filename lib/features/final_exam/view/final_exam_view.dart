@@ -38,17 +38,10 @@ class FinalExamView extends StatelessWidget {
                     text: tr('rememberTheFollowingInstructions'),
                     fontSize: 20.sp,
                     color: Theme.of(context).colorScheme.onBackground,
+                    fontWeight: FontWeight.w900,
                   ),
-                  CustomText(
-                    text: tr('timeOfExamIs60Minutes'),
-                    fontSize: 20.sp,
-                    color: Theme.of(context).colorScheme.onBackground,
-                  ),
-                  CustomText(
-                    text: tr('youCanGet6WrongAnswers'),
-                    fontSize: 20.sp,
-                    color: Theme.of(context).colorScheme.onBackground,
-                  ),
+                  Instruction(text: 'timeOfExamIs60Minutes'),
+                  Instruction(text: 'youCanGet6WrongAnswers'),
                   Divider(),
                   CustomText(
                     text: tr('andNeverForgetWeBelieveInYou'),
@@ -80,6 +73,29 @@ class FinalExamView extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+class Instruction extends StatelessWidget {
+  const Instruction({
+    super.key,
+    required this.text,
+  });
+
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Icon(Icons.directions_car),
+        CustomText(
+          text: tr(text),
+          fontSize: 20.sp,
+          color: Theme.of(context).colorScheme.onBackground,
+        ),
+      ],
     );
   }
 }

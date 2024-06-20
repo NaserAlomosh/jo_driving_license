@@ -1,14 +1,13 @@
 import 'dart:io';
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jo_driving_license/core/helper/spacing.dart';
+import 'package:jo_driving_license/core/widgets/buttons/custom_button.dart';
 import 'package:jo_driving_license/core/widgets/error_widget/error_widget.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
 import 'package:jo_driving_license/features/questions/view/widgets/loading_questions_widget.dart';
-
 import '../view_model/cubit.dart';
 import 'widgets/count_of_questions.dart';
 import 'widgets/timer_widget.dart';
@@ -101,34 +100,41 @@ class QuestionsViewState extends State<QuestionsView> {
         return AlertDialog(
           backgroundColor: Theme.of(context).colorScheme.onSecondary,
           title: CustomText(
-            text: tr('exitQuiz'),
+            text: tr('neverGiveUp'),
             color: Theme.of(context).colorScheme.onPrimary,
+            textAlign: TextAlign.center,
+            fontSize: 20.sp,
+            fontWeight: FontWeight.bold,
           ),
           content: CustomText(
             text: tr('areYouSureYouWantToExitTheQuiz'),
             color: Theme.of(context).colorScheme.onPrimary,
+            textAlign: TextAlign.center,
           ),
           actionsAlignment: MainAxisAlignment.start,
-          actions: <Widget>[
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-                isNavigating = false;
-              },
-              child: CustomText(
-                text: tr('no'),
-                color: Theme.of(context).colorScheme.onPrimary,
-              ),
-            ),
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop(); // Pop the dialog
-                Navigator.of(context).pop(); // Pop the quiz screen
-              },
-              child: CustomText(
-                text: tr('yes'),
-                color: Theme.of(context).colorScheme.onPrimary,
-              ),
+          actions: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                CustomButton(
+                  width: MediaQuery.of(context).size.width * 0.27,
+                  height: MediaQuery.of(context).size.width * 0.12,
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                    isNavigating = false;
+                  },
+                  title: tr('no'),
+                ),
+                CustomButton(
+                  width: MediaQuery.of(context).size.width * 0.27,
+                  height: MediaQuery.of(context).size.width * 0.12,
+                  onPressed: () {
+                    Navigator.of(context).pop(); // Pop the dialog
+                    Navigator.of(context).pop(); // Pop the quiz screen
+                  },
+                  title: tr('yes'),
+                ),
+              ],
             ),
           ],
         );

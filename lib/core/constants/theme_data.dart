@@ -4,12 +4,12 @@ ThemeData lightMode = ThemeData(
   brightness: Brightness.light,
   colorScheme: const ColorScheme.light(
     background: Color(0xFFF7F5F8),
-    onBackground: Color(0xff6C5070),
-    primary: Color(0xff6C5070),
+    onBackground: Color.fromARGB(255, 103, 103, 103),
+    primary: Color(0xffACC6AA),
     onPrimary: Color(0xFFFFFFFF),
-    secondary: Color(0xff6C5070),
+    secondary: Color(0xffACC6AA),
     onSecondary: Color(0xff6C5070),
-    surface: Color.fromARGB(255, 238, 229, 245),
+    surface: Color.fromARGB(255, 229, 245, 235),
     error: Color.fromARGB(255, 214, 130, 130),
     onError: Color.fromARGB(198, 111, 255, 157),
 

@@ -2,6 +2,7 @@
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -11,7 +12,6 @@ import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
 import 'package:jo_driving_license/core/widgets/refresh/custom_refresh_widget.dart';
 import 'package:jo_driving_license/features/botton_nav_bar/botton_nav_bar.dart';
 import 'package:jo_driving_license/features/home/view_model/cubit.dart';
-
 import '../../../core/constants/image_path.dart';
 import '../../../core/helper/get_device_type.dart';
 import '../../../core/helper/spacing.dart';
@@ -56,52 +56,79 @@ class HomeView extends StatelessWidget {
           ),
           Container(
             padding: EdgeInsets.symmetric(
-                horizontal: MediaQuery.of(context).size.width * 0.06),
+              horizontal: MediaQuery.of(context).size.width * 0.06,
+            ),
             height: MediaQuery.of(context).size.width * 0.45,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Flexible(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      heightSpace(20),
-                      CustomText(
-                        height: 1.5.h,
-                        text: tr('putYourSeatBelt'),
-                        fontWeight: FontWeight.w900,
-                        fontSize: 18.sp,
-                        textOverflow: TextOverflow.ellipsis,
-                      ),
-                      CustomText(
-                        text: tr('areYouReadyForYourDrivingLicence'),
-                        fontSize: 16.sp,
-                        height: 2.h,
-                        fontWeight: FontWeight.w200,
-                      ),
-                      Spacer(),
-                      Align(
-                        alignment: Alignment.bottomLeft,
-                        child: SizedBox(
-                          height: MediaQuery.of(context).size.width * 0.1,
-                          width: MediaQuery.of(context).size.width * 0.3,
-                          child: CustomButton(
-                            borderRadius: 50,
-                            background: Theme.of(context).colorScheme.tertiary,
-                            elevation: 10,
-                            title: tr('finalExam'),
-                            fontSize: 14.sp,
-                            textColor: Theme.of(context).colorScheme.primary,
-                            onPressed: () {
-                              context.pushReplacement(
-                                  const BottomNavBarApp(index: 2));
-                            },
-                          ),
+                Column(
+                  children: [
+                    Flexible(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 5),
+                        child: Column(
+                          // mainAxisAlignment: MainAxisAlignment.start,
+                          // crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            heightSpace(20),
+
+                            Column(
+                              children: [
+                                CustomText(
+                                  height: 1.5.h,
+                                  text: tr('drivingLicence'),
+                                  fontWeight: FontWeight.w900,
+                                  fontSize: 22.sp,
+                                  textOverflow: TextOverflow.ellipsis,
+                                ),
+                                CustomText(
+                                  text: tr('areYouReadyForYourDrivingLicence'),
+                                  fontSize: 14.sp,
+                                  height: 2.h,
+                                  fontWeight: FontWeight.w100,
+                                ),
+                              ],
+                            ),
+                            heightSpace(20),
+                            Column(
+                              children: [
+                                Container(
+                                  height:
+                                      MediaQuery.of(context).size.width * 0.1,
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.3,
+                                  child: CustomButton(
+                                    borderRadius: 50,
+                                    background:
+                                        Theme.of(context).colorScheme.tertiary,
+                                    elevation: 10,
+                                    title: tr('finalExam'),
+                                    fontSize: 14.sp,
+                                    textColor:
+                                        Theme.of(context).colorScheme.primary,
+                                    onPressed: () {
+                                      context.pushReplacement(
+                                          const BottomNavBarApp(index: 2));
+                                    },
+                                  ),
+                                ),
+                              ],
+                            ),
+
+                            // CustomText(
+                            //   height: 1.5.h,
+                            //   text: tr('putYourSeatBelt'),
+                            //   fontWeight: FontWeight.w900,
+                            //   fontSize: 18.sp,
+                            //   textOverflow: TextOverflow.ellipsis,
+                            // ),
+                            // Spacer(),
+                          ],
                         ),
                       ),
-                      heightSpace(20),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ],
             ),

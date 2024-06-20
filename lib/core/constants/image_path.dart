@@ -33,6 +33,8 @@ class AppImage {
 // All Questions Exam
   static const String allQuestionsExamBackground =
       'assets/images/png/all_questions_exam_background.png';
+        static const String policeLikeThumb =
+      'assets/images/png/police_like_thumb.png';
   // Final Exam
   static const String finalExamBackground =
       'assets/images/png/final_exam_background.png';

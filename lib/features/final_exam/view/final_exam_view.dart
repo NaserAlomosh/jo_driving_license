@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jo_driving_license/core/constants/dimentions.dart';
 import 'package:jo_driving_license/core/helper/extensions.dart';
+import 'package:jo_driving_license/core/helper/spacing.dart';
 import 'package:jo_driving_license/core/widgets/buttons/custom_button.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
 import 'package:jo_driving_license/features/questions/view/questions_view.dart';
-
 import '../../../core/constants/image_path.dart';
 
 class FinalExamView extends StatelessWidget {
@@ -29,42 +29,42 @@ class FinalExamView extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   CustomText(
-                    text: tr('areYouReadyForYourDrivingLicence'),
-                    fontSize: 30.sp,
+                    text: tr('rememberTheFollowingInstructions'),
+                    fontSize: 26.sp,
                     color: Theme.of(context).colorScheme.onBackground,
+                    fontWeight: FontWeight.w700,
                   ),
                   SizedBox(height: 20.h),
-                  CustomText(
-                    text: tr('rememberTheFollowingInstructions'),
-                    fontSize: 20.sp,
-                    color: Theme.of(context).colorScheme.onBackground,
-                    fontWeight: FontWeight.w900,
-                  ),
                   Instruction(text: 'timeOfExamIs60Minutes'),
                   Instruction(text: 'youCanGet6WrongAnswers'),
-                  Divider(),
-                  CustomText(
-                    text: tr('andNeverForgetWeBelieveInYou'),
-                    fontSize: 20.sp,
-                    color: Theme.of(context).colorScheme.onBackground,
-                    fontWeight: FontWeight.w900,
-                  ),
                   const Spacer(),
                   Align(
                     alignment: Alignment.center,
                     child: Image.asset(
                       height: 300.h,
-                      AppImage.finalExamBackground,
-                      color: Theme.of(context).colorScheme.primary,
+                      AppImage.policeManInstructions,
                     ),
+                  ),
+                  heightSpace(10),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      CustomText(
+                        text: tr('andNeverForgetWeBelieveInYou'),
+                        fontSize: 28.sp,
+                        color: Theme.of(context).colorScheme.onBackground,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ],
                   ),
                   const Spacer(),
                   CustomButton(
                     fontSize: 20.sp,
                     title: tr('startNow'),
                     onPressed: () {
-                      context
-                          .push(const QuestionsView(countRandomQuestions: 5));
+                      context.push(
+                        const QuestionsView(countRandomQuestions: 5),
+                      );
                     },
                   ),
                 ],
@@ -89,7 +89,11 @@ class Instruction extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Icon(Icons.directions_car),
+        Image.asset(
+          height: 30.h,
+          AppImage.carWheel,
+        ),
+        SizedBox(width: 5),
         CustomText(
           text: tr(text),
           fontSize: 20.sp,

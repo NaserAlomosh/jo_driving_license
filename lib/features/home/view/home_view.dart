@@ -105,8 +105,9 @@ class HomeView extends StatelessWidget {
                                     elevation: 10,
                                     title: tr('finalExam'),
                                     fontSize: 14.sp,
-                                    textColor:
-                                        Theme.of(context).colorScheme.primary,
+                                    textColor: Theme.of(context)
+                                        .colorScheme
+                                        .onBackground,
                                     onPressed: () {
                                       context.pushReplacement(
                                           const BottomNavBarApp(index: 2));

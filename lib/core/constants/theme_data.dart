@@ -8,7 +8,7 @@ ThemeData lightMode = ThemeData(
     primary: Color(0xffACC6AA),
     onPrimary: Color(0xFFFFFFFF),
     secondary: Color(0xffACC6AA),
-    onSecondary: Color(0xff6C5070),
+    onSecondary: Color(0xffACC6AA),
     surface: Color.fromARGB(255, 229, 245, 235),
     error: Color.fromARGB(255, 214, 130, 130),
     onError: Color.fromARGB(198, 111, 255, 157),
@@ -18,7 +18,7 @@ ThemeData lightMode = ThemeData(
     //used in some conditions
     secondaryContainer: Color(0xff6C5070),
     tertiaryContainer: Color(0xFFDDDDDD),
-    tertiary: Color(0xFFFFE15D),
+    tertiary: Color(0xFFFFDE84),
     scrim: Color(0xff94B3FD),
   ),
 );

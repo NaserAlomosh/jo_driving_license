@@ -98,17 +98,17 @@ class QuestionsViewState extends State<QuestionsView> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          backgroundColor: Theme.of(context).colorScheme.onSecondary,
+          backgroundColor: Theme.of(context).colorScheme.background,
           title: CustomText(
             text: tr('neverGiveUp'),
-            color: Theme.of(context).colorScheme.onPrimary,
+            color: Theme.of(context).colorScheme.onBackground,
             textAlign: TextAlign.center,
             fontSize: 20.sp,
             fontWeight: FontWeight.bold,
           ),
           content: CustomText(
             text: tr('areYouSureYouWantToExitTheQuiz'),
-            color: Theme.of(context).colorScheme.onPrimary,
+            color: Theme.of(context).colorScheme.onBackground,
             textAlign: TextAlign.center,
           ),
           actionsAlignment: MainAxisAlignment.start,
@@ -119,11 +119,13 @@ class QuestionsViewState extends State<QuestionsView> {
                 CustomButton(
                   width: MediaQuery.of(context).size.width * 0.27,
                   height: MediaQuery.of(context).size.width * 0.12,
+                  background: Theme.of(context).colorScheme.tertiary,
                   onPressed: () {
                     Navigator.of(context).pop();
                     isNavigating = false;
                   },
                   title: tr('no'),
+                  textColor: Theme.of(context).colorScheme.onBackground,
                 ),
                 CustomButton(
                   width: MediaQuery.of(context).size.width * 0.27,

@@ -56,8 +56,11 @@ class FinalExamScoreView extends StatelessWidget {
                 child: SvgPicture.asset(
                   isSuccess ? AppImage.fireworks : AppImage.motivationHand,
                   height: checkDeviceIsTaplet(context) ? 190 : 80.h,
-                  // ignore: deprecated_member_use
-                  color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
+                  colorFilter: ColorFilter.mode(
+                    Theme.of(context).colorScheme.primary.withOpacity(0.5),
+                    BlendMode.modulate,
+                  ),
+                  //  color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
                 ),
               ),
               Align(

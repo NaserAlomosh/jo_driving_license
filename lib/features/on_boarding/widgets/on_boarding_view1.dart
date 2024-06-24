@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
+
 import '../../../core/constants/image_path.dart';
 import '../../../core/widgets/general/custom_text.dart';
 
@@ -23,7 +24,7 @@ class OnBoardingViewOne extends StatelessWidget {
                 children: [
                   CustomText(
                     text: tr('onBoardingTitle1'),
-                    fontSize: 25.sp,
+                    fontSize: 25,
                     fontWeight: FontWeight.w700,
                     textAlign: TextAlign.center,
                     color: Theme.of(context).colorScheme.onBackground,
@@ -31,7 +32,7 @@ class OnBoardingViewOne extends StatelessWidget {
                   const SizedBox(height: 10),
                   CustomText(
                     text: tr('onBoardingSubtitle1'),
-                    fontSize: 18.sp,
+                    fontSize: 18,
                     textAlign: TextAlign.center,
                     color: Theme.of(context).colorScheme.onBackground,
                   ),

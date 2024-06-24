@@ -196,7 +196,7 @@ class CategoryScoreView extends StatelessWidget {
       padding: const EdgeInsets.only(top: 20),
       child: CustomText(
         text: isSuccess ? tr('supportQouteSuccess1') : tr('supportQouteFail1'),
-        fontSize: 16.sp,
+        fontSize: 16,
         textAlign: TextAlign.center,
         color: Theme.of(context).colorScheme.onBackground,
       ),

@@ -7,6 +7,7 @@ import 'package:jo_driving_license/core/helper/spacing.dart';
 import 'package:jo_driving_license/core/widgets/buttons/custom_button.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
 import 'package:jo_driving_license/features/questions/view/questions_view.dart';
+
 import '../../../core/constants/image_path.dart';
 
 class FinalExamView extends StatelessWidget {
@@ -30,7 +31,7 @@ class FinalExamView extends StatelessWidget {
                 children: [
                   CustomText(
                     text: tr('rememberTheFollowingInstructions'),
-                    fontSize: 26.sp,
+                    fontSize: 26,
                     color: Theme.of(context).colorScheme.onBackground,
                     fontWeight: FontWeight.w700,
                   ),
@@ -41,7 +42,7 @@ class FinalExamView extends StatelessWidget {
                   Align(
                     alignment: Alignment.center,
                     child: Image.asset(
-                      height: 300.h,
+                      height: 220.h,
                       AppImage.policeManInstructions,
                     ),
                   ),
@@ -51,7 +52,7 @@ class FinalExamView extends StatelessWidget {
                     children: [
                       CustomText(
                         text: tr('andNeverForgetWeBelieveInYou'),
-                        fontSize: 28.sp,
+                        fontSize: 28,
                         color: Theme.of(context).colorScheme.onBackground,
                         fontWeight: FontWeight.bold,
                       ),
@@ -96,7 +97,7 @@ class Instruction extends StatelessWidget {
         SizedBox(width: 5),
         CustomText(
           text: tr(text),
-          fontSize: 20.sp,
+          fontSize: 20,
           color: Theme.of(context).colorScheme.onBackground,
         ),
       ],

@@ -44,7 +44,7 @@ class AllQuestionsNavBar extends StatelessWidget {
                   Align(
                     alignment: Alignment.center,
                     child: Image.asset(
-                      height: 300.h,
+                      height: 220.h,
                       // AppImage.allQuestionsExamBackground,
                       AppImage.policeLikeThumb,
                     ),

@@ -91,7 +91,7 @@ class FinalExamScoreView extends StatelessWidget {
       children: [
         CustomText(
           text: isSuccess ? tr('congratulations') : tr('neverGiveUp'),
-          fontSize: 30.sp,
+          fontSize: 30,
           fontWeight: FontWeight.w700,
           color: Theme.of(context).colorScheme.onBackground,
         ),
@@ -99,7 +99,7 @@ class FinalExamScoreView extends StatelessWidget {
           text: isSuccess
               ? '${(prefs.getString('username') == null || prefs.getString('username')!.isNotEmpty) ? prefs.getString('username') : tr('guest')}, ${tr('goForYourLicence')}'
               : '${(prefs.getString('username') == null || prefs.getString('username')!.isNotEmpty) ? prefs.getString('username') : tr('guest')}, ${tr('tryAgain.')} ${tr('and')} ${tr('goForYourLicence')}',
-          fontSize: 20.sp,
+          fontSize: 20,
           textAlign: TextAlign.center,
           color: Theme.of(context).colorScheme.onBackground,
         ),

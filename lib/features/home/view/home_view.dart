@@ -2,7 +2,6 @@
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -12,6 +11,7 @@ import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
 import 'package:jo_driving_license/core/widgets/refresh/custom_refresh_widget.dart';
 import 'package:jo_driving_license/features/botton_nav_bar/botton_nav_bar.dart';
 import 'package:jo_driving_license/features/home/view_model/cubit.dart';
+
 import '../../../core/constants/image_path.dart';
 import '../../../core/helper/get_device_type.dart';
 import '../../../core/helper/spacing.dart';
@@ -79,12 +79,12 @@ class HomeView extends StatelessWidget {
                                   height: 1.5.h,
                                   text: tr('drivingLicence'),
                                   fontWeight: FontWeight.w900,
-                                  fontSize: 22.sp,
+                                  fontSize: 22,
                                   textOverflow: TextOverflow.ellipsis,
                                 ),
                                 CustomText(
                                   text: tr('areYouReadyForYourDrivingLicence'),
-                                  fontSize: 14.sp,
+                                  fontSize: 14,
                                   height: 2.h,
                                   fontWeight: FontWeight.w100,
                                 ),

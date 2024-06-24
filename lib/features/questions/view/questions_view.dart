@@ -1,4 +1,5 @@
 import 'dart:io';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -8,6 +9,7 @@ import 'package:jo_driving_license/core/widgets/buttons/custom_button.dart';
 import 'package:jo_driving_license/core/widgets/error_widget/error_widget.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
 import 'package:jo_driving_license/features/questions/view/widgets/loading_questions_widget.dart';
+
 import '../view_model/cubit.dart';
 import 'widgets/count_of_questions.dart';
 import 'widgets/timer_widget.dart';
@@ -71,7 +73,7 @@ class QuestionsViewState extends State<QuestionsView> {
         onTap: () async => await questionBackShowDiloge(context),
         child: Icon(
           Platform.isAndroid ? Icons.arrow_back : Icons.arrow_back_ios,
-          size: 20.sp,
+          size: 20,
         ),
       ),
       title: CustomText(
@@ -79,7 +81,7 @@ class QuestionsViewState extends State<QuestionsView> {
             (widget.countRandomQuestions == null
                 ? tr('allQuestions')
                 : tr('drivingLicenseExam')),
-        fontSize: 18.sp,
+        fontSize: 18,
         fontWeight: FontWeight.w700,
         color: Theme.of(context).colorScheme.secondary,
       ),

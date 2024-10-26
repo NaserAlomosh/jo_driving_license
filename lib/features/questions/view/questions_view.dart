@@ -9,7 +9,6 @@ import 'package:jo_driving_license/core/widgets/error_widget/error_widget.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
 import 'package:jo_driving_license/features/questions/view/widgets/loading_questions_widget.dart';
 
-import '../../../core/widgets/ad_mob_google_paly/banner_ad_mob_widget.dart';
 import '../view_model/cubit.dart';
 import 'widgets/count_of_questions.dart';
 import 'widgets/timer_widget.dart';
@@ -45,7 +44,7 @@ class QuestionsViewState extends State<QuestionsView> {
         canPop: false,
         onPopInvoked: (_) async => await questionBackShowDiloge(context),
         child: Scaffold(
-          bottomNavigationBar: AdMobBannerWidget(),
+          //   bottomNavigationBar: AdMobBannerWidget(),
           appBar: _getAppBar(),
           body: SafeArea(
             child: BlocBuilder<QuistionsCubit, QuistionsState>(

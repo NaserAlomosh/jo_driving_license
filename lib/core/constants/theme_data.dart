@@ -9,7 +9,7 @@ ThemeData lightMode = ThemeData(
     onPrimary: Color(0xFFFFFFFF),
     secondary: Color(0xff6C5070),
     onSecondary: Color(0xff6C5070),
-    surface: Color.fromARGB(255, 238, 229, 245),
+    surface: Color.fromARGB(255, 252, 247, 255),
     error: Color.fromARGB(255, 214, 130, 130),
     onError: Color.fromARGB(198, 111, 255, 157),
 
@@ -33,7 +33,7 @@ ThemeData darkMode = ThemeData(
     onPrimary: Color(0xFFFFFFFF),
     secondary: Color.fromARGB(255, 254, 245, 255),
     onSecondary: Color.fromARGB(255, 121, 67, 128),
-    surface: Color.fromARGB(255, 164, 146, 167),
+    surface: Color.fromARGB(131, 108, 80, 112),
     error: Color(0xffEA728C),
     onError: Color.fromARGB(198, 111, 255, 157),
 

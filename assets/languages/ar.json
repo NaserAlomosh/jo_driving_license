@@ -63,5 +63,6 @@
         "exitQuiz": "الخروج من الاختبار",
         "stayFocused": "ابقَ مركزًا",
         "doYouReallyWantToLeaveTheQuizNow": "هل أنت متأكد أنك تريد مغادرة الاختبار الآن؟",
-        "keepGoing": "استمر"
+        "keepGoing": "استمر",
+        "doYouReallyWantToLeaveTheApp": "هل تريد حقًا مغادرة التطبيق؟"
 }

@@ -5,7 +5,6 @@ import 'package:jo_driving_license/core/constants/dimentions.dart';
 import 'package:jo_driving_license/core/helper/extensions.dart';
 import 'package:jo_driving_license/core/widgets/buttons/custom_button.dart';
 
-import '../../core/constants/image_path.dart';
 import '../../core/widgets/general/custom_text.dart';
 import '../questions/view/questions_view.dart';
 
@@ -26,26 +25,27 @@ class AllQuestionsNavBar extends StatelessWidget {
             constraints: BoxConstraints(minHeight: constraints.maxHeight),
             child: IntrinsicHeight(
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   //  AdMobBannerWidget(),
                   CustomText(
                     text: tr('youWillTestAllQuestions'),
                     fontSize: 26,
+                    fontWeight: FontWeight.bold,
                     color: Theme.of(context).colorScheme.onBackground,
                   ),
                   CustomText(
                     text: tr('areYouReady'),
-                    fontSize: 26,
+                    fontSize: 24,
                     color: Theme.of(context).colorScheme.onBackground,
                   ),
                   Spacer(),
                   Align(
                     alignment: Alignment.center,
                     child: Image.asset(
-                      height: 300.h,
-                      AppImage.allQuestionsExamBackground,
-                      color: Theme.of(context).colorScheme.primary,
+                      height: 220.h,
+                      // AppImage.allQuestionsExamBackground,
+                      ' AppImage.policeLikeThumb',
                     ),
                   ),
                   Spacer(),

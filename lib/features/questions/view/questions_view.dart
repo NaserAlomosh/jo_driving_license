@@ -9,6 +9,7 @@ import 'package:jo_driving_license/core/widgets/error_widget/error_widget.dart';
 import 'package:jo_driving_license/core/widgets/general/custom_text.dart';
 import 'package:jo_driving_license/features/questions/view/widgets/loading_questions_widget.dart';
 
+import '../../../core/widgets/buttons/custom_button.dart';
 import '../view_model/cubit.dart';
 import 'widgets/count_of_questions.dart';
 import 'widgets/timer_widget.dart';
@@ -42,7 +43,7 @@ class QuestionsViewState extends State<QuestionsView> {
         ),
       child: PopScope(
         canPop: false,
-        onPopInvoked: (_) async => await questionBackShowDiloge(context),
+        onPopInvoked: (_) async => await questionBackShowDialog(context),
         child: Scaffold(
           //   bottomNavigationBar: AdMobBannerWidget(),
           appBar: _getAppBar(),
@@ -69,7 +70,7 @@ class QuestionsViewState extends State<QuestionsView> {
     return AppBar(
       backgroundColor: Colors.transparent,
       leading: GestureDetector(
-        onTap: () async => await questionBackShowDiloge(context),
+        onTap: () async => await questionBackShowDialog(context),
         child: Icon(
           Platform.isAndroid ? Icons.arrow_back : Icons.arrow_back_ios,
           size: 20.sp,
@@ -91,7 +92,7 @@ class QuestionsViewState extends State<QuestionsView> {
     );
   }
 
-  Future questionBackShowDiloge(BuildContext context) async {
+  Future questionBackShowDialog(BuildContext context) async {
     if (isNavigating) return;
     isNavigating = true;
 
@@ -99,36 +100,46 @@ class QuestionsViewState extends State<QuestionsView> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          backgroundColor: Theme.of(context).colorScheme.onSecondary,
+          backgroundColor: Theme.of(context).colorScheme.background,
           title: CustomText(
-            text: tr('exitQuiz'),
-            color: Theme.of(context).colorScheme.onPrimary,
+            text: tr('stayFocused'),
+            color: Theme.of(context).colorScheme.onBackground,
+            textAlign: TextAlign.center,
+            fontSize: 20.sp,
+            fontWeight: FontWeight.bold,
           ),
           content: CustomText(
-            text: tr('areYouSureYouWantToExitTheQuiz'),
-            color: Theme.of(context).colorScheme.onPrimary,
+            text: tr('doYouReallyWantToLeaveTheQuizNow'),
+            color: Theme.of(context).colorScheme.onBackground,
+            textAlign: TextAlign.start,
           ),
           actionsAlignment: MainAxisAlignment.start,
-          actions: <Widget>[
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-                isNavigating = false;
-              },
-              child: CustomText(
-                text: tr('no'),
-                color: Theme.of(context).colorScheme.onPrimary,
-              ),
-            ),
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop(); // Pop the dialog
-                Navigator.of(context).pop(); // Pop the quiz screen
-              },
-              child: CustomText(
-                text: tr('yes'),
-                color: Theme.of(context).colorScheme.onPrimary,
-              ),
+          actions: [
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                CustomButton(
+                  width: MediaQuery.of(context).size.width * 0.27,
+                  height: MediaQuery.of(context).size.width * 0.12,
+                  background: Theme.of(context).colorScheme.tertiary,
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                    isNavigating = false;
+                  },
+                  title: tr('keepGoing'),
+                  textColor: Theme.of(context).colorScheme.onBackground,
+                ),
+                CustomButton(
+                  width: MediaQuery.of(context).size.width * 0.27,
+                  height: MediaQuery.of(context).size.width * 0.12,
+                  onPressed: () {
+                    Navigator.of(context).pop(); // Close dialog
+                    Navigator.of(context).pop(); // Exit quiz screen
+                  },
+                  title: tr('exit'),
+                ),
+              ],
             ),
           ],
         );

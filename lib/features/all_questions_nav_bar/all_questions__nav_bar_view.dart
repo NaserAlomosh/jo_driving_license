@@ -5,6 +5,7 @@ import 'package:jo_driving_license/core/constants/dimentions.dart';
 import 'package:jo_driving_license/core/helper/extensions.dart';
 import 'package:jo_driving_license/core/widgets/buttons/custom_button.dart';
 
+import '../../core/constants/image_path.dart';
 import '../../core/widgets/general/custom_text.dart';
 import '../questions/view/questions_view.dart';
 
@@ -45,7 +46,7 @@ class AllQuestionsNavBar extends StatelessWidget {
                     child: Image.asset(
                       height: 220.h,
                       // AppImage.allQuestionsExamBackground,
-                      ' AppImage.policeLikeThumb',
+                      AppImage.policeLikeThumb,
                     ),
                   ),
                   Spacer(),

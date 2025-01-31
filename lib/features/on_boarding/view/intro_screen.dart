@@ -27,7 +27,7 @@ class _IntroScreenState extends State<IntroScreen> {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: screenPadding),
+        padding: EdgeInsets.symmetric(horizontal: GeneralConst.horizontalPadding),
         child: Stack(
           children: [
             PageView(
@@ -59,16 +59,13 @@ class _IntroScreenState extends State<IntroScreen> {
                       effect: SlideEffect(
                         dotHeight: 8.w,
                         dotWidth: 8.w,
-                        dotColor:
-                            Theme.of(context).colorScheme.onSurfaceVariant,
+                        dotColor: Theme.of(context).colorScheme.onSurfaceVariant,
                         activeDotColor: Theme.of(context).colorScheme.onPrimary,
                       ),
                     ),
                     const SizedBox(height: 30),
                     Row(
-                      mainAxisAlignment: onLastPage
-                          ? MainAxisAlignment.center
-                          : MainAxisAlignment.spaceAround,
+                      mainAxisAlignment: onLastPage ? MainAxisAlignment.center : MainAxisAlignment.spaceAround,
                       children: [
                         onLastPage
                             ? const SizedBox()
@@ -85,20 +82,14 @@ class _IntroScreenState extends State<IntroScreen> {
                                     );
                                   },
                                   child: Container(
-                                    width: MediaQuery.of(context).size.height *
-                                        0.18,
+                                    width: MediaQuery.of(context).size.height * 0.18,
                                     padding: const EdgeInsets.all(5),
                                     decoration: BoxDecoration(
-                                        color: Theme.of(context)
-                                            .colorScheme
-                                            .surfaceVariant,
+                                        color: Theme.of(context).colorScheme.surfaceVariant,
                                         border: Border.all(
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .onPrimary,
+                                          color: Theme.of(context).colorScheme.onPrimary,
                                         ),
-                                        borderRadius:
-                                            BorderRadius.circular(50)),
+                                        borderRadius: BorderRadius.circular(50)),
                                     child: CustomText(
                                       text: tr('skip'),
                                       textAlign: TextAlign.center,
@@ -115,18 +106,14 @@ class _IntroScreenState extends State<IntroScreen> {
                                 child: GestureDetector(
                                   onTap: () {
                                     _controller.nextPage(
-                                        duration:
-                                            const Duration(milliseconds: 500),
-                                        curve: Curves.easeIn);
+                                        duration: const Duration(milliseconds: 500), curve: Curves.easeIn);
                                   },
                                   child: GestureDetector(
                                     onTap: () {
                                       showDialog(
                                           context: context,
                                           builder: (context) {
-                                            return const Center(
-                                                child:
-                                                    CircularProgressIndicator());
+                                            return const Center(child: CircularProgressIndicator());
                                           });
                                       Navigator.of(context).pop();
 
@@ -144,16 +131,11 @@ class _IntroScreenState extends State<IntroScreen> {
                                         horizontal: 60.w,
                                       ),
                                       child: Container(
-                                        width:
-                                            MediaQuery.of(context).size.height *
-                                                0.18,
+                                        width: MediaQuery.of(context).size.height * 0.18,
                                         padding: const EdgeInsets.all(5),
                                         decoration: BoxDecoration(
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .onPrimary,
-                                          borderRadius:
-                                              BorderRadius.circular(50),
+                                          color: Theme.of(context).colorScheme.onPrimary,
+                                          borderRadius: BorderRadius.circular(50),
                                         ),
                                         child: CustomText(
                                           text: tr('getStarted'),
@@ -170,19 +152,15 @@ class _IntroScreenState extends State<IntroScreen> {
                                 child: GestureDetector(
                                   onTap: () {
                                     _controller.nextPage(
-                                      duration:
-                                          const Duration(milliseconds: 500),
+                                      duration: const Duration(milliseconds: 500),
                                       curve: Curves.easeIn,
                                     );
                                   },
                                   child: Container(
-                                    width: MediaQuery.of(context).size.height *
-                                        0.18,
+                                    width: MediaQuery.of(context).size.height * 0.18,
                                     padding: const EdgeInsets.all(5),
                                     decoration: BoxDecoration(
-                                      color: Theme.of(context)
-                                          .colorScheme
-                                          .onPrimary,
+                                      color: Theme.of(context).colorScheme.onPrimary,
                                       borderRadius: BorderRadius.circular(50),
                                     ),
                                     child: CustomText(

@@ -6,7 +6,7 @@ import '../../../core/models/quiz_model.dart';
 
 Future<List<QuizModel?>> getQuizzezName() async {
   List<QuizModel?> quizzes = [];
-  await quizzesFirestore.get().then((quiz) {
+  await quizzesFirestore.orderBy('createdDate').get().then((quiz) {
     for (var element in quiz.docs) {
       quizzes.add(QuizModel.fromJson(element.data()));
     }

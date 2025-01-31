@@ -34,20 +34,20 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: width ?? double.infinity,
-      height: height ?? 50.h,
+      height: height ?? 60.h,
       child: ElevatedButton(
         style: ButtonStyle(
-          elevation: MaterialStatePropertyAll(elevation),
-          foregroundColor: MaterialStateProperty.all<Color>(
+          elevation: WidgetStatePropertyAll(elevation),
+          foregroundColor: WidgetStateProperty.all<Color>(
             Theme.of(context).colorScheme.onPrimary,
           ),
-          backgroundColor: MaterialStateProperty.resolveWith<Color>((states) {
-            if (states.contains(MaterialState.disabled)) {
+          backgroundColor: WidgetStateProperty.resolveWith<Color>((states) {
+            if (states.contains(WidgetState.disabled)) {
               return Colors.grey.shade400;
             }
             return background ?? Theme.of(context).colorScheme.primary;
           }),
-          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+          shape: WidgetStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(borderRadius),
             ),
@@ -60,6 +60,7 @@ class CustomButton extends StatelessWidget {
           fontSize: fontSize,
           textAlign: TextAlign.center,
           fontWeight: fontWeight ?? FontWeight.bold,
+          textOverflow: TextOverflow.ellipsis,
         ),
       ),
     );

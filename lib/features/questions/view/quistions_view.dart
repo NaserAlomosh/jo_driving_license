@@ -88,17 +88,14 @@ class QuistionsViewState extends State<QuistionsView> {
               margin: EdgeInsets.symmetric(vertical: 8.h),
               padding: EdgeInsets.symmetric(vertical: 8.h),
               decoration: BoxDecoration(
-                color: answerColors[quistionIndex]?[answerIndex] ??
-                    Theme.of(context).colorScheme.tertiaryContainer,
+                color: answerColors[quistionIndex]?[answerIndex] ?? Theme.of(context).colorScheme.tertiaryContainer,
                 borderRadius: BorderRadius.circular(8.0),
               ),
               child: CustomText(
                 textAlign: TextAlign.center,
                 text: question?.answers[answerIndex].answer ?? '',
                 fontSize: 20,
-                color: answerColors[quistionIndex]?[answerIndex] == Colors.green
-                    ? Colors.white
-                    : Colors.black,
+                color: answerColors[quistionIndex]?[answerIndex] == Colors.green ? Colors.white : Colors.black,
               ),
             ),
           ),
@@ -131,8 +128,7 @@ class QuistionsViewState extends State<QuistionsView> {
   _onClickAnswer(int quistionIndex, int answersIndex, QuestionModel? question) {
     answerColors[quistionIndex] ??= {};
     final correct = question?.answers[answersIndex].correct ?? false;
-    answerColors[quistionIndex]![answersIndex] =
-        correct ? Colors.green : Colors.red;
+    answerColors[quistionIndex]![answersIndex] = correct ? Colors.green : Colors.red;
 
     for (int i = 0; i < question!.answers.length; i++) {
       final correct = question.answers[i].correct ?? false;

@@ -23,7 +23,8 @@ class CustomOnTap extends StatelessWidget {
         splashColor: Theme.of(context).colorScheme.primaryContainer,
         focusColor: Theme.of(context).colorScheme.primaryContainer,
         hoverColor: Theme.of(context).colorScheme.primaryContainer,
-        overlayColor: MaterialStateProperty.all(
+        overlayColor: WidgetStateProperty.all(
+          // ignore: deprecated_member_use
           Colors.grey.withOpacity(0.33),
         ),
         onTap: onTap,

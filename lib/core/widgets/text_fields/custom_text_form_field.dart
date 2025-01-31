@@ -27,6 +27,7 @@ class CustomTextFormField extends StatelessWidget {
   final Color? suffixIconColor;
   final TextAlign? textAlign;
   final double? borderRadius;
+  final FocusNode? focusNode;
   const CustomTextFormField({
     super.key,
     this.contentPadding,
@@ -52,11 +53,13 @@ class CustomTextFormField extends StatelessWidget {
     this.suffixIconColor,
     this.textAlign,
     this.borderRadius,
+    this.focusNode,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      focusNode: focusNode,
       textAlign: textAlign ?? TextAlign.start,
       maxLines: maxLine ?? 1,
       keyboardType: textInputType,
@@ -82,8 +85,8 @@ class CustomTextFormField extends StatelessWidget {
             OutlineInputBorder(
               borderRadius: BorderRadius.circular(borderRadius ?? 1),
               borderSide: BorderSide(
-                color:
-                    borderSideColor ?? Theme.of(context).colorScheme.secondary,
+                color: borderSideColor ??
+                    Theme.of(context).colorScheme.onBackground,
                 width: 1,
               ),
             ),
@@ -100,7 +103,7 @@ class CustomTextFormField extends StatelessWidget {
           borderRadius: BorderRadius.circular(borderRadius ?? 1),
           borderSide: borderSide ??
               BorderSide(
-                color: Theme.of(context).colorScheme.secondary,
+                color: Theme.of(context).colorScheme.onPrimary,
                 width: 1,
               ),
         ),
@@ -108,7 +111,7 @@ class CustomTextFormField extends StatelessWidget {
           borderRadius: BorderRadius.circular(borderRadius ?? 1),
           borderSide: borderSide ??
               BorderSide(
-                color: Theme.of(context).colorScheme.secondary,
+                color: Theme.of(context).colorScheme.onBackground,
                 width: 1,
               ),
         ),
